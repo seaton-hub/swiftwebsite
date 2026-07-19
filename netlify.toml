@@ -1,0 +1,23 @@
+# Netlify build settings, kept in the repo so they cannot drift from whatever
+# the dashboard happens to hold.
+#
+# This site is a Next.js STATIC EXPORT — next.config.ts sets output: "export",
+# so `npm run build` emits plain files into out/ and there is no server to run.
+#
+# `publish` MUST be "out". Netlify's default for a detected Next.js project is
+# ".next", whose root contains no index.html; that mismatch is what produces
+# Netlify's own "Page not found" 404 on a site that otherwise built perfectly.
+#
+# No `base` is set because the repo root IS the site. (In the copy that lives
+# inside the delivery-app repo the site sits under website/ — this file is only
+# ever read by Netlify, which builds from seaton-hub/swiftwebsite.)
+
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  # Pin to the version the site is developed against. Next 16 needs a modern
+  # Node, and letting Netlify pick its own default is a common source of builds
+  # that pass locally and fail in CI.
+  NODE_VERSION = "22"
