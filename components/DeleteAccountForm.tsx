@@ -74,14 +74,14 @@ export default function DeleteAccountForm() {
 
   if (done) {
     return (
-      <div className="bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl p-8 text-center">
+      <div className="bg-surface border border-line rounded-2xl p-8 text-center">
         <div className="w-14 h-14 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center mx-auto mb-5">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h2 className="text-white text-xl font-bold mb-2">Account Deleted</h2>
-        <p className="text-[#9E9E9E] text-sm leading-relaxed">
+        <h2 className="text-ink text-xl font-bold mb-2">Account Deleted</h2>
+        <p className="text-muted text-sm leading-relaxed">
           Your account and personal data have been permanently removed.
           We&apos;re sorry to see you go — you&apos;re welcome back on Seaton Swift anytime.
         </p>
@@ -90,9 +90,9 @@ export default function DeleteAccountForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl p-6 sm:p-8">
+    <form onSubmit={handleSubmit} className="bg-surface border border-line rounded-2xl p-6 sm:p-8">
       {/* Account type */}
-      <label className="block text-[#9E9E9E] text-xs font-semibold uppercase tracking-widest mb-3">
+      <label className="block text-muted text-xs font-semibold uppercase tracking-widest mb-3">
         Account Type
       </label>
       <div className="grid grid-cols-2 gap-3 mb-6">
@@ -103,8 +103,8 @@ export default function DeleteAccountForm() {
             onClick={() => setRole(r)}
             className={`py-3 rounded-xl text-sm font-semibold border transition-colors ${
               role === r
-                ? "border-[#E8402A] bg-[#E8402A]/10 text-white"
-                : "border-[#2A2A2A] bg-[#0D0D0D] text-[#9E9E9E] hover:border-[#3A3A3A]"
+                ? "border-brand bg-brand/10 text-ink"
+                : "border-line bg-canvas-deep text-muted hover:border-muted"
             }`}
           >
             {r === "rider" ? "Rider" : "Shop"}
@@ -113,7 +113,7 @@ export default function DeleteAccountForm() {
       </div>
 
       {/* Phone */}
-      <label htmlFor="phone" className="block text-[#9E9E9E] text-xs font-semibold uppercase tracking-widest mb-3">
+      <label htmlFor="phone" className="block text-muted text-xs font-semibold uppercase tracking-widest mb-3">
         Registered Phone Number
       </label>
       <input
@@ -124,11 +124,11 @@ export default function DeleteAccountForm() {
         placeholder="e.g. 0200000000"
         value={phone}
         onChange={(e) => { setPhone(e.target.value); setError(""); }}
-        className="w-full bg-[#0D0D0D] border border-[#2A2A2A] rounded-xl px-4 py-3 text-sm text-white placeholder-[#5A5A5A] focus:border-[#E8402A] focus:outline-none mb-6"
+        className="w-full bg-canvas-deep border border-line rounded-xl px-4 py-3 text-sm text-ink placeholder-muted focus:border-brand focus:outline-none mb-6"
       />
 
       {/* Password */}
-      <label htmlFor="password" className="block text-[#9E9E9E] text-xs font-semibold uppercase tracking-widest mb-3">
+      <label htmlFor="password" className="block text-muted text-xs font-semibold uppercase tracking-widest mb-3">
         Password
       </label>
       <div className="relative mb-2">
@@ -139,12 +139,12 @@ export default function DeleteAccountForm() {
           placeholder="Your account password"
           value={password}
           onChange={(e) => { setPassword(e.target.value); setError(""); }}
-          className="w-full bg-[#0D0D0D] border border-[#2A2A2A] rounded-xl px-4 py-3 pr-16 text-sm text-white placeholder-[#5A5A5A] focus:border-[#E8402A] focus:outline-none"
+          className="w-full bg-canvas-deep border border-line rounded-xl px-4 py-3 pr-16 text-sm text-ink placeholder-muted focus:border-brand focus:outline-none"
         />
         <button
           type="button"
           onClick={() => setShowPass((v) => !v)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9E9E9E] hover:text-white text-xs font-semibold"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-ink text-xs font-semibold"
         >
           {showPass ? "Hide" : "Show"}
         </button>
@@ -159,7 +159,7 @@ export default function DeleteAccountForm() {
       >
         {working ? "Deleting…" : "Permanently Delete My Account"}
       </button>
-      <p className="text-[#6B6B6B] text-xs text-center mt-4">
+      <p className="text-muted text-xs text-center mt-4">
         This action is immediate and cannot be undone.
       </p>
     </form>

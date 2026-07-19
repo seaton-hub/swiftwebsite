@@ -1,35 +1,173 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* ── Design tokens ──────────────────────────────────────────────────────────
+   Light is the default. Every surface/text/border colour is a CSS variable so
+   a single `.dark` class on <html> flips the whole site. The brand red is the
+   same in both themes. `@theme inline` registers these as Tailwind colour
+   utilities (bg-canvas, text-ink, border-line, …) that resolve to the live
+   variable, so the .dark override cascades at runtime. */
 :root {
-  --red:     #E8402A;
-  --bg:      #111111;
-  --surface: #1A1A1A;
-  --border:  #2A2A2A;
-  --muted:   #9E9E9E;
+  --brand:        #E8402A;
+  --brand-hover:  #D13520;
+  --brand-ink:    #FFFFFF;      /* text that sits on the brand red */
+
+  --canvas:       #F3F3F3;      /* page background — soft grey, never pure white */
+  --canvas-deep:  #EBEBEB;      /* alternating / footer sections (one step deeper) */
+  --surface:      #F8F8F8;      /* cards — lifted just above the canvas, not white */
+  --surface-hover:#EDEDED;      /* hover / pressed tint */
+  --line:         #E0E0E3;      /* borders */
+  --ink:          #14161C;      /* primary text */
+  --muted:        #5A6472;      /* secondary text */
+  --ring:         rgba(232, 64, 42, 0.35);
+  --shadow-sm:    0 1px 2px rgba(20,22,28,.06), 0 1px 3px rgba(20,22,28,.04);
+  --shadow-md:    0 4px 12px rgba(20,22,28,.06), 0 12px 32px rgba(20,22,28,.06);
+  --shadow-brand: 0 12px 40px rgba(232,64,42,.28);
+  --hero-grid:    rgba(20,22,28,.04);
+}
+
+.dark {
+  --canvas:       #111111;
+  --canvas-deep:  #0D0D0D;
+  --surface:      #1A1A1A;
+  --surface-hover:#1E1E1E;
+  --line:         #2A2A2A;
+  --ink:          #FFFFFF;
+  --muted:        #9E9E9E;
+  --shadow-sm:    0 1px 2px rgba(0,0,0,.5);
+  --shadow-md:    0 8px 24px rgba(0,0,0,.45);
+  --shadow-brand: 0 12px 48px rgba(232,64,42,.35);
+  --hero-grid:    rgba(255,255,255,.045);
+}
+
+@theme inline {
+  --color-brand:        var(--brand);
+  --color-brand-hover:  var(--brand-hover);
+  --color-brand-ink:    var(--brand-ink);
+  --color-canvas:       var(--canvas);
+  --color-canvas-deep:  var(--canvas-deep);
+  --color-surface:      var(--surface);
+  --color-surface-hover:var(--surface-hover);
+  --color-line:         var(--line);
+  --color-ink:          var(--ink);
+  --color-muted:        var(--muted);
+  --font-sans:          var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #111111;
-  color: #ffffff;
-  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Colour flip shouldn't strobe when toggling themes */
+  transition: background-color .3s ease, color .3s ease;
 }
 
-/* Scroll-reveal */
+/* ── Scroll reveal ──────────────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity .6s ease, transform .6s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Motion primitives (used by the hero + accents) ─────────────────────── */
+@keyframes float      { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes floatSlow  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+@keyframes pingRing   { 0% { transform: scale(.6); opacity: .55; } 100% { transform: scale(2.2); opacity: 0; } }
+@keyframes dashDraw   { to { stroke-dashoffset: 0; } }
+@keyframes marquee    { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes sheen      { from { transform: translateX(-120%); } to { transform: translateX(220%); } }
+@keyframes spinSlow   { to { transform: rotate(360deg); } }
+
+.animate-float      { animation: float 4s ease-in-out infinite; }
+.animate-float-slow { animation: floatSlow 6s ease-in-out infinite; }
+.animate-spin-slow  { animation: spinSlow 22s linear infinite; }
+
+/* ── Hero slideshow cross-fade ──────────────────────────────────────────────
+   Opacity and the slow Ken Burns drift are TRANSITIONS, not keyframes, and
+   both live on the same element. A keyframe with `fill-mode: forwards` holds
+   the zoomed transform, so removing the class when a slide deactivates snapped
+   it back to scale(1) while it was still half-visible — a visible flicker mid
+   cross-fade. A transition interpolates in both directions, so the outgoing
+   slide simply drifts back while it fades, unseen.
+
+   The two properties run at deliberately different speeds: a 1s fade against a
+   7s drift, so the zoom never finishes before the slide is replaced. */
+.hero-slide {
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1000ms ease-out, transform 7000ms ease-out;
+}
+.hero-slide[data-active="true"] { opacity: 1; transform: scale(1.09); }
+
+/* Keep the cross-fade (harmless) but drop the zoom, which is the part that can
+   provoke motion sensitivity. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: opacity 200ms linear; transform: none !important; }
 }
 
-/* Thin scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #111111; }
-::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 3px; }
+/* One continuous direction, never pausing — two identical copies + a -50%
+   translate make the loop seamless with no visible jump at the seam. */
+.marquee-track { display: inline-flex; width: max-content; will-change: transform; animation: marquee 32s linear infinite; }
+
+/* Checklist ticks draw themselves in as each row reveals, so the list reads as
+   something being ticked off rather than a static set of statements. */
+.tick { stroke-dasharray: 22; stroke-dashoffset: 22; }
+.reveal.visible .tick { animation: dashDraw .5s ease-out .15s forwards; }
+
+/* Primary nav CTA: a slow breathing glow that sends a ring outward, paired with
+   the .sheen sweep. Paused on hover so the hover state reads as a clean stop. */
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 6px 20px rgba(232,64,42,.28), 0 0 0 0   rgba(232,64,42,.38); }
+  50%      { box-shadow: 0 8px 26px rgba(232,64,42,.42), 0 0 0 7px rgba(232,64,42,0);   }
+}
+.cta-pulse { animation: ctaPulse 3.2s ease-in-out infinite; }
+.cta-pulse:hover { animation-play-state: paused; }
+
+/* Live pulse ring for map pins */
+.ping-ring::after {
+  content: ""; position: absolute; inset: 0; border-radius: 9999px;
+  background: var(--brand); animation: pingRing 2.4s ease-out infinite;
+}
+
+/* ── iOS-style glass material ───────────────────────────────────────────────
+   Translucent, blurred, colour-saturated surface with a soft top edge-light.
+   Reserved for elements that float OVER content (navbar, hero chips) — where the
+   blur/saturation actually reads. Not used on solid sections, where heavy blur
+   would only hurt legibility. Degrades to a plain translucent surface if a
+   browser lacks backdrop-filter. */
+.glass {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), var(--shadow-md);
+}
+.dark .glass {
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  border-color: color-mix(in srgb, #ffffff 12%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), var(--shadow-md);
+}
+
+/* Shimmer sweep for the stats band */
+.sheen { position: relative; overflow: hidden; }
+.sheen::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.18), transparent);
+  animation: sheen 5.5s ease-in-out infinite; pointer-events: none;
+}
+
+/* ── Thin scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ── Respect reduced-motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}

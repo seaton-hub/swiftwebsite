@@ -1,22 +1,41 @@
 import type { Metadata } from "next";
+import LegalPage, { LegalSection as Section } from "@/components/LegalPage";
+
+const title = "Terms of Service — Seaton Swift";
+const description =
+  "Seaton Swift Terms of Service — platform rules, commission structure, user responsibilities.";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Seaton Swift",
-  description: "Seaton Swift Terms of Service — platform rules, commission structure, user responsibilities.",
+  title,
+  description,
+  alternates: { canonical: "/terms-of-service" },
+  openGraph: { title, description, url: "/terms-of-service", type: "article" },
+  twitter: { title, description },
 };
+
+const SECTIONS = [
+  "1. Agreement to Terms",
+  "2. Platform Description",
+  "3. Eligibility",
+  "4. Shop Responsibilities",
+  "5. Rider Responsibilities",
+  "6. Commission and Payment",
+  "7. Prohibited Items and Activities",
+  "8. Account Suspension and Termination",
+  "9. Ratings and Reviews",
+  "10. Dispute Resolution",
+  "11. Limitation of Liability",
+  "12. Intellectual Property",
+  "13. Changes to Terms",
+  "14. Governing Law",
+  "15. Contact",
+];
 
 export default function TermsPage() {
   const updated = "26 May 2025";
   return (
-    <section className="pt-32 pb-24">
-      <div className="max-w-3xl mx-auto px-5">
-        <div className="mb-10">
-          <span className="text-[#E8402A] text-xs font-semibold uppercase tracking-widest">Legal</span>
-          <h1 className="text-4xl font-extrabold mt-2 mb-2">Terms of Service</h1>
-          <p className="text-[#9E9E9E] text-sm">Last updated: {updated} · Governing law: Republic of Ghana</p>
-        </div>
-
-        <div className="space-y-10 text-[#9E9E9E] text-sm leading-relaxed">
+    <LegalPage title="Terms of Service" updated={updated} sections={SECTIONS}>
+      <></>
           <Section title="1. Agreement to Terms">
             <p>By downloading, registering, or using the Seaton Swift platform (the &quot;App&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree, do not use the platform. These Terms constitute a legally binding agreement between you and Seaton Swift, a product of Seaton Logistics, Kumasi, Ghana.</p>
           </Section>
@@ -57,9 +76,9 @@ export default function TermsPage() {
           </Section>
 
           <Section title="6. Commission and Payment">
-            <p><strong className="text-white">Shop fees:</strong> Shops pay GHS 5 base fare plus GHS 2 per kilometre per delivery. The full price is shown before a delivery is confirmed. No charge is made if no rider accepts the delivery.</p>
-            <p><strong className="text-white">Rider commission:</strong> Seaton Swift deducts a 15% platform commission from the delivery fare. Riders retain 85% of each completed delivery. There are no sign-up fees or subscription charges for riders.</p>
-            <p><strong className="text-white">Payouts:</strong> Rider earnings are paid out daily to the Mobile Money wallet or bank account registered on the platform. Seaton Swift reserves the right to withhold payment pending investigation of any reported incident or dispute.</p>
+            <p><strong className="text-ink">Shop fees:</strong> Delivery fees are calculated dynamically from the distance travelled, the service selected, and prevailing conditions including demand, pricing zone, time of day and weather. Seaton Swift may vary these rates at any time. The full price for a delivery is always displayed and must be accepted before that delivery is confirmed, and the accepted price is fixed for that delivery. No charge is made if no rider accepts the delivery.</p>
+            <p><strong className="text-ink">Rider commission:</strong> Seaton Swift deducts a platform commission of 10% on Swift deliveries and 12% on Carry and Move deliveries. Riders retain 88–90% of each completed delivery. There are no sign-up fees or subscription charges for riders.</p>
+            <p><strong className="text-ink">Payouts:</strong> Rider earnings are paid out daily to the Mobile Money wallet or bank account registered on the platform. Seaton Swift reserves the right to withhold payment pending investigation of any reported incident or dispute.</p>
           </Section>
 
           <Section title="7. Prohibited Items and Activities">
@@ -79,7 +98,7 @@ export default function TermsPage() {
           </Section>
 
           <Section title="8. Account Suspension and Termination">
-            <p>Seaton Swift may suspend or permanently ban any account that violates these Terms, receives a pattern of negative ratings or complaints, engages in fraudulent activity, or is involved in criminal conduct. Suspended users may appeal by contacting support@seatonswift.com within 7 days of suspension.</p>
+            <p>Seaton Swift may suspend or permanently ban any account that violates these Terms, receives a pattern of negative ratings or complaints, engages in fraudulent activity, or is involved in criminal conduct. Suspended users may appeal by contacting support@seatonlogistics.com within 7 days of suspension.</p>
             <p>You may delete your account at any time from within the app settings. Outstanding balances or pending deliveries must be resolved before deletion is finalised.</p>
           </Section>
 
@@ -113,21 +132,10 @@ export default function TermsPage() {
             <p>
               Seaton Swift — a product of Seaton Logistics<br />
               Kumasi, Ashanti Region, Ghana<br />
-              Email: <a href="mailto:support@seatonswift.com" className="text-[#E8402A] hover:underline">support@seatonswift.com</a><br />
+              Email: <a href="mailto:support@seatonlogistics.com" className="text-brand hover:underline">support@seatonlogistics.com</a><br />
               Phone: +233 20 057 7600
             </p>
           </Section>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="border-t border-[#2A2A2A] pt-8">
-      <h2 className="text-white text-lg font-bold mb-4">{title}</h2>
-      <div className="space-y-3">{children}</div>
-    </div>
+    </LegalPage>
   );
 }

@@ -1,49 +1,78 @@
 "use client";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 interface FAQItem {
   q: string;
   a: string;
 }
 
+/* Card-less accordion: one hairline-divided column instead of a stack of boxed
+   panels, so a long FAQ reads as a single list rather than a wall of chips.
+
+   The answer animates on grid-template-rows 0fr → 1fr, which expands to the
+   content's natural height. The previous max-height approach needed a magic
+   number (420px) that longer answers would have silently clipped. */
 export default function FAQAccordion({ items }: { items: FAQItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
+  const uid = useId();
 
   return (
-    <div className="flex flex-col gap-3">
-      {items.map((item, i) => (
-        <div
-          key={i}
-          className="border border-[#2A2A2A] rounded-xl overflow-hidden bg-[#1A1A1A]"
-        >
-          <button
-            className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
-            onClick={() => setOpen(open === i ? null : i)}
-            aria-expanded={open === i}
-          >
-            <span className="font-semibold text-white text-sm leading-snug">{item.q}</span>
-            <span
-              className={`shrink-0 w-6 h-6 rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#9E9E9E] transition-transform duration-200 ${
-                open === i ? "rotate-45 border-[#E8402A] text-[#E8402A]" : ""
+    <div className="border-y border-line divide-y divide-line">
+      {items.map((item, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={i}>
+            <h3>
+              <button
+                id={`${uid}-q${i}`}
+                aria-expanded={isOpen}
+                aria-controls={`${uid}-a${i}`}
+                onClick={() => setOpen(isOpen ? null : i)}
+                className={`group w-full text-left flex items-start justify-between gap-5 py-5 transition-colors duration-200 ${
+                  isOpen ? "text-brand" : "text-ink hover:text-brand"
+                }`}
+              >
+                <span className="font-semibold text-[15px] leading-snug">{item.q}</span>
+                <svg
+                  className={`shrink-0 mt-0.5 transition-transform duration-300 ${
+                    isOpen ? "rotate-180 text-brand" : "text-muted group-hover:text-brand"
+                  }`}
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </h3>
+
+            <div
+              id={`${uid}-a${i}`}
+              role="region"
+              aria-labelledby={`${uid}-q${i}`}
+              // Collapsed answers stay in the DOM for the animation, so hide
+              // them from screen readers explicitly. Safe here — the panel
+              // holds no focusable content.
+              aria-hidden={!isOpen}
+              className={`grid transition-all duration-300 ease-out ${
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
               }`}
             >
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <line x1="6" y1="1" x2="6" y2="11" />
-                <line x1="1" y1="6" x2="11" y2="6" />
-              </svg>
-            </span>
-          </button>
-          <div
-            className={`overflow-hidden transition-all duration-300 ${
-              open === i ? "max-h-64" : "max-h-0"
-            }`}
-          >
-            <p className="px-6 pb-5 text-[#9E9E9E] text-sm leading-relaxed border-t border-[#2A2A2A] pt-4">
-              {item.a}
-            </p>
+              <div className="overflow-hidden">
+                <p className="border-l-2 border-brand/40 pl-4 pb-6 text-muted text-sm leading-relaxed">
+                  {item.a}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

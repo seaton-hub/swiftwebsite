@@ -1,95 +1,114 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FAQAccordion from "@/components/FAQAccordion";
+import JsonLd from "@/components/JsonLd";
 import ScrollReveal from "@/components/ScrollReveal";
+import PageHero from "@/components/PageHero";
+import PricingFactors from "@/components/PricingFactors";
+import Steps from "@/components/Steps";
+import StoreButtons from "@/components/StoreButtons";
+import { PLAY_STORE_URL } from "@/lib/site";
+import { faqSchema, breadcrumbSchema } from "@/lib/seo";
+
+const title = "Delivery for Shops in Ghana — Seaton Swift";
+const description =
+  "Stop worrying about delivery. Post a delivery, get matched to a verified rider, and track it live. See the exact price before you confirm — no contracts, no monthly fees.";
 
 export const metadata: Metadata = {
-  title: "For Shops — Seaton Swift",
-  description: "Stop worrying about delivery. Post a delivery, get matched to a verified rider, and track it live. GHS 5 base + GHS 2/km.",
+  title,
+  description,
+  alternates: { canonical: "/for-shops" },
+  openGraph: { title, description, url: "/for-shops", type: "website" },
+  twitter: { title, description },
 };
 
+const benefits = [
+  {
+    title: "No contracts, no monthly fees",
+    desc: "Pay per delivery. Use it ten times a day or twice a month — the price is the same.",
+    icon: <><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><path d="M14 2v6h6M9 15l2 2 4-4" /></>,
+  },
+  {
+    title: "A fleet without the payroll",
+    desc: "Verified riders on demand. No hiring, no fuel, no bikes to maintain, no idle staff.",
+    icon: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></>,
+  },
+  {
+    title: "Your customer stays informed",
+    desc: "They get an SMS when the rider collects, and a live link to follow the delivery.",
+    icon: <><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></>,
+  },
+  {
+    title: "Proof on every drop-off",
+    desc: "Each delivery is confirmed and time-stamped, so disputes are settled with facts.",
+    icon: <><path d="M9 12l2 2 4-4" /><path d="M12 3l7 3v6c0 4-3 6.5-7 9-4-2.5-7-5-7-9V6l7-3z" /></>,
+  },
+];
+
 const steps = [
-  { n: "01", title: "Download the App", desc: "Install Seaton Swift from Google Play and create your shop account in under 2 minutes." },
-  { n: "02", title: "Add Your Shop", desc: "Enter your shop name, address, and the types of items you typically deliver." },
-  { n: "03", title: "Post a Delivery", desc: "Enter the pickup location, drop-off address, package description, and recipient contact." },
-  { n: "04", title: "Get Matched to a Rider", desc: "Within 2 minutes, a verified nearby rider accepts your delivery and heads to your pickup point." },
-  { n: "05", title: "Track and Confirm", desc: "Watch the delivery live on the map — your customer gets an SMS when the rider collects, and you're notified the moment it's delivered." },
+  { title: "Download the App", desc: "Install Seaton Swift on Android or iPhone and create your shop account in under 2 minutes." },
+  { title: "Add Your Shop", desc: "Enter your shop name, address, and the types of items you typically deliver." },
+  { title: "Post a Delivery", desc: "Enter the pickup location, drop-off address, package description, and recipient contact." },
+  { title: "Get Matched to a Rider", desc: "Within about 2 minutes a verified nearby rider accepts and heads to your pickup point." },
+  { title: "Track and Confirm", desc: "Watch the delivery live on the map — your customer gets an SMS at pickup, and you're notified the moment it's delivered." },
 ];
 
 const faq: { q: string; a: string }[] = [
-  { q: "How much does a delivery cost?", a: "Standard (Swift) deliveries cost GHS 5 as a base fee, plus GHS 2.50 per kilometre — a 5 km delivery is GHS 17.50. Bigger packages (Carry) and large items (Move) have their own rates. You always see the full price before confirming." },
-  { q: "How quickly will a rider arrive?", a: "In most parts of Kumasi, a rider will be matched within 2 minutes and arrive at your pickup within 10–15 minutes, depending on traffic." },
+  { q: "How much does a delivery cost?", a: "It depends on the distance, the service you choose, and conditions at the time — how busy your area is, the time of day, and the weather. Rather than quote a figure that would be wrong half the time, the app calculates the exact price the moment you enter your pickup and drop-off, and shows it before you confirm anything." },
+  { q: "How quickly will a rider arrive?", a: "In most parts of Kumasi a rider is matched within about 2 minutes and arrives at your pickup within 10–15 minutes, depending on traffic." },
   { q: "What types of items can I send?", a: "Food, medicine, clothing, parcels, documents, and most everyday goods. Items that are illegal, hazardous, or require special handling are not permitted." },
   { q: "What if the delivery fails or the item is damaged?", a: "We take responsibility seriously. If a delivery fails due to a rider error, you are not charged. Rider accounts are suspended for verified damage or misconduct." },
   { q: "Is there a minimum number of deliveries per month?", a: "No. Seaton Swift is pay-per-delivery with no subscriptions, no minimums, and no hidden fees. Use it as often or as seldom as you need." },
+  { q: "Why does the price change between deliveries?", a: "The same trip can cost differently at different times. Prices respond to live demand, the zone you are in, the time of day, and the weather — the same reasons a taxi costs more in a downpour or at rush hour. Whatever the conditions, the amount you see before confirming is the amount you pay." },
+  { q: "Could I be charged more than I was quoted?", a: "No. The price shown before you confirm is fixed for that delivery — it does not move afterwards, even if conditions change while the rider is on the way. And if no rider accepts, you are not charged at all." },
 ];
 
 export default function ForShopsPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#E8402A] opacity-[0.06] rounded-full blur-[120px] -translate-y-1/3 translate-x-1/3 pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-5 text-center relative">
-          <span className="inline-flex items-center gap-2 bg-[#1A1A1A] border border-[#2A2A2A] rounded-full px-4 py-1.5 text-xs font-medium text-[#9E9E9E] mb-6">
-            For Shop Owners
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5">
-            Stop worrying about <span className="text-[#E8402A]">delivery.</span>
-          </h1>
-          <p className="text-[#9E9E9E] text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-            Your customers expect fast delivery. Seaton Swift gives you access to a fleet of verified riders on demand — no contracts, no monthly fees, no phone calls.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#" className="bg-[#E8402A] hover:bg-[#d13520] text-white font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors text-center">
+      {/* FAQ rich results + a breadcrumb trail under the search listing. */}
+      <JsonLd data={[faqSchema(faq), breadcrumbSchema([{ name: "For Shops", path: "/for-shops" }])]} />
+
+      <PageHero
+        badge="For Shop Owners"
+        title="Stop worrying about"
+        accent="delivery."
+        subtitle="Your customers expect fast delivery. Seaton Swift gives you a fleet of verified riders on demand — no contracts, no monthly fees, no phone calls."
+        image="/gallery/swift4.webp"
+        imageAlt="A shop owner handing a packed order to a Seaton Swift rider"
+        chip={{ label: "Matched in", value: "~2 min" }}
+        actions={
+          <>
+            <a href={PLAY_STORE_URL} className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-[var(--shadow-brand)]">
               Download the App
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </a>
-            <Link href="/contact" className="border border-[#2A2A2A] text-white hover:border-[#E8402A] font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors text-center">
+            <Link href="/contact" className="inline-flex items-center justify-center border border-line bg-surface hover:border-brand/50 hover:text-brand text-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
               Talk to Us First
             </Link>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
-      {/* PRICING CALLOUT */}
-      <section className="py-6 px-5">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-[#E8402A]/10 border border-[#E8402A]/30 rounded-2xl px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <p className="text-[#E8402A] text-xs font-semibold uppercase tracking-widest mb-1">Simple Pricing</p>
-              <p className="text-white font-bold text-lg">GHS 5 base + GHS 2 per km</p>
-              <p className="text-[#9E9E9E] text-sm mt-0.5">No subscriptions. No hidden fees. Pay only when you deliver.</p>
-            </div>
-            <div className="flex gap-6 text-center">
-              {[["GHS 15", "5 km delivery"], ["GHS 25", "10 km delivery"], ["GHS 35", "15 km delivery"]].map(([price, label]) => (
-                <div key={label}>
-                  <p className="text-white font-extrabold text-xl">{price}</p>
-                  <p className="text-[#9E9E9E] text-xs">{label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="py-24">
+      {/* ── BENEFITS ── */}
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <span className="text-[#E8402A] text-xs font-semibold uppercase tracking-widest">Getting Started</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">From sign-up to first delivery</h2>
-              <p className="text-[#9E9E9E] mt-3">Five simple steps to your first delivery.</p>
+            <div className="text-center mb-14">
+              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Why shops switch</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Delivery, without the headache</h2>
             </div>
           </ScrollReveal>
-          <div className="flex flex-col gap-5 max-w-3xl mx-auto">
-            {steps.map((s) => (
-              <ScrollReveal key={s.n}>
-                <div className="flex gap-5 items-start bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl p-6 hover:border-[#E8402A]/30 transition-colors">
-                  <span className="shrink-0 w-10 h-10 rounded-xl bg-[#E8402A] text-white font-extrabold text-sm flex items-center justify-center">{s.n}</span>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {benefits.map((b) => (
+              <ScrollReveal key={b.title}>
+                <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[var(--shadow-md)]">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-brand/10 flex items-center justify-center">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{b.icon}</svg>
+                  </div>
                   <div>
-                    <h3 className="font-bold text-white mb-1">{s.title}</h3>
-                    <p className="text-[#9E9E9E] text-sm leading-relaxed">{s.desc}</p>
+                    <h3 className="text-lg font-bold mb-2">{b.title}</h3>
+                    <p className="text-muted text-sm leading-relaxed">{b.desc}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -98,12 +117,40 @@ export default function ForShopsPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="py-20 bg-[#0D0D0D] scroll-mt-24">
+      {/* ── PRICING + CALCULATOR ── */}
+      <section id="pricing" className="py-24 bg-canvas-deep scroll-mt-24">
+        <div className="max-w-6xl mx-auto px-5">
+          <ScrollReveal>
+            <div className="text-center mb-14">
+              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Transparent Pricing</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Know the price before you post</h2>
+              <p className="text-muted mt-3 max-w-xl mx-auto">There is no fixed price list, because no two deliveries are the same. Here is exactly what shapes what you pay — and the promise that comes with it.</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal><PricingFactors /></ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ── */}
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-5">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Getting Started</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">From sign-up to first delivery</h2>
+              <p className="text-muted mt-3">Five simple steps. Most shops are live the same day.</p>
+            </div>
+          </ScrollReveal>
+          <Steps items={steps} />
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section id="faq" className="py-20 bg-canvas-deep scroll-mt-24">
         <div className="max-w-3xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="text-[#E8402A] text-xs font-semibold uppercase tracking-widest">FAQ</span>
+              <span className="text-brand text-xs font-semibold uppercase tracking-widest">FAQ</span>
               <h2 className="text-3xl font-extrabold mt-2">Shop owner questions</h2>
             </div>
           </ScrollReveal>
@@ -111,16 +158,21 @@ export default function ForShopsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-5">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold mb-4">Ready to start delivering?</h2>
-          <p className="text-[#9E9E9E] mb-8">Download Seaton Swift and post your first delivery in under 5 minutes.</p>
-          <a href="#" className="inline-flex items-center gap-2 bg-[#E8402A] hover:bg-[#d13520] text-white font-semibold px-8 py-4 rounded-xl transition-colors">
-            Download the App
-          </a>
+      {/* ── CTA ── */}
+      <section className="py-24 px-5">
+        <div className="max-w-4xl mx-auto">
+          <ScrollReveal>
+            <div className="bg-brand rounded-3xl p-10 md:p-14 text-center relative overflow-hidden sheen">
+              <div className="relative">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-ink mb-3">Ready to start delivering?</h2>
+                <p className="text-brand-ink/85 mb-8 max-w-md mx-auto">Download Seaton Swift and post your first delivery in under 5 minutes.</p>
+                <StoreButtons className="justify-center" />
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </>
   );
 }
+
