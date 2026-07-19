@@ -1,0 +1,13 @@
+# Store everything as LF in git, regardless of what the working copy uses.
+# Windows checkouts still get CRLF locally; this just stops the repo itself from
+# holding mixed line endings, which is what produces the "LF will be replaced by
+# CRLF" warning on every commit from this machine and shows spurious whole-file
+# diffs when the site is cloned on macOS or Linux (or built on Netlify).
+* text=auto eol=lf
+
+# Binary assets — git must never try to normalise these.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
