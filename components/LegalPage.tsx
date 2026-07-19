@@ -25,7 +25,7 @@ export default function LegalPage({
       {/* header */}
       <section className="relative pt-32 pb-12 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="absolute top-0 right-0 w-[520px] h-[520px] bg-brand opacity-[0.06] rounded-full blur-[130px] -translate-y-1/2 translate-x-1/3" />
+          <div className="hidden sm:block absolute top-0 right-0 w-[520px] h-[520px] bg-brand opacity-[0.06] rounded-full blur-[130px] -translate-y-1/2 translate-x-1/3" />
           <div
             className="absolute inset-0"
             style={{

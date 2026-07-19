@@ -21,7 +21,8 @@ export default function Checklist({ items }: { items: string[] }) {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.12 }
+      // Pre-trigger, matching ScrollReveal — see the note there.
+      { threshold: 0, rootMargin: "0px 0px 300px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -33,7 +34,7 @@ export default function Checklist({ items }: { items: string[] }) {
         <li
           key={item}
           className="reveal group flex items-center gap-4 py-4 border-b border-line"
-          style={{ transitionDelay: `${i * 70}ms` }}
+          style={{ transitionDelay: `${i * 45}ms` }}
         >
           <span className="shrink-0 w-7 h-7 rounded-full border border-brand/30 bg-brand/5 flex items-center justify-center transition-colors duration-300 group-hover:bg-brand group-hover:border-brand">
             <svg

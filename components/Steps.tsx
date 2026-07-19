@@ -26,7 +26,8 @@ export default function Steps({ items }: { items: { title: string; desc: string 
           obs.unobserve(el);
         }
       },
-      { threshold: 0.12 }
+      // Pre-trigger, matching ScrollReveal — see the note there.
+      { threshold: 0, rootMargin: "0px 0px 300px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -48,7 +49,7 @@ export default function Steps({ items }: { items: { title: string; desc: string 
         <li
           key={s.title}
           className="reveal group relative flex gap-6 pb-10 last:pb-0"
-          style={{ transitionDelay: `${i * 90}ms` }}
+          style={{ transitionDelay: `${i * 55}ms` }}
         >
           <span className="relative shrink-0 w-12 h-12 rounded-full bg-canvas border border-line flex items-center justify-center transition-colors duration-300 group-hover:border-brand/50">
             {/* Halo blooms out of the node on hover — the only "fill" in the

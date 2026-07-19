@@ -27,8 +27,11 @@ export default function PageHero({
     <section className="relative pt-32 pb-20 overflow-hidden">
       {/* ambient brand glow + grid, same language as the home page */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div className="absolute top-0 right-0 w-[560px] h-[560px] bg-brand opacity-[0.07] rounded-full blur-[130px] -translate-y-1/3 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[380px] h-[380px] bg-brand opacity-[0.05] rounded-full blur-[110px]" />
+        {/* Hidden on phones: at 5–7% opacity these ambient glows are all but
+            invisible on a small screen, but a 560px surface with a 130px blur
+            is a costly texture to rasterise on low-end GPUs. */}
+        <div className="hidden sm:block absolute top-0 right-0 w-[560px] h-[560px] bg-brand opacity-[0.07] rounded-full blur-[130px] -translate-y-1/3 translate-x-1/3" />
+        <div className="hidden sm:block absolute bottom-0 left-0 w-[380px] h-[380px] bg-brand opacity-[0.05] rounded-full blur-[110px]" />
         <div
           className="absolute inset-0"
           style={{
