@@ -20,7 +20,13 @@ import { useSearchParams } from "next/navigation";
    question people actually have — "how far away are they" — and "Open in Maps"
    hands the coordinates to the map app already on their phone. */
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+// Falls back to the LIVE backend, not localhost. This page is a static export
+// served from swift.seatonlogistics.com to end customers on their own phones —
+// a localhost default there is unreachable and surfaces as "We couldn't reach
+// Seaton Swift". The env var still wins when set (e.g. a staging build); the
+// URL is public (the mobile apps ship it too), so hardcoding the fallback leaks
+// nothing and makes a forgotten build-time env var non-fatal.
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.seatonlogistics.com";
 
 const POLL_MS = 20_000;
 

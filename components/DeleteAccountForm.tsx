@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 
-// Set NEXT_PUBLIC_API_URL at build time to the deployed backend URL.
-// The website origin must also be listed in the backend's CORS_ORIGINS.
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+// Falls back to the LIVE backend, not localhost, so a build that forgets to set
+// NEXT_PUBLIC_API_URL still reaches production instead of a dead localhost. The
+// env var still wins when set. The URL is public (shipped in the mobile apps),
+// and the website origin is listed in the backend's CORS_ORIGINS.
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.seatonlogistics.com";
 
 type Role = "rider" | "shop";
 
