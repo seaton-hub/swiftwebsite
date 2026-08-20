@@ -37,8 +37,8 @@ export default function PrivacyPolicyPage() {
           </Section>
 
           <Section title="2. Data We Collect">
-            <p><strong className="text-ink">Account information:</strong> When you register, we collect your full name, phone number, email address, and profile photo.</p>
-            <p><strong className="text-ink">Rider documents:</strong> For riders, we collect government-issued ID (Ghana Card), riding licence details, and vehicle registration information for verification purposes.</p>
+            <p><strong className="text-ink">Account information:</strong> When you register, we collect your full name, phone number, email address, and a profile photo — for shops, this is your shop logo.</p>
+            <p><strong className="text-ink">Rider documents:</strong> For riders, we collect photographs of your government-issued ID (Ghana Card) and riding licence, including their expiry dates, together with a photograph of your vehicle and its registration number. These images are stored securely and are used solely to verify your identity, your eligibility to ride, and the vehicle you operate.</p>
             <p><strong className="text-ink">Location data:</strong> We collect real-time GPS location from riders while they are active on the platform, and pickup/drop-off address data from shops when posting deliveries.</p>
             <p><strong className="text-ink">Transaction data:</strong> We record delivery details including price, distance, time, and completion status.</p>
             <p><strong className="text-ink">Payment data:</strong> We collect Mobile Money wallet numbers and bank account details for rider payouts. We do not store card numbers directly.</p>
