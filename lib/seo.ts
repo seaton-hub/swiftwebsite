@@ -1,4 +1,4 @@
-import { GENERAL_EMAIL, PHONE_DISPLAY, SERVICES } from "./site";
+import { GENERAL_EMAIL, SERVICES } from "./site";
 
 /* Structured data (JSON-LD) — what Google reads to understand *what* this site
    is, as opposed to merely indexing its words. Feeds knowledge-panel entries,
@@ -29,8 +29,9 @@ export const organizationSchema = {
   image: `${SITE_URL}/opengraph-image.jpg`,
   description:
     "Seaton Swift is a Ghanaian last-mile delivery marketplace connecting shops to verified motorcycle, tricycle and truck riders, with live tracking and a price shown before you confirm.",
+  // No `telephone` — email is the only published contact channel, and
+  // structured data must not advertise a route the site itself does not offer.
   email: GENERAL_EMAIL,
-  telephone: PHONE_DISPLAY,
   parentOrganization: {
     "@type": "Organization",
     name: "Seaton Logistics",

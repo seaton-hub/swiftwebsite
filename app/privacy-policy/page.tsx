@@ -107,8 +107,7 @@ export default function PrivacyPolicyPage() {
             <p>
               Seaton Swift (a product of Seaton Logistics)<br />
               Kumasi, Ashanti Region, Ghana<br />
-              Email: <a href="mailto:privacy@seatonlogistics.com" className="text-brand hover:underline">privacy@seatonlogistics.com</a><br />
-              Phone: +233 20 057 7600
+              Email: <a href="mailto:privacy@seatonlogistics.com" className="text-brand hover:underline">privacy@seatonlogistics.com</a>
             </p>
           </Section>
     </LegalPage>

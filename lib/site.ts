@@ -14,11 +14,14 @@
    in backend/src/models/createTables.js.
 ──────────────────────────────────────────────────────────────────────────── */
 
-export const WHATSAPP_NUMBER = "233200577600";
-export const PHONE_DISPLAY = "+233 20 057 7600";
+/* Email is the ONLY contact channel published on this site — deliberate.
+   No phone number, no WhatsApp, no `tel:` links anywhere. If you are adding a
+   way for people to reach us, it is an address on seatonlogistics.com or it
+   does not ship.
 
-// ⚠️ Resend is send-only — these addresses cannot RECEIVE mail until real
-// mailboxes exist on seatonlogistics.com. WhatsApp is the working channel.
+   These are real Zoho mailboxes on the domain and both RECEIVE mail. (Resend
+   still handles transactional sending from noreply@ — that is send-only and is
+   unrelated to the addresses below.) */
 export const GENERAL_EMAIL = "hello@seatonlogistics.com";
 export const SUPPORT_EMAIL = "support@seatonlogistics.com";
 

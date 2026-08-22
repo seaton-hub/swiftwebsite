@@ -132,8 +132,7 @@ export default function TermsPage() {
             <p>
               Seaton Swift — a product of Seaton Logistics<br />
               Kumasi, Ashanti Region, Ghana<br />
-              Email: <a href="mailto:support@seatonlogistics.com" className="text-brand hover:underline">support@seatonlogistics.com</a><br />
-              Phone: +233 20 057 7600
+              Email: <a href="mailto:support@seatonlogistics.com" className="text-brand hover:underline">support@seatonlogistics.com</a>
             </p>
           </Section>
     </LegalPage>
