@@ -27,7 +27,7 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicyPage() {
-  const updated = "26 May 2025";
+  const updated = "28 August 2026";
   return (
     <LegalPage title="Privacy Policy" updated={updated} sections={SECTIONS}>
       <></>
@@ -39,10 +39,11 @@ export default function PrivacyPolicyPage() {
           <Section title="2. Data We Collect">
             <p><strong className="text-ink">Account information:</strong> When you register, we collect your full name, phone number, email address, and a profile photo — for shops, this is your shop logo.</p>
             <p><strong className="text-ink">Rider documents:</strong> For riders, we collect photographs of your government-issued ID (Ghana Card) and riding licence, including their expiry dates, together with a photograph of your vehicle and its registration number. These images are stored securely and are used solely to verify your identity, your eligibility to ride, and the vehicle you operate.</p>
-            <p><strong className="text-ink">Location data:</strong> We collect real-time GPS location from riders while they are active on the platform, and pickup/drop-off address data from shops when posting deliveries.</p>
+            <p><strong className="text-ink">Location data:</strong> We collect real-time GPS location from riders while they are online. <strong className="text-ink">This collection continues in the background</strong> — while the app is minimised, while you are using a navigation app, and while your phone is locked — so that shops can follow a delivery in progress and so we can settle disputes about what happened on a trip. Location is sampled roughly every 30 seconds while you are online, and every 5 seconds during an active delivery. Background collection runs only while you are online: it stops the moment you go offline, and you can end it at any time by going offline or by withdrawing the location permission in your device settings. From shops we collect the pickup and drop-off addresses entered when a delivery is posted and, with your permission, your device location while the Merchant app is open, in order to fill in a pickup address. The Merchant app does not collect location in the background.</p>
             <p><strong className="text-ink">Transaction data:</strong> We record delivery details including price, distance, time, and completion status.</p>
             <p><strong className="text-ink">Payment data:</strong> We collect Mobile Money wallet numbers and bank account details for rider payouts. We do not store card numbers directly.</p>
-            <p><strong className="text-ink">Usage data:</strong> We collect app usage data including device type, operating system, session duration, and feature interactions to improve the platform.</p>
+            <p><strong className="text-ink">Usage data:</strong> Our apps contain no analytics, advertising, or crash-reporting software. We do not track how you move around inside the app, and we do not build a profile of your behaviour.</p>
+            <p><strong className="text-ink">Messages:</strong> Riders and shops can send each other short messages about a delivery in progress. We store these messages so that both sides keep a record, and so that we can investigate disputes or reported misconduct.</p>
             <p><strong className="text-ink">Communications:</strong> If you contact our support team, we retain records of those communications.</p>
           </Section>
 
@@ -65,7 +66,7 @@ export default function PrivacyPolicyPage() {
             <p><strong className="text-ink">Between users:</strong> Shops see a rider&apos;s first name, rating, and live location during an active delivery. Riders see the pickup and drop-off address and shop contact number.</p>
             <p><strong className="text-ink">Payment processors:</strong> We share the minimum necessary data with Mobile Money processors and banking partners to complete payouts.</p>
             <p><strong className="text-ink">Legal compliance:</strong> We may disclose data to Ghanaian law enforcement or regulatory authorities when required by law or court order.</p>
-            <p><strong className="text-ink">Service providers:</strong> We work with hosting, analytics, and customer support providers who process data on our behalf under strict data processing agreements.</p>
+            <p><strong className="text-ink">Service providers:</strong> We work with hosting, messaging, and customer support providers who process data on our behalf under strict data processing agreements. We do not use advertising networks, and we do not share your data with advertisers or data brokers.</p>
           </Section>
 
           <Section title="5. Data Retention">
