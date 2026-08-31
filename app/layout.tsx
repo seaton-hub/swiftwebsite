@@ -37,10 +37,26 @@ export const metadata: Metadata = {
   },
 };
 
-// Runs before first paint so the saved theme is applied with no flash.
-// Static export can't use cookies, so this reads localStorage. Default = light;
-// dark only if the visitor explicitly chose it.
-const themeScript = `(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+// Runs before first paint so the theme is applied with no flash. Static export
+// can't use cookies, so the visitor's explicit choice lives in localStorage.
+//
+// Three states, not two. A stored 'dark' or 'light' is an explicit choice and
+// always wins. With nothing stored the visitor has never chosen, and we follow
+// the operating system — this used to default to light regardless, so anyone
+// browsing with their device in dark mode got a bright white page.
+//
+// The matchMedia listener only applies while no explicit choice exists, so a
+// visitor who picked light keeps light when their Mac flips at sunset. It is
+// registered here rather than in a component so it survives on pages that
+// render no React island.
+const themeScript = `(function(){try{
+  var stored=null;try{stored=localStorage.getItem('theme')}catch(e){}
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  var apply=function(dark){document.documentElement.classList.toggle('dark',dark)};
+  apply(stored?stored==='dark':mq.matches);
+  var onChange=function(e){var s=null;try{s=localStorage.getItem('theme')}catch(err){}if(!s)apply(e.matches)};
+  if(mq.addEventListener)mq.addEventListener('change',onChange);else if(mq.addListener)mq.addListener(onChange);
+}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
