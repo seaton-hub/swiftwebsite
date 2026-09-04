@@ -75,7 +75,7 @@ export default function PageHero({
         {split && (
           <div className="hidden lg:block relative">
             <div className="absolute inset-0 rounded-full bg-brand/10 blur-3xl scale-90" aria-hidden />
-            <div className="relative rounded-[28px] overflow-hidden border border-line shadow-[var(--shadow-md)] aspect-[4/3]">
+            <div className="relative rounded-[28px] overflow-hidden border border-line shadow-(--shadow-md) aspect-[4/3]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={image}

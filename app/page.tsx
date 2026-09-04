@@ -241,7 +241,7 @@ export default function HomePage() {
               Seaton Swift connects your shop to verified riders across Ghana. Post a delivery, get matched in minutes, and track every step — from pickup to doorstep.
             </p>
             <div className="flex flex-col sm:flex-row gap-3.5">
-              <Link href="/for-shops" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-[var(--shadow-brand)]">
+              <Link href="/for-shops" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
                 Get Started as a Shop
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
@@ -289,7 +289,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((s) => (
               <ScrollReveal key={s.tag}>
-                <div className="group relative bg-surface border border-line rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-[var(--shadow-md)]">
+                <div className="group relative bg-surface border border-line rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-(--shadow-md)">
                   <div className="w-14 h-14 rounded-2xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-105 transition-all">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="group-hover:!stroke-white transition-colors">{s.icon}</svg>
                   </div>
@@ -320,7 +320,7 @@ export default function HomePage() {
               { step: "03", title: "Track Live", desc: "Follow your delivery on a live map. Get notified when picked up, in transit, and delivered.", icon: <><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></> },
             ].map((item) => (
               <ScrollReveal key={item.step}>
-                <div className="flex flex-col items-center text-center bg-surface border border-line rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-[var(--shadow-md)] h-full">
+                <div className="flex flex-col items-center text-center bg-surface border border-line rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-(--shadow-md) h-full">
                   <div className="w-14 h-14 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center text-brand mb-5">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{item.icon}</svg>
                   </div>
@@ -400,7 +400,7 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((f) => (
               <ScrollReveal key={f.title}>
-                <div className="bg-surface border border-line rounded-2xl p-7 hover:border-brand/30 hover:-translate-y-1 hover:shadow-[var(--shadow-md)] transition-all h-full">
+                <div className="bg-surface border border-line rounded-2xl p-7 hover:border-brand/30 hover:-translate-y-1 hover:shadow-(--shadow-md) transition-all h-full">
                   <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-4">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
                   </div>
@@ -417,7 +417,7 @@ export default function HomePage() {
       <section className="py-16 px-5">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <div className="bg-surface border border-line rounded-3xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-[var(--shadow-md)]">
+            <div className="bg-surface border border-line rounded-3xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-(--shadow-md)">
               <div>
                 <span className="text-brand text-xs font-semibold uppercase tracking-widest">For Riders</span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Turn your bike into a business</h2>
@@ -447,7 +447,7 @@ export default function HomePage() {
 
                   {/* rider earnings mini-card */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-52 bg-surface border border-line rounded-2xl p-4 shadow-[var(--shadow-md)]">
+                    <div className="w-52 bg-surface border border-line rounded-2xl p-4 shadow-(--shadow-md)">
                       <div className="flex items-center gap-2.5 mb-3">
                         <span className="w-9 h-9 rounded-full bg-brand flex items-center justify-center shrink-0">
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8.5" r="3.3" /><path d="M5.5 19.5a6.5 6.5 0 0113 0" /></svg>
@@ -513,7 +513,7 @@ export default function HomePage() {
                 </div>
                 {/* QR card */}
                 <div className="mx-auto md:mx-0">
-                  <div className="bg-white rounded-2xl p-5 shadow-[var(--shadow-md)] text-center w-[210px]">
+                  <div className="bg-white rounded-2xl p-5 shadow-(--shadow-md) text-center w-[210px]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/qr-download.svg" alt="Scan to download Seaton Swift" width={160} height={160} className="w-40 h-40 mx-auto" />
                     <p className="text-[#14161C] text-sm font-bold mt-3">Scan to download</p>

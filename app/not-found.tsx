@@ -11,7 +11,7 @@ export default function NotFound() {
           The page you&apos;re looking for doesn&apos;t exist or has moved. Let&apos;s get you back on track.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-white font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-[var(--shadow-brand)]">
+          <Link href="/" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-white font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
             Back to Home
           </Link>
           <Link href="/contact" className="inline-flex items-center justify-center border border-line bg-surface hover:border-brand/50 hover:text-brand text-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">

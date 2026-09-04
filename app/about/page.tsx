@@ -55,7 +55,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-5">
           <ScrollReveal>
-            <div className="bg-surface border border-line rounded-3xl p-8 sm:p-10 space-y-5 shadow-[var(--shadow-md)]">
+            <div className="bg-surface border border-line rounded-3xl p-8 sm:p-10 space-y-5 shadow-(--shadow-md)">
               <span className="text-brand text-xs font-semibold uppercase tracking-widest">How it started</span>
               <h2 className="text-2xl font-extrabold !mt-2">The problem we kept hearing</h2>
               <p className="text-muted leading-relaxed">
@@ -91,7 +91,7 @@ export default function AboutPage() {
               },
             ].map((item) => (
               <ScrollReveal key={item.tag}>
-                <div className="bg-surface border border-line rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[var(--shadow-md)]">
+                <div className="bg-surface border border-line rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)">
                   <div className="w-12 h-12 rounded-2xl bg-brand/10 flex items-center justify-center mb-5">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{item.icon}</svg>
                   </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 gap-5">
             {values.map((v) => (
               <ScrollReveal key={v.title}>
-                <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[var(--shadow-md)]">
+                <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)">
                   <div className="w-11 h-11 shrink-0 rounded-xl bg-brand/10 flex items-center justify-center">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{v.icon}</svg>
                   </div>
@@ -136,7 +136,7 @@ export default function AboutPage() {
       <section className="py-16 px-5">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
-            <div className="bg-surface border border-line rounded-3xl p-10 md:p-14 flex flex-col md:flex-row gap-10 items-center shadow-[var(--shadow-md)]">
+            <div className="bg-surface border border-line rounded-3xl p-10 md:p-14 flex flex-col md:flex-row gap-10 items-center shadow-(--shadow-md)">
               <div className="shrink-0 w-20 h-20 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 10V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 001 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l2-1.14" />

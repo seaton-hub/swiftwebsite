@@ -81,7 +81,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="bg-surface border border-line rounded-3xl p-8 shadow-[var(--shadow-md)] h-full flex flex-col items-center justify-center text-center py-16">
+      <div className="bg-surface border border-line rounded-3xl p-8 shadow-(--shadow-md) h-full flex flex-col items-center justify-center text-center py-16">
         <div className="w-16 h-16 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center mb-5">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
         </div>
@@ -101,7 +101,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-surface border border-line rounded-3xl p-8 shadow-[var(--shadow-md)]">
+    <div className="bg-surface border border-line rounded-3xl p-8 shadow-(--shadow-md)">
       <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
         <div>
           <h2 className="text-xl font-bold">Send us a message</h2>
@@ -167,7 +167,7 @@ export default function ContactForm() {
 
         <button
           type="submit" disabled={status === "sending"}
-          className="group inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-[var(--shadow-brand)] hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+          className="group inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-(--shadow-brand) hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
         >
           {status === "sending" ? "Sending…" : status === "error" ? "Try again" : "Send message"}
           {status !== "sending" && (

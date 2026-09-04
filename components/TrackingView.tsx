@@ -144,7 +144,7 @@ export default function TrackingView() {
 
   if (error || !data) {
     return (
-      <div className="bg-surface border border-line rounded-3xl p-8 text-center shadow-[var(--shadow-md)]">
+      <div className="bg-surface border border-line rounded-3xl p-8 text-center shadow-(--shadow-md)">
         <div className="w-14 h-14 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center mx-auto mb-4">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round">
             <path d="M12 8v5M12 16.5v.5" /><circle cx="12" cy="12" r="9" />
@@ -172,7 +172,7 @@ export default function TrackingView() {
     <div className="flex flex-col gap-5">
 
       {/* ── Status ─────────────────────────────────────────────────────────── */}
-      <div className="bg-surface border border-line rounded-3xl p-6 sm:p-8 shadow-[var(--shadow-md)]">
+      <div className="bg-surface border border-line rounded-3xl p-6 sm:p-8 shadow-(--shadow-md)">
         <p className="text-xs text-muted font-semibold tracking-wide uppercase mb-1">
           {data.shop.name}
         </p>
@@ -225,7 +225,7 @@ export default function TrackingView() {
 
       {/* ── Rider ──────────────────────────────────────────────────────────── */}
       {data.rider && !cancelled && (
-        <div className="bg-surface border border-line rounded-3xl p-6 shadow-[var(--shadow-md)]">
+        <div className="bg-surface border border-line rounded-3xl p-6 shadow-(--shadow-md)">
           <p className="text-xs text-muted font-semibold tracking-wide uppercase mb-3">Your rider</p>
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div>
@@ -253,7 +253,7 @@ export default function TrackingView() {
 
       {/* ── What to pay ────────────────────────────────────────────────────── */}
       {!cancelled && (
-        <div className="bg-surface border border-line rounded-3xl p-6 shadow-[var(--shadow-md)]">
+        <div className="bg-surface border border-line rounded-3xl p-6 shadow-(--shadow-md)">
           <p className="text-xs text-muted font-semibold tracking-wide uppercase mb-3">
             {delivered ? "Amount due on this delivery" : "Have ready for the rider"}
           </p>
@@ -359,7 +359,7 @@ function ReportForm({
 
   if (done) {
     return (
-      <div className="bg-surface border border-line rounded-3xl p-8 text-center shadow-[var(--shadow-md)]">
+      <div className="bg-surface border border-line rounded-3xl p-8 text-center shadow-(--shadow-md)">
         <div className="w-14 h-14 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center mx-auto mb-4">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20 6L9 17l-5-5" />
@@ -375,7 +375,7 @@ function ReportForm({
   }
 
   return (
-    <form onSubmit={submit} className="bg-surface border border-line rounded-3xl p-6 sm:p-8 shadow-[var(--shadow-md)] flex flex-col gap-5">
+    <form onSubmit={submit} className="bg-surface border border-line rounded-3xl p-6 sm:p-8 shadow-(--shadow-md) flex flex-col gap-5">
       <div>
         <h3 className="text-xl font-bold">Report a problem</h3>
         <p className="text-muted text-sm mt-1">
@@ -440,7 +440,7 @@ function ReportForm({
         <button type="button" onClick={onCancel} className="flex-1 border border-line hover:border-brand rounded-xl py-3.5 text-sm font-semibold text-muted hover:text-ink transition-colors">
           Cancel
         </button>
-        <button type="submit" disabled={busy} className="flex-[2] bg-brand hover:bg-brand-hover disabled:opacity-60 text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-[var(--shadow-brand)]">
+        <button type="submit" disabled={busy} className="flex-[2] bg-brand hover:bg-brand-hover disabled:opacity-60 text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-(--shadow-brand)">
           {busy ? "Sending…" : "Submit report"}
         </button>
       </div>

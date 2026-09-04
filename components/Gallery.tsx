@@ -75,7 +75,7 @@ export default function Gallery() {
         touchX.current = null;
       }}
     >
-      <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full rounded-3xl overflow-hidden border border-line shadow-[var(--shadow-md)] bg-canvas-deep">
+      <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full rounded-3xl overflow-hidden border border-line shadow-(--shadow-md) bg-canvas-deep">
         {slides.map((s, idx) => (
           <div
             key={s.key}

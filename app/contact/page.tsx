@@ -57,7 +57,7 @@ export default function ContactPage() {
             <div className="flex flex-col gap-4">
               {channels.map((c) => {
                 const inner = (
-                  <div className="flex items-start gap-4 bg-surface border border-line rounded-2xl px-6 py-5 h-full transition-all duration-300 group-hover:-translate-y-1 group-hover:border-brand/30 group-hover:shadow-[var(--shadow-md)]">
+                  <div className="flex items-start gap-4 bg-surface border border-line rounded-2xl px-6 py-5 h-full transition-all duration-300 group-hover:-translate-y-1 group-hover:border-brand/30 group-hover:shadow-(--shadow-md)">
                     <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center text-brand shrink-0">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{c.icon}</svg>
                     </div>

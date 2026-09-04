@@ -88,7 +88,7 @@ export default function ForRidersPage() {
         chip={{ label: "You keep up to", value: "90%" }}
         actions={
           <>
-            <a href={PLAY_STORE_URL} className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-[var(--shadow-brand)]">
+            <a href={PLAY_STORE_URL} className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
               Apply to Ride
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </a>
@@ -111,7 +111,7 @@ export default function ForRidersPage() {
           <div className="grid sm:grid-cols-2 gap-5">
             {perks.map((p) => (
               <ScrollReveal key={p.title}>
-                <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[var(--shadow-md)]">
+                <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)">
                   <div className="w-11 h-11 shrink-0 rounded-xl bg-brand/10 flex items-center justify-center">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{p.icon}</svg>
                   </div>
@@ -139,7 +139,7 @@ export default function ForRidersPage() {
 
           <div className="grid lg:grid-cols-2 gap-6 items-stretch">
             <ScrollReveal>
-              <div className="bg-surface border border-line rounded-3xl p-7 sm:p-9 h-full shadow-[var(--shadow-md)]">
+              <div className="bg-surface border border-line rounded-3xl p-7 sm:p-9 h-full shadow-(--shadow-md)">
                 <h3 className="font-bold text-lg mb-5">What lifts a fare</h3>
                 <div className="space-y-4">
                   {[

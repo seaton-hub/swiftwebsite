@@ -45,7 +45,7 @@ export default function PricingFactors() {
         {factors.map((f) => (
           <div
             key={f.title}
-            className="bg-surface border border-line rounded-2xl p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-[var(--shadow-md)]"
+            className="bg-surface border border-line rounded-2xl p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)"
           >
             <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-4">
               <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
