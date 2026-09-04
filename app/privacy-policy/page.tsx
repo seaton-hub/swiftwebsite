@@ -27,7 +27,7 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicyPage() {
-  const updated = "28 August 2026";
+  const updated = "4 September 2026";
   return (
     <LegalPage title="Privacy Policy" updated={updated} sections={SECTIONS}>
       <></>
@@ -39,6 +39,8 @@ export default function PrivacyPolicyPage() {
           <Section title="2. Data We Collect">
             <p><strong className="text-ink">Account information:</strong> When you register, we collect your full name, phone number, email address, and a profile photo — for shops, this is your shop logo.</p>
             <p><strong className="text-ink">Rider documents:</strong> For riders, we collect photographs of your government-issued ID (Ghana Card) and riding licence, including their expiry dates, together with a photograph of your vehicle and its registration number. These images are stored securely and are used solely to verify your identity, your eligibility to ride, and the vehicle you operate.</p>
+            <p><strong className="text-ink">Rider identity numbers:</strong> We also collect the number printed on your Ghana Card, and your licence number if your vehicle requires a licence. We use these to confirm that the document you uploaded belongs to you, and to make sure the same person does not hold more than one rider account. A vehicle registration number can only be held by one rider account at a time.</p>
+            <p><strong className="text-ink">Identity photograph:</strong> Riders are asked to take a photograph of themselves holding their Ghana Card. We use it once, to confirm that the person registering is the person named on the card. It is reviewed by our team, stored with your other verification documents, and is never shown to shops, to customers, or to other riders.</p>
             <p><strong className="text-ink">Location data:</strong> We collect real-time GPS location from riders while they are online. <strong className="text-ink">This collection continues in the background</strong> — while the app is minimised, while you are using a navigation app, and while your phone is locked — so that shops can follow a delivery in progress and so we can settle disputes about what happened on a trip. Location is sampled roughly every 30 seconds while you are online, and every 5 seconds during an active delivery. Background collection runs only while you are online: it stops the moment you go offline, and you can end it at any time by going offline or by withdrawing the location permission in your device settings. From shops we collect the pickup and drop-off addresses entered when a delivery is posted and, with your permission, your device location while the Merchant app is open, in order to fill in a pickup address. The Merchant app does not collect location in the background.</p>
             <p><strong className="text-ink">Transaction data:</strong> We record delivery details including price, distance, time, and completion status.</p>
             <p><strong className="text-ink">Payment data:</strong> We collect Mobile Money wallet numbers and bank account details for rider payouts. We do not store card numbers directly.</p>
@@ -54,6 +56,7 @@ export default function PrivacyPolicyPage() {
               <li>To enable real-time delivery tracking</li>
               <li>To process rider payouts</li>
               <li>To verify rider identity and eligibility</li>
+              <li>To prevent one person holding several rider accounts, and to stop a removed rider registering again</li>
               <li>To resolve disputes between shops and riders</li>
               <li>To send transactional notifications (delivery updates, payment confirmations)</li>
               <li>To improve platform performance and user experience</li>
@@ -66,12 +69,14 @@ export default function PrivacyPolicyPage() {
             <p><strong className="text-ink">Between users:</strong> Shops see a rider&apos;s first name, rating, and live location during an active delivery. Riders see the pickup and drop-off address and shop contact number.</p>
             <p><strong className="text-ink">Payment processors:</strong> We share the minimum necessary data with Mobile Money processors and banking partners to complete payouts.</p>
             <p><strong className="text-ink">Legal compliance:</strong> We may disclose data to Ghanaian law enforcement or regulatory authorities when required by law or court order.</p>
+            <p><strong className="text-ink">Mapping and routing:</strong> We send pickup, drop-off and rider coordinates to Google Maps Platform to draw maps, suggest addresses, and measure road distances and travel times. This is how we work out what a delivery costs and how far a rider must travel to reach a pickup. Google receives coordinates only, never your name, phone number or documents.</p>
             <p><strong className="text-ink">Service providers:</strong> We work with hosting, messaging, and customer support providers who process data on our behalf under strict data processing agreements. We do not use advertising networks, and we do not share your data with advertisers or data brokers.</p>
           </Section>
 
           <Section title="5. Data Retention">
             <p>We retain your account data for as long as your account is active. If you delete your account, we retain data required for legal, tax, or dispute resolution purposes for up to 7 years, after which it is permanently deleted.</p>
-            <p>Delivery location data is retained for 90 days and then anonymised. Rider verification documents are retained for the duration of the rider relationship plus 2 years.</p>
+            <p>Delivery location data is retained for 90 days and then anonymised. Rider verification documents, including the identity photograph, are retained for the duration of the rider relationship plus 2 years.</p>
+            <p><strong className="text-ink">Removed accounts:</strong> If we remove a rider for fraud, theft, or serious misconduct, we keep a one-way cryptographic hash of their Ghana Card number so that the same person cannot simply register again. A hash cannot be reversed, so the number itself is not retained and cannot be recovered from it. Nothing is kept when a rider closes their own account, and the record is erased if the removal is later reversed.</p>
           </Section>
 
           <Section title="6. Data Protection">
@@ -84,7 +89,7 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc pl-5 space-y-2">
               <li><strong className="text-ink">Access:</strong> Request a copy of the personal data we hold about you</li>
               <li><strong className="text-ink">Correction:</strong> Request that we correct inaccurate data</li>
-              <li><strong className="text-ink">Deletion:</strong> Request deletion of your account and associated data, subject to legal retention requirements</li>
+              <li><strong className="text-ink">Deletion:</strong> Request deletion of your account and associated data, subject to legal retention requirements. You cannot delete an account while a delivery is in progress or while commission is outstanding, and deletion does not clear the hash described in section 5 for an account we removed for misconduct</li>
               <li><strong className="text-ink">Portability:</strong> Request your data in a structured, machine-readable format</li>
               <li><strong className="text-ink">Objection:</strong> Object to certain processing activities</li>
             </ul>

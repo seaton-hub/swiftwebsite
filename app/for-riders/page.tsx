@@ -67,6 +67,9 @@ const faq: { q: string; a: string }[] = [
   { q: "Do I have to work set hours?", a: "No. You go online and offline whenever you choose. There are no minimum hours or shift requirements." },
   { q: "How are deliveries assigned?", a: "Offers go to the nearest available rider first. Among riders who are equally close, whoever has waited longest since their last trip gets the offer — so work is shared fairly rather than handed out at random." },
   { q: "What happens if a customer disputes a delivery?", a: "All deliveries are tracked and time-stamped. If you followed the correct process, you are protected. Disputes are reviewed by our support team within 24 hours." },
+  { q: "What do I need to sign up?", a: "Your Ghana Card and its number, your licence number if your vehicle needs a licence, a photo of your vehicle and its registration number, and a photo of yourself holding your Ghana Card. The last one is checked once, by our team, to confirm you are the person on the card. It is never shown to shops or customers." },
+  { q: "Can I register more than one account?", a: "No. One Ghana Card, one rider account. A vehicle registration number can also only sit on one account at a time. If you own more than one vehicle you do not need another account. Add them all to the same one and switch between them in My Vehicles." },
+  { q: "I bought a vehicle that is already registered to another rider. What do I do?", a: "Contact us with the registration document in your name and we will transfer the number to you. You do not need the previous owner to do anything, though they can also remove it from their own account." },
   { q: "Is there a weekly commission or subscription fee?", a: `There are no upfront fees or subscriptions. Riders pay a commission of ${SERVICES.swift.commission}% on Swift deliveries (${SERVICES.carry.commission}% on Carry and Move). It adds up during the week and you pay it every Monday via Mobile Money from the Earnings tab.` },
 ];
 
