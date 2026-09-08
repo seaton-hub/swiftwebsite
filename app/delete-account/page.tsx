@@ -3,7 +3,7 @@ import Link from "next/link";
 import DeleteAccountForm from "@/components/DeleteAccountForm";
 import { GENERAL_EMAIL } from "@/lib/site";
 
-const title = "Delete Your Account — Seaton Swift";
+const title = "Delete Your Account | Seaton Swift";
 const description =
   "Permanently delete your Seaton Swift rider or shop account and all associated personal data.";
 
@@ -41,7 +41,7 @@ export default function DeleteAccountPage() {
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">Delete Your Account</h1>
           <p className="text-muted text-lg leading-relaxed">
-            Permanently remove your Seaton Swift account and personal data — no app required.
+            Permanently remove your Seaton Swift account and personal data. No app required.
           </p>
         </div>
       </section>

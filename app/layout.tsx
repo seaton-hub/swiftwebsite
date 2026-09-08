@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://swift.seatonlogistics.com"),
-  title: "Seaton Swift — Ghana's Fastest Delivery Network",
+  title: "Seaton Swift | Ghana's Fastest Delivery Network",
   description:
     "Connect your shop to verified riders. Get anything delivered across Ghana in minutes. Seaton Swift is the delivery platform built for Ghanaian businesses.",
   keywords: "delivery Ghana, Kumasi delivery, Seaton Swift, motorcycle delivery, last-mile delivery Ghana",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   openGraph: {
-    title: "Seaton Swift — Delivered. Swift.",
+    title: "Seaton Swift | Delivered. Swift.",
     description: "Ghana's fastest delivery network. Connect your shop to verified riders.",
     type: "website",
     locale: "en_GH",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Seaton Swift — Delivered. Swift.",
+    title: "Seaton Swift | Delivered. Swift.",
     description: "Ghana's fastest delivery network.",
   },
 };

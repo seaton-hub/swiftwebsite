@@ -87,7 +87,7 @@ export default function ContactForm() {
         </div>
         <h3 className="text-xl font-bold mb-2">Message sent</h3>
         <p className="text-muted text-sm max-w-xs">
-          Thanks {form.name.split(" ")[0] || "for writing"} — we&apos;ll reply to{" "}
+          Thanks {form.name.split(" ")[0] || "for writing"}, we&apos;ll reply to{" "}
           <span className="text-ink font-semibold wrap-break-word">{form.email}</span> within one business day.
         </p>
         <button

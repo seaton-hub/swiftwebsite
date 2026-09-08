@@ -65,7 +65,7 @@ export default function PricingFactors() {
           <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-ink mb-3">You always see the price first</h3>
           <p className="text-brand-ink/85 max-w-lg mx-auto leading-relaxed">
             Enter your pickup and drop-off, and the app shows the exact amount before you confirm
-            anything. Accept it or walk away — the price never changes after you have agreed to it,
+            anything. Accept it or walk away. The price never changes after you have agreed to it,
             and you are never charged if no rider accepts.
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function PricingFactors() {
         ))}
       </div>
       <p className="text-muted text-xs text-center mt-4">
-        Bigger vehicles and heavier jobs cost more than a bike — the dots show the relative order, not a rate.
+        Bigger vehicles and heavier jobs cost more than a bike. The dots show the relative order, not a rate.
       </p>
     </>
   );

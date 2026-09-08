@@ -85,7 +85,7 @@ export default function DeleteAccountForm() {
         <h2 className="text-ink text-xl font-bold mb-2">Account Deleted</h2>
         <p className="text-muted text-sm leading-relaxed">
           Your account and personal data have been permanently removed.
-          We&apos;re sorry to see you go — you&apos;re welcome back on Seaton Swift anytime.
+          We&apos;re sorry to see you go. You&apos;re welcome back on Seaton Swift anytime.
         </p>
       </div>
     );

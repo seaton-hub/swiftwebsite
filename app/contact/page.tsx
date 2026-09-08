@@ -4,7 +4,7 @@ import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import { GENERAL_EMAIL, SUPPORT_EMAIL } from "@/lib/site";
 
-const title = "Contact Seaton Swift — Kumasi, Ghana";
+const title = "Contact Seaton Swift | Kumasi, Ghana";
 const description =
   "Questions, partnerships, or support? Email the Seaton Swift team and we reply within one business day. Based in Kumasi, Ashanti Region.";
 
@@ -47,7 +47,7 @@ export default function ContactPage() {
         badge="Contact Us"
         title="We'd love to"
         accent="hear from you."
-        subtitle="Questions about the platform, partnership enquiries, or just want to say hello — we're here and we reply fast."
+        subtitle="Questions about the platform, partnership enquiries, or just want to say hello. We're here and we reply fast."
       />
 
       <section className="pb-24 px-5">

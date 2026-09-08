@@ -10,9 +10,9 @@ import Link from "next/link";
 import { SERVICES } from "@/lib/site";
 import { faqSchema, breadcrumbSchema } from "@/lib/seo";
 
-const title = "Become a Delivery Rider in Ghana — Seaton Swift";
+const title = "Become a Delivery Rider in Ghana | Seaton Swift";
 const description =
-  "Turn your motorcycle into a business. Flexible hours, no boss, and you keep up to 90% of every fare — commission starts at just 10%.";
+  "Turn your motorcycle into a business. Flexible hours, no boss, and you keep up to 90% of every fare, and commission starts at just 10%.";
 
 export const metadata: Metadata = {
   title,
@@ -40,7 +40,7 @@ const perks = [
   },
   {
     title: "Fair dispatch",
-    desc: "Offers go to the closest rider first, but riders waiting longest get priority — never random.",
+    desc: "Offers go to the closest rider first, but riders waiting longest get priority, never random.",
     icon: <><path d="M12 3v18M5 8h14M7 8l-3 6h6zM17 8l-3 6h6z" /></>,
   },
 ];
@@ -63,10 +63,10 @@ const requirements = [
 ];
 
 const faq: { q: string; a: string }[] = [
-  { q: "How and when do I get paid?", a: "You are paid on every trip — you collect the delivery fee directly at drop-off and keep it. Your only cost is the platform commission, which you settle each Monday via Mobile Money from the app's Earnings tab." },
-  { q: "How much can I earn per delivery?", a: "It varies by trip, and that works in your favour. A fare grows with distance, Carry and Move jobs pay more than a bike delivery, and busy periods add a surge bonus. Rather than promise a figure we cannot guarantee, the app shows you the exact fee for every job before you accept it — so you decide whether it is worth your time." },
+  { q: "How and when do I get paid?", a: "You are paid on every trip. You collect the delivery fee directly at drop-off and keep it. Your only cost is the platform commission, which you settle each Monday via Mobile Money from the app's Earnings tab." },
+  { q: "How much can I earn per delivery?", a: "It varies by trip, and that works in your favour. A fare grows with distance, Carry and Move jobs pay more than a bike delivery, and busy periods add a surge bonus. Rather than promise a figure we cannot guarantee, the app shows you the exact fee for every job before you accept it, so you decide whether it is worth your time." },
   { q: "Do I have to work set hours?", a: "No. You go online and offline whenever you choose. There are no minimum hours or shift requirements." },
-  { q: "How are deliveries assigned?", a: "Offers go to the nearest available rider first. Among riders who are equally close, whoever has waited longest since their last trip gets the offer — so work is shared fairly rather than handed out at random." },
+  { q: "How are deliveries assigned?", a: "Offers go to the nearest available rider first. Among riders who are equally close, whoever has waited longest since their last trip gets the offer, so work is shared fairly rather than handed out at random." },
   { q: "What happens if a customer disputes a delivery?", a: "All deliveries are tracked and time-stamped. If you followed the correct process, you are protected. Disputes are reviewed by our support team within 24 hours." },
   { q: "What do I need to sign up?", a: "Your Ghana Card and its number, your licence number if your vehicle needs a licence, a photo of your vehicle and its registration number, and a photo of yourself holding your Ghana Card. The last one is checked once, by our team, to confirm you are the person on the card. It is never shown to shops or customers." },
   { q: "Can I register more than one account?", a: "No. One Ghana Card, one rider account. A vehicle registration number can also only sit on one account at a time. If you own more than one vehicle you do not need another account. Add them all to the same one and switch between them in My Vehicles." },
@@ -83,7 +83,7 @@ export default function ForRidersPage() {
         badge="For Riders"
         title="Turn your bike into a"
         accent="business."
-        subtitle="Earn on your own schedule. No boss, no fixed hours — just you, your bike, and steady work from shops across Ghana."
+        subtitle="Earn on your own schedule. No boss, no fixed hours. Just you, your bike, and steady work from shops across Ghana."
         image="/gallery/swift2.webp"
         imageAlt="Seaton Swift riders online and waiting for deliveries"
         chip={{ label: "You keep up to", value: "90%" }}
@@ -137,7 +137,7 @@ export default function ForRidersPage() {
             <div className="text-center mb-14">
               <span className="text-brand text-xs font-semibold uppercase tracking-widest">Earnings</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">How your earnings work</h2>
-              <p className="text-muted mt-3 max-w-xl mx-auto">We will not promise you a number — anyone who does is guessing. Here is how a fare is built, and exactly what reaches your pocket.</p>
+              <p className="text-muted mt-3 max-w-xl mx-auto">We will not promise you a number, because anyone who does is guessing. Here is how a fare is built, and exactly what reaches your pocket.</p>
             </div>
           </ScrollReveal>
 
@@ -171,14 +171,14 @@ export default function ForRidersPage() {
                 <div className="relative flex flex-col h-full">
                   <p className="text-xs uppercase tracking-widest font-semibold opacity-85 mb-2">What you keep</p>
                   <p className="text-6xl font-extrabold leading-none mb-2">90%</p>
-                  <p className="text-sm opacity-85 mb-7">of every Swift fare — commission starts at just {SERVICES.swift.commission}%</p>
+                  <p className="text-sm opacity-85 mb-7">of every Swift fare, commission starts at just {SERVICES.swift.commission}%</p>
 
                   <div className="space-y-3 border-t border-white/25 pt-6 mt-auto">
                     {[
-                      "You see the exact fee before you accept — every job, no exceptions",
+                      "You see the exact fee before you accept, every job, no exceptions",
                       "You collect the fare at drop-off, in cash or Mobile Money",
                       "No sign-up fee, no subscription, no deductions you did not agree to",
-                      `Commission is settled once a week — ${SERVICES.carry.commission}% on Carry and Move`,
+                      `Commission is settled once a week, ${SERVICES.carry.commission}% on Carry and Move`,
                     ].map((t) => (
                       <div key={t} className="flex gap-3 text-sm">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" /></svg>

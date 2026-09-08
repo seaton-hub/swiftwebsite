@@ -3,9 +3,9 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 
-const title = "About Seaton Swift — Built in Ghana, for Ghana";
+const title = "About Seaton Swift | Built in Ghana, for Ghana";
 const description =
-  "Seaton Swift is a product of Seaton Logistics — Ghana's trusted import and logistics company. Our mission is to make last-mile delivery reliable, affordable, and trackable for every Ghanaian business.";
+  "Seaton Swift is a product of Seaton Logistics, Ghana's trusted import and logistics company. Our mission is to make last-mile delivery reliable, affordable, and trackable for every Ghanaian business.";
 
 export const metadata: Metadata = {
   title,
@@ -45,7 +45,7 @@ export default function AboutPage() {
         badge="Our Story"
         title="Built in Ghana."
         accent="Built for Ghana."
-        subtitle="Seaton Swift was born from a simple observation: Ghanaian businesses needed a fast, reliable, affordable way to reach their customers — and no existing platform was built with them in mind."
+        subtitle="Seaton Swift was born from a simple observation: Ghanaian businesses needed a fast, reliable, affordable way to reach their customers, and no existing platform was built with them in mind."
         image="/gallery/carry1.webp"
         imageAlt="A Seaton Swift tricycle carrying bulk goods through a Ghanaian market street"
         chip={{ label: "Serving", value: "Ashanti" }}
@@ -59,13 +59,13 @@ export default function AboutPage() {
               <span className="text-brand text-xs font-semibold uppercase tracking-widest">How it started</span>
               <h2 className="text-2xl font-extrabold !mt-2">The problem we kept hearing</h2>
               <p className="text-muted leading-relaxed">
-                Seaton Logistics has spent years helping Ghanaian businesses import cars, machinery, parts, and equipment from around the world. During that time we heard the same challenge over and over: <em className="text-ink not-italic font-medium">&quot;I can get the product here — but getting it to my customer on time is the problem.&quot;</em>
+                Seaton Logistics has spent years helping Ghanaian businesses import cars, machinery, parts, and equipment from around the world. During that time we heard the same challenge over and over: <em className="text-ink not-italic font-medium">&quot;I can get the product here, but getting it to my customer on time is the problem.&quot;</em>
               </p>
               <p className="text-muted leading-relaxed">
-                We saw restaurants losing orders. Pharmacies struggling to deliver medicine. Online sellers watching customers cancel because delivery was too slow or too expensive. The problem was never a lack of riders — Ghana has thousands of motorcycle riders. The problem was the absence of a reliable, connected platform.
+                We saw restaurants losing orders. Pharmacies struggling to deliver medicine. Online sellers watching customers cancel because delivery was too slow or too expensive. The problem was never a lack of riders. Ghana has thousands of motorcycle riders. The problem was the absence of a reliable, connected platform.
               </p>
               <p className="text-muted leading-relaxed">
-                Seaton Swift is our answer: a delivery marketplace connecting shops directly to verified, trained riders — with live tracking, transparent pricing, and riders paid at every drop-off. We launched first in the Ashanti Region, and we are building the infrastructure for last-mile delivery across Ghana.
+                Seaton Swift is our answer: a delivery marketplace connecting shops directly to verified, trained riders, with live tracking, transparent pricing, and riders paid at every drop-off. We launched first in the Ashanti Region, and we are building the infrastructure for last-mile delivery across Ghana.
               </p>
             </div>
           </ScrollReveal>
@@ -80,13 +80,13 @@ export default function AboutPage() {
               {
                 tag: "Mission",
                 title: "Make last-mile delivery reliable for every Ghanaian business.",
-                desc: "We exist to remove the delivery barrier for Ghanaian shops, restaurants, pharmacies, and online sellers — giving them a fleet of verified riders on demand, at prices that make business sense.",
+                desc: "We exist to remove the delivery barrier for Ghanaian shops, restaurants, pharmacies, and online sellers, giving them a fleet of verified riders on demand, at prices that make business sense.",
                 icon: <><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></>,
               },
               {
                 tag: "Vision",
                 title: "Become the delivery backbone of West Africa.",
-                desc: "We are starting in Kumasi and growing to every major city in Ghana, and ultimately across West Africa. Every shop, every rider, every delivery — on one trusted platform.",
+                desc: "We are starting in Kumasi and growing to every major city in Ghana, and ultimately across West Africa. Every shop, every rider, every delivery, on one trusted platform.",
                 icon: <><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /></>,
               },
             ].map((item) => (
@@ -148,7 +148,7 @@ export default function AboutPage() {
                 <span className="text-brand text-xs font-semibold uppercase tracking-widest">Part of Seaton Logistics</span>
                 <h2 className="text-2xl font-extrabold mt-2 mb-3">Backed by years of logistics experience</h2>
                 <p className="text-muted leading-relaxed text-sm mb-5">
-                  Seaton Swift is built on the foundation of Seaton Logistics — a company that has helped hundreds of Ghanaian businesses import vehicles, machinery, parts, and equipment from around the world. That deep understanding of how goods move, how trust is built, and how to serve Ghanaian businesses informs everything we do.
+                  Seaton Swift is built on the foundation of Seaton Logistics, a company that has helped hundreds of Ghanaian businesses import vehicles, machinery, parts, and equipment from around the world. That deep understanding of how goods move, how trust is built, and how to serve Ghanaian businesses informs everything we do.
                 </p>
                 <a href="https://seatonlogistics.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-brand text-sm font-semibold hover:gap-2.5 transition-all">
                   Visit Seaton Logistics

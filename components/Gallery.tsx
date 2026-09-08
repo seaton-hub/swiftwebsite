@@ -39,7 +39,7 @@ const slides: Slide[] = [
   { key: "market", image: "/gallery/carry1.webp", title: "Market runs, sorted", caption: "Aboboyaa tricycles hauling sacks and bulk stock across town." },
   { key: "small-truck", image: "/gallery/carry2.webp", title: "Small trucks for bigger loads", caption: "When it's too big for a bike, Carry brings a truck to your door." },
   { key: "home-move", image: "/gallery/move1.webp", title: "Full moves with helpers", caption: "Trained helpers load, move, and unload your home or office." },
-  { key: "moving-day", image: "/gallery/move3.webp", title: "Moving day made easy", caption: "Hostel, home, or office — Move handles all the heavy lifting." },
+  { key: "moving-day", image: "/gallery/move3.webp", title: "Moving day made easy", caption: "Hostel, home, or office. Move handles all the heavy lifting." },
 ];
 
 /** "/gallery/x.webp" → "/gallery/x-800.webp 800w, /gallery/x.webp 1280w" */

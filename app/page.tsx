@@ -7,7 +7,7 @@ import { APP_LIST } from "@/lib/site";
 import StoreButtons from "@/components/StoreButtons";
 
 export const metadata: Metadata = {
-  title: "Seaton Swift — Ghana's Fastest Delivery Network",
+  title: "Seaton Swift | Ghana's Fastest Delivery Network",
   description: "Connect your shop to verified riders. Get anything delivered across Ghana in minutes.",
 };
 
@@ -169,19 +169,19 @@ const services = [
   {
     tag: "SWIFT",
     title: "Everyday parcels & food",
-    desc: "Documents, meals, and small packages on motorbikes — matched to the nearest rider and delivered across town in minutes.",
+    desc: "Documents, meals, and small packages on motorbikes, matched to the nearest rider and delivered across town in minutes.",
     icon: <path d="M5.5 17.5a2.5 2.5 0 105 0 2.5 2.5 0 00-5 0zM18.5 17.5a2.5 2.5 0 105 0 2.5 2.5 0 00-5 0zM8 17.5h7M15 6h-3l-2 5h7l-1-3h-1M3 17l2-5h5" />,
   },
   {
     tag: "CARRY",
     title: "Bigger loads, aboboyaa & small trucks",
-    desc: "Furniture, bulk stock, and market runs on motor-tricycles or small trucks — for everything too big for a bike.",
+    desc: "Furniture, bulk stock, and market runs on motor-tricycles or small trucks, for everything too big for a bike.",
     icon: <path d="M1 3h13v13H1zM14 8h4l3 3v5h-7M5.5 19a2 2 0 100-4 2 2 0 000 4zM17.5 19a2 2 0 100-4 2 2 0 000 4z" />,
   },
   {
     tag: "MOVE",
     title: "Full moves with helpers",
-    desc: "Relocating a home or office? Book a truck with optional trained helpers to load, move, and unload — all in one place.",
+    desc: "Relocating a home or office? Book a truck with optional trained helpers to load, move, and unload, all in one place.",
     icon: <path d="M3 9l2-5h10l2 5M3 9h16v8H3zM3 17h16M7 21a2 2 0 100-4 2 2 0 000 4zM15 21a2 2 0 100-4 2 2 0 000 4z" />,
   },
 ];
@@ -206,17 +206,17 @@ const features = [
   },
   {
     title: "Instant Matching",
-    desc: "Post a delivery and get matched to the nearest available rider in under two minutes — fairly, never at random.",
+    desc: "Post a delivery and get matched to the nearest available rider in under two minutes, fairly and never at random.",
     icon: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />,
   },
   {
     title: "Pay Your Way",
-    desc: "Collect on delivery by cash or Mobile Money — MTN, Telecel, and AT. Fares and payouts are tracked cleanly for you.",
+    desc: "Collect on delivery by cash or Mobile Money: MTN, Telecel, and AT. Fares and payouts are tracked cleanly for you.",
     icon: <><rect x="2" y="6" width="20" height="13" rx="2.5" /><path d="M2 10h20M6 15h4" /></>,
   },
   {
     title: "Proof of Delivery",
-    desc: "Every drop-off is confirmed and time-stamped, with two-way ratings — so trust is built into every single trip.",
+    desc: "Every drop-off is confirmed and time-stamped, with two-way ratings, so trust is built into every single trip.",
     icon: <><path d="M9 12l2 2 4-4" /><path d="M12 3l7 3v6c0 4-3 6.5-7 9-4-2.5-7-5-7-9V6l7-3z" /></>,
   },
 ];
@@ -243,7 +243,7 @@ export default function HomePage() {
               <span className="text-brand">delivered swiftly.</span>
             </h1>
             <p className="text-white/85 text-lg leading-relaxed mb-8 max-w-lg">
-              Seaton Swift connects your shop to verified riders across Ghana. Post a delivery, get matched in minutes, and track every step — from pickup to doorstep.
+              Seaton Swift connects your shop to verified riders across Ghana. Post a delivery, get matched in minutes, and track every step, from pickup to doorstep.
             </p>
             <div className="flex flex-col sm:flex-row gap-3.5">
               <Link href="/for-shops" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
@@ -288,7 +288,7 @@ export default function HomePage() {
             <div className="text-center mb-16">
               <span className="text-brand text-xs font-semibold uppercase tracking-widest">One app, three ways to move</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">From a hot meal to a whole house</h2>
-              <p className="text-muted mt-3 max-w-xl mx-auto">Whatever the size of the job, there&apos;s a Seaton Swift service for it — all in the same app.</p>
+              <p className="text-muted mt-3 max-w-xl mx-auto">Whatever the size of the job, there&apos;s a Seaton Swift service for it, all in the same app.</p>
             </div>
           </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6">
@@ -347,7 +347,7 @@ export default function HomePage() {
               <span className="text-brand text-xs font-semibold uppercase tracking-widest">Seaton Swift in motion</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">A delivery network you can see</h2>
               <p className="text-muted leading-relaxed mb-6">
-                Real riders, real shops, real streets. From the busiest market to a quiet neighbourhood, Seaton Swift keeps your city moving — and you always know where your package is.
+                Real riders, real shops, real streets. From the busiest market to a quiet neighbourhood, Seaton Swift keeps your city moving, and you always know where your package is.
               </p>
               <ul className="space-y-3">
                 {["Trusted riders across the Ashanti Region", "Businesses of every size, one platform", "Every parcel tracked to the doorstep"].map((t) => (
@@ -398,7 +398,7 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center mb-14">
               <span className="text-brand text-xs font-semibold uppercase tracking-widest">Why Seaton Swift</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">More than delivery — peace of mind</h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">More than delivery. Peace of mind</h2>
               <p className="text-muted mt-3 max-w-xl mx-auto">Everything a growing Ghanaian business needs to move goods reliably, get paid, and keep customers coming back.</p>
             </div>
           </ScrollReveal>
@@ -426,10 +426,10 @@ export default function HomePage() {
               <div>
                 <span className="text-brand text-xs font-semibold uppercase tracking-widest">For Riders</span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Turn your bike into a business</h2>
-                <p className="text-muted leading-relaxed mb-8">Join verified riders already earning on Seaton Swift. Work your own hours, set your own pace, and keep up to <span className="text-ink font-semibold">90% of every fare</span> — our commission starts at just 10%, with no hidden cuts.</p>
+                <p className="text-muted leading-relaxed mb-8">Join verified riders already earning on Seaton Swift. Work your own hours, set your own pace, and keep up to <span className="text-ink font-semibold">90% of every fare</span>. Our commission starts at just 10%, with no hidden cuts.</p>
                 <div className="flex flex-col gap-3 mb-8">
                   {[
-                    { stat: "Up to 90%", label: "Of every fare — commission starts at just 10%" },
+                    { stat: "Up to 90%", label: "Of every fare, commission starts at just 10%" },
                     { stat: "Paid per trip", label: "Collect your fare at every drop-off" },
                     { stat: "Your hours", label: "Go online whenever you want" },
                   ].map((e) => (
@@ -524,7 +524,7 @@ export default function HomePage() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/qr-download.svg" alt="Scan to open the Seaton Swift download page" width={160} height={160} className="w-40 h-40 mx-auto" />
                     <p className="text-[#14161C] text-sm font-bold mt-3">Scan to download</p>
-                    <p className="text-[#5A6472] text-[11px] mt-0.5">Point your camera — works on iPhone &amp; Android</p>
+                    <p className="text-[#5A6472] text-[11px] mt-0.5">Point your camera. Works on iPhone &amp; Android</p>
                   </div>
                 </div>
               </div>

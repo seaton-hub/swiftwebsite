@@ -53,7 +53,7 @@ export default function Footer() {
             <Logo />
             <p className="mt-4 text-ink text-sm font-semibold">Delivered. Swift.</p>
             <p className="mt-2 text-muted text-xs leading-relaxed">
-              Ghana&apos;s fastest delivery network — connecting shops to verified riders across the Ashanti Region.
+              Ghana&apos;s fastest delivery network, connecting shops to verified riders across the Ashanti Region.
             </p>
             <div className="flex gap-2.5 mt-5">
               {socials.map((s) => (

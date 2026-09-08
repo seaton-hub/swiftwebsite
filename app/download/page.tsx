@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/seo";
 import { APP_LIST } from "@/lib/site";
 
-const title = "Download Seaton Swift — Ghana delivery app for shops and riders";
+const title = "Download Seaton Swift | Ghana delivery app for shops and riders";
 const description =
   "Get the Seaton Swift apps on iPhone. Swift Merchant for shops sending deliveries, Seaton Swift for riders earning on their own schedule.";
 
@@ -34,54 +34,79 @@ export default function DownloadPage() {
       <JsonLd data={[breadcrumbSchema([{ name: "Download", path: "/download" }])]} />
 
       <PageHero
-        badge="Download"
         title="Two apps, one"
         accent="delivery network."
         subtitle="Pick the one that matches what you do. Both are free, and you sign up inside the app."
       />
 
-      <section className="pb-24 px-5">
-        <div className="max-w-5xl mx-auto flex flex-col gap-6">
-          {APP_LIST.map((app) => (
-            <ScrollReveal key={app.key}>
-              <div
-                id={app.key}
-                className="scroll-mt-28 bg-surface border border-line rounded-2xl p-7 sm:p-9 grid md:grid-cols-[1fr_auto] gap-8 items-center"
-              >
-                <div className="text-center md:text-left">
+      {/* ── Why this section carries its own ground ─────────────────────────
+          `--canvas` (#F3F3F3) and `--surface` (#F8F8F8) are five points apart,
+          so a bg-surface card on the default canvas is very nearly invisible
+          and the page read as flat grey nothing. Sitting the section on
+          `canvas-deep` doubles the separation in light mode and triples it in
+          dark, using the same alternating rhythm the home page already uses —
+          and since the footer is canvas-deep too, the page now steps down once
+          and stays there instead of stepping at the very last edge.
+
+          The glow continues the hero's ambient language past the hero's bottom
+          edge, which is where it used to stop dead. */}
+      <section className="relative pt-16 pb-28 bg-canvas-deep overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <div className="hidden sm:block absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[420px] bg-brand opacity-[0.06] rounded-full blur-[130px]" />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-5">
+          {/* Two apps, two columns: the layout itself says there is a choice to
+              make. Stacked full-width rows said "here is a list".
+
+              Two-up at lg, not md. The store pills carry a 180px minimum, so a
+              pair plus their gap needs 374px of card interior; at md a
+              half-width card only offers about 298px and the buttons burst out
+              of the card. lg gives each card ~426px. */}
+          <div className="grid lg:grid-cols-2 gap-5">
+            {APP_LIST.map((app) => (
+              <ScrollReveal key={app.key} className="h-full">
+                <div
+                  id={app.key}
+                  className="scroll-mt-28 h-full flex flex-col bg-surface border border-line rounded-2xl p-7 shadow-(--shadow-md)"
+                >
                   <span className="text-brand text-xs font-semibold uppercase tracking-widest">
                     {app.audience}
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold mt-2 mb-3">{app.name}</h2>
-                  <p className="text-muted mb-7 max-w-md mx-auto md:mx-0">{app.blurb}</p>
-                  <StoreButtons app={app.key} className="justify-center md:justify-start" />
-                </div>
+                  <h2 className="text-2xl font-extrabold mt-2 mb-2.5">{app.name}</h2>
+                  <p className="text-muted text-[15px] leading-relaxed mb-7">{app.blurb}</p>
 
-                {/* The QR encodes this page, anchored at this card, so a printed
-                    sticker sends the scanner straight back to the right app. */}
-                <div className="mx-auto md:mx-0">
-                  <div className="bg-white rounded-2xl p-4 text-center w-[170px] border border-line">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={app.qr}
-                      alt={`QR code linking to the ${app.name} download page`}
-                      width={138}
-                      height={138}
-                      className="w-[138px] h-[138px] mx-auto"
-                    />
-                    <p className="text-[#14161C] text-xs font-bold mt-2.5">Scan on a phone</p>
+                  {/* mt-auto so both cards' buttons sit on the same baseline
+                      however long the blurb above them runs. */}
+                  <div className="mt-auto">
+                    <StoreButtons app={app.key} />
+                  </div>
+
+                  <div className="flex items-center gap-4 mt-7 pt-6 border-t border-line">
+                    {/* White is not decorative here. A QR wants maximum contrast
+                        against a light ground, so the plate stays white in both
+                        themes and is kept small enough not to shout. */}
+                    <div className="shrink-0 bg-white rounded-lg p-2 ring-1 ring-black/10">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={app.qr}
+                        alt={`QR code for ${app.name}`}
+                        width={72}
+                        height={72}
+                        className="w-18 h-18 block"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold">Reading this on a computer?</p>
+                      <p className="text-muted text-[13px] mt-0.5">
+                        Scan to open {app.name} on your phone.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
-
-          <ScrollReveal>
-            <p className="text-muted text-sm text-center max-w-xl mx-auto">
-              Android versions are in final testing and will appear on Google Play shortly.
-              Nothing changes for you when they land, and your account works on either phone.
-            </p>
-          </ScrollReveal>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
     </>

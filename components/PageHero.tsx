@@ -13,7 +13,9 @@ export default function PageHero({
   imageAlt,
   chip,
 }: {
-  badge: string;
+  /** Optional: a page whose title already says what it is does not need a chip
+      above it repeating the word. */
+  badge?: string;
   title: string;
   accent?: string;
   subtitle: string;
@@ -50,9 +52,11 @@ export default function PageHero({
         }`}
       >
         <div>
-          <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-semibold text-muted mb-6">
-            {badge}
-          </span>
+          {badge && (
+            <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-semibold text-muted mb-6">
+              {badge}
+            </span>
+          )}
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.08] mb-5">
             {title}
             {accent && (

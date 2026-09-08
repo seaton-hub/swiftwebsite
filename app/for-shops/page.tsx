@@ -9,9 +9,9 @@ import Steps from "@/components/Steps";
 import StoreButtons from "@/components/StoreButtons";
 import { faqSchema, breadcrumbSchema } from "@/lib/seo";
 
-const title = "Delivery for Shops in Ghana — Seaton Swift";
+const title = "Delivery for Shops in Ghana | Seaton Swift";
 const description =
-  "Stop worrying about delivery. Post a delivery, get matched to a verified rider, and track it live. See the exact price before you confirm — no contracts, no monthly fees.";
+  "Stop worrying about delivery. Post a delivery, get matched to a verified rider, and track it live. See the exact price before you confirm, with no contracts and no monthly fees.";
 
 export const metadata: Metadata = {
   title,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const benefits = [
   {
     title: "No contracts, no monthly fees",
-    desc: "Pay per delivery. Use it ten times a day or twice a month — the price is the same.",
+    desc: "Pay per delivery. Use it ten times a day or twice a month. The price is the same.",
     icon: <><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><path d="M14 2v6h6M9 15l2 2 4-4" /></>,
   },
   {
@@ -49,16 +49,16 @@ const steps = [
   { title: "Add Your Shop", desc: "Enter your shop name, address, and the types of items you typically deliver." },
   { title: "Post a Delivery", desc: "Enter the pickup location, drop-off address, package description, and recipient contact." },
   { title: "Get Matched to a Rider", desc: "Within about 2 minutes a verified nearby rider accepts and heads to your pickup point." },
-  { title: "Track and Confirm", desc: "Watch the delivery live on the map — your customer gets an SMS at pickup, and you're notified the moment it's delivered." },
+  { title: "Track and Confirm", desc: "Watch the delivery live on the map. Your customer gets an SMS at pickup, and you're notified the moment it's delivered." },
 ];
 
 const faq: { q: string; a: string }[] = [
-  { q: "How much does a delivery cost?", a: "It depends on the distance, the service you choose, and conditions at the time — how busy your area is, the time of day, and the weather. Rather than quote a figure that would be wrong half the time, the app calculates the exact price the moment you enter your pickup and drop-off, and shows it before you confirm anything." },
+  { q: "How much does a delivery cost?", a: "It depends on the distance, the service you choose, and conditions at the time: how busy your area is, the time of day, and the weather. Rather than quote a figure that would be wrong half the time, the app calculates the exact price the moment you enter your pickup and drop-off, and shows it before you confirm anything." },
   { q: "How quickly will a rider arrive?", a: "In most parts of Kumasi a rider is matched within about 2 minutes and arrives at your pickup within 10–15 minutes, depending on traffic." },
   { q: "What types of items can I send?", a: "Food, medicine, clothing, parcels, documents, and most everyday goods. Items that are illegal, hazardous, or require special handling are not permitted." },
   { q: "What if the delivery fails or the item is damaged?", a: "We take responsibility seriously. If a delivery fails due to a rider error, you are not charged. Rider accounts are suspended for verified damage or misconduct." },
   { q: "Is there a minimum number of deliveries per month?", a: "No. Seaton Swift is pay-per-delivery with no subscriptions, no minimums, and no hidden fees. Use it as often or as seldom as you need." },
-  { q: "Why does the price change between deliveries?", a: "The same trip can cost differently at different times. Prices respond to live demand, the zone you are in, the time of day, and the weather — the same reasons a taxi costs more in a downpour or at rush hour. Whatever the conditions, the amount you see before confirming is the amount you pay." },
+  { q: "Why does the price change between deliveries?", a: "The same trip can cost differently at different times. Prices respond to live demand, the zone you are in, the time of day, and the weather, the same reasons a taxi costs more in a downpour or at rush hour. Whatever the conditions, the amount you see before confirming is the amount you pay." },
   { q: "Could I be charged more than I was quoted?", a: "For a Swift delivery, no. The price shown before you confirm is fixed and does not move afterwards, even if conditions change while the rider is on the way. Carry and Move work slightly differently: trucks are fewer and further apart, so if the nearest one has to travel a long way to reach you, a travel fee is added. The app tells you the most it can come to before you book, and the final price is settled the moment a driver accepts. If no rider accepts, you are not charged at all." },
   { q: "What is the travel fee on Carry and Move?", a: "Trucks are spread much further apart than bikes, so a driver may have to cover real distance just to reach your pickup. Rather than let those jobs go unaccepted, we pay the driver for that leg and show you the ceiling before you book. Nothing is added when a truck is already close by." },
 ];
@@ -73,7 +73,7 @@ export default function ForShopsPage() {
         badge="For Shop Owners"
         title="Stop worrying about"
         accent="delivery."
-        subtitle="Your customers expect fast delivery. Seaton Swift gives you a fleet of verified riders on demand — no contracts, no monthly fees, no phone calls."
+        subtitle="Your customers expect fast delivery. Seaton Swift gives you a fleet of verified riders on demand, with no contracts, no monthly fees and no phone calls."
         image="/gallery/swift4.webp"
         imageAlt="A shop owner handing a packed order to a Seaton Swift rider"
         chip={{ label: "Matched in", value: "~2 min" }}
@@ -127,7 +127,7 @@ export default function ForShopsPage() {
             <div className="text-center mb-14">
               <span className="text-brand text-xs font-semibold uppercase tracking-widest">Transparent Pricing</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Know the price before you post</h2>
-              <p className="text-muted mt-3 max-w-xl mx-auto">There is no fixed price list, because no two deliveries are the same. Here is exactly what shapes what you pay — and the promise that comes with it.</p>
+              <p className="text-muted mt-3 max-w-xl mx-auto">There is no fixed price list, because no two deliveries are the same. Here is exactly what shapes what you pay, and the promise that comes with it.</p>
             </div>
           </ScrollReveal>
           <ScrollReveal><PricingFactors /></ScrollReveal>

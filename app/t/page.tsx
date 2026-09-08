@@ -8,7 +8,7 @@ import TrackingView from "@/components/TrackingView";
    delivery address behind its token, and one of these in a search result is a
    leaked address. */
 export const metadata: Metadata = {
-  title: "Track your delivery — Seaton Swift",
+  title: "Track your delivery | Seaton Swift",
   description: "Follow your Seaton Swift delivery and report any issue with your order.",
   robots: { index: false, follow: false },
 };

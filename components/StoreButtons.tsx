@@ -48,7 +48,10 @@ export default function StoreButtons({
 }) {
   const a = APPS[app];
   return (
-    <div className={`flex flex-col sm:flex-row gap-3.5 ${className}`}>
+    // flex-wrap, because these pills hold a 180px minimum and get dropped into
+    // containers that are not always wide enough for two of them. Wrapping is
+    // the correct failure; overflowing the card is not.
+    <div className={`flex flex-col sm:flex-row sm:flex-wrap gap-3.5 ${className}`}>
       <a href={a.ios} className={LIVE} target="_blank" rel="noopener">
         <AppleMark />
         <span className="text-left leading-tight">

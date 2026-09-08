@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import LegalPage, { LegalSection as Section } from "@/components/LegalPage";
 
-const title = "Privacy Policy — Seaton Swift";
-const description = "Seaton Swift Privacy Policy — how we collect, use, and protect your data.";
+const title = "Privacy Policy | Seaton Swift";
+const description = "Seaton Swift Privacy Policy: how we collect, use, and protect your data.";
 
 export const metadata: Metadata = {
   title,
@@ -37,11 +37,11 @@ export default function PrivacyPolicyPage() {
           </Section>
 
           <Section title="2. Data We Collect">
-            <p><strong className="text-ink">Account information:</strong> When you register, we collect your full name, phone number, email address, and a profile photo — for shops, this is your shop logo.</p>
+            <p><strong className="text-ink">Account information:</strong> When you register, we collect your full name, phone number, email address, and a profile photo. For shops, this is your shop logo.</p>
             <p><strong className="text-ink">Rider documents:</strong> For riders, we collect photographs of your government-issued ID (Ghana Card) and riding licence, including their expiry dates, together with a photograph of your vehicle and its registration number. These images are stored securely and are used solely to verify your identity, your eligibility to ride, and the vehicle you operate.</p>
             <p><strong className="text-ink">Rider identity numbers:</strong> We also collect the number printed on your Ghana Card, and your licence number if your vehicle requires a licence. We use these to confirm that the document you uploaded belongs to you, and to make sure the same person does not hold more than one rider account. A vehicle registration number can only be held by one rider account at a time.</p>
             <p><strong className="text-ink">Identity photograph:</strong> Riders are asked to take a photograph of themselves holding their Ghana Card. We use it once, to confirm that the person registering is the person named on the card. It is reviewed by our team, stored with your other verification documents, and is never shown to shops, to customers, or to other riders.</p>
-            <p><strong className="text-ink">Location data:</strong> We collect real-time GPS location from riders while they are online. <strong className="text-ink">This collection continues in the background</strong> — while the app is minimised, while you are using a navigation app, and while your phone is locked — so that shops can follow a delivery in progress and so we can settle disputes about what happened on a trip. Location is sampled roughly every 30 seconds while you are online, and every 5 seconds during an active delivery. Background collection runs only while you are online: it stops the moment you go offline, and you can end it at any time by going offline or by withdrawing the location permission in your device settings. From shops we collect the pickup and drop-off addresses entered when a delivery is posted and, with your permission, your device location while the Merchant app is open, in order to fill in a pickup address. The Merchant app does not collect location in the background.</p>
+            <p><strong className="text-ink">Location data:</strong> We collect real-time GPS location from riders while they are online. <strong className="text-ink">This collection continues in the background</strong> while the app is minimised, while you are using a navigation app, and while your phone is locked, so that shops can follow a delivery in progress and so we can settle disputes about what happened on a trip. Location is sampled roughly every 30 seconds while you are online, and every 5 seconds during an active delivery. Background collection runs only while you are online: it stops the moment you go offline, and you can end it at any time by going offline or by withdrawing the location permission in your device settings. From shops we collect the pickup and drop-off addresses entered when a delivery is posted and, with your permission, your device location while the Merchant app is open, in order to fill in a pickup address. The Merchant app does not collect location in the background.</p>
             <p><strong className="text-ink">Transaction data:</strong> We record delivery details including price, distance, time, and completion status.</p>
             <p><strong className="text-ink">Payment data:</strong> We collect Mobile Money wallet numbers and bank account details for rider payouts. We do not store card numbers directly.</p>
             <p><strong className="text-ink">Usage data:</strong> Our apps contain no analytics, advertising, or crash-reporting software. We do not track how you move around inside the app, and we do not build a profile of your behaviour.</p>
