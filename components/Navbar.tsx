@@ -5,13 +5,41 @@ import Link from "next/link";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 
+/* Four links, and none of them is the download.
+ *
+ * These are places to READ about Seaton. Getting the app is an action, and an
+ * action listed among them reads as a fifth topic and competes with the pill
+ * beside it. The pill is the download now — which also retires a duplicate:
+ * it used to point at /for-shops, the same page as the "Shops" link. */
 const links = [
   { label: "Shops", href: "/for-shops" },
   { label: "Riders", href: "/for-riders" },
-  { label: "Download", href: "/download" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+
+const DOWNLOAD = "/download";
+
+/* Arrow into a tray. The old pill carried a "go somewhere" arrow, which is the
+   wrong promise for a button that ends with an app on your phone. */
+function DownloadMark({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5M4.5 20h15" />
+    </svg>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -66,14 +94,19 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2.5 shrink-0">
             <ThemeToggle className="!rounded-full" />
             <Link
-              href="/for-shops"
+              href={DOWNLOAD}
+              aria-current={isActive(DOWNLOAD) ? "page" : undefined}
               // sheen + cta-pulse: a light sweep across the pill and a slow ring
               // breathing outward. The shadow utility is intentionally absent —
               // ctaPulse animates box-shadow, so it would just be overridden.
-              className="group sheen cta-pulse inline-flex items-center gap-1.5 bg-brand hover:bg-brand-hover text-brand-ink text-sm font-semibold pl-5 pr-4 py-2.5 rounded-full transition-transform hover:-translate-y-0.5 active:translate-y-0"
+              // The pulse is dropped on /download itself: a button beckoning you
+              // to the page you are already reading is just noise.
+              className={`group sheen inline-flex items-center gap-1.5 bg-brand hover:bg-brand-hover text-brand-ink text-sm font-semibold pl-5 pr-4 py-2.5 rounded-full transition-transform hover:-translate-y-0.5 active:translate-y-0 ${
+                isActive(DOWNLOAD) ? "" : "cta-pulse"
+              }`}
             >
-              Get Started
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              Get the App
+              <DownloadMark className="transition-transform duration-200 group-hover:translate-y-0.5" />
             </Link>
           </div>
 
@@ -114,12 +147,13 @@ export default function Navbar() {
               );
             })}
             <Link
-              href="/for-shops"
+              href={DOWNLOAD}
               onClick={() => setOpen(false)}
+              aria-current={isActive(DOWNLOAD) ? "page" : undefined}
               className="mt-2 sheen inline-flex items-center justify-center gap-1.5 bg-brand hover:bg-brand-hover text-brand-ink text-sm font-semibold px-5 py-3 rounded-xl text-center transition-colors shadow-(--shadow-brand)"
             >
-              Get Started
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              Get the App
+              <DownloadMark />
             </Link>
           </div>
         </div>
