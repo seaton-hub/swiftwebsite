@@ -25,10 +25,66 @@
 export const GENERAL_EMAIL = "hello@seatonlogistics.com";
 export const SUPPORT_EMAIL = "support@seatonlogistics.com";
 
-// Store listings. Both platforms at launch — swap for the real listing URLs
-// once published (the QR in public/qr-download.svg encodes the same target).
-export const PLAY_STORE_URL = "https://swift.seatonlogistics.com/#download";
-export const APP_STORE_URL = "https://swift.seatonlogistics.com/#download";
+/* ── The two apps ──────────────────────────────────────────────────────────
+   There are TWO products, not one, and the site used to have a single
+   "Download the app" button for both. A shop owner and a rider need different
+   downloads, so every store link on this site now names which app it is.
+
+   Play links are withheld rather than guessed. Both apps are in closed testing,
+   and a closed-testing listing URL returns a 404 to anyone who is not an
+   opted-in tester — worse than an honest "coming soon". Flip the flag below on
+   the day each listing goes public and the buttons light up everywhere.
+
+   The QR codes in public/ deliberately do NOT encode these URLs. They point at
+   /download on our own domain, so a printed sticker keeps working when a store
+   link changes, and one code serves iPhone and Android alike. */
+
+const RIDER_ON_PLAY = false;
+const SHOP_ON_PLAY = false;
+
+const playUrl = (pkg: string) => `https://play.google.com/store/apps/details?id=${pkg}`;
+
+export type AppKey = "rider" | "shop";
+
+export interface StoreApp {
+  key: AppKey;
+  /** The name as it appears on the store listing. */
+  name: string;
+  audience: string;
+  blurb: string;
+  ios: string;
+  /** null until the Play listing is public. */
+  android: string | null;
+  androidPackage: string;
+  /** Printable code that lands on /download anchored at this app. */
+  qr: string;
+}
+
+export const APPS: Record<AppKey, StoreApp> = {
+  shop: {
+    key: "shop",
+    name: "Swift Merchant",
+    audience: "For shops",
+    blurb: "Post a delivery, watch it move on the map, and settle one commission a week.",
+    ios: "https://apps.apple.com/gh/app/swift-merchant/id6804503568",
+    android: SHOP_ON_PLAY ? playUrl("com.seatonlogistics.merchant") : null,
+    androidPackage: "com.seatonlogistics.merchant",
+    qr: "/qr-merchant.svg",
+  },
+  rider: {
+    key: "rider",
+    name: "Seaton Swift",
+    audience: "For riders",
+    blurb: "Take deliveries near you, follow your earnings, and get paid every week.",
+    ios: "https://apps.apple.com/gh/app/seaton-swift/id6804503774",
+    android: RIDER_ON_PLAY ? playUrl("com.seatonlogistics.swift") : null,
+    androidPackage: "com.seatonlogistics.swift",
+    qr: "/qr-swift.svg",
+  },
+};
+
+/** Shops first: they are the paying side, and the site sells to them. */
+export const APP_LIST: StoreApp[] = [APPS.shop, APPS.rider];
 
 export type ServiceKey = "swift" | "carry" | "move";
 

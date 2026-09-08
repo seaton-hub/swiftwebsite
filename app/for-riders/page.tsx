@@ -6,7 +6,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 import Steps from "@/components/Steps";
 import StoreButtons from "@/components/StoreButtons";
-import { SERVICES, PLAY_STORE_URL } from "@/lib/site";
+import Link from "next/link";
+import { SERVICES } from "@/lib/site";
 import { faqSchema, breadcrumbSchema } from "@/lib/seo";
 
 const title = "Become a Delivery Rider in Ghana — Seaton Swift";
@@ -88,10 +89,13 @@ export default function ForRidersPage() {
         chip={{ label: "You keep up to", value: "90%" }}
         actions={
           <>
-            <a href={PLAY_STORE_URL} className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
+            {/* To /download rather than straight to the App Store: a rider on
+                an Android phone would otherwise land on a listing they cannot
+                install from. */}
+            <Link href="/download#rider" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
               Apply to Ride
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-            </a>
+            </Link>
             <a href="#earnings" className="inline-flex items-center justify-center border border-line bg-surface hover:border-brand/50 hover:text-brand text-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
               See What You Could Earn
             </a>
@@ -237,7 +241,7 @@ export default function ForRidersPage() {
               <div className="relative">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-ink mb-3">Ready to start earning?</h2>
                 <p className="text-brand-ink/85 mb-8 max-w-md mx-auto">Download the app and apply in under 5 minutes. Most riders are approved within 24 hours.</p>
-                <StoreButtons className="justify-center" />
+                <StoreButtons app="rider" tone="brand" className="justify-center" />
               </div>
             </div>
           </ScrollReveal>
