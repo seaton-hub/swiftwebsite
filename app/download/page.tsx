@@ -3,7 +3,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 import StoreButtons from "@/components/StoreButtons";
 import JsonLd from "@/components/JsonLd";
-import { breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, appsSchema } from "@/lib/seo";
 import { APP_LIST } from "@/lib/site";
 
 const title = "Download Seaton Swift | Ghana delivery app for shops and riders";
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function DownloadPage() {
   return (
     <>
-      <JsonLd data={[breadcrumbSchema([{ name: "Download", path: "/download" }])]} />
+      <JsonLd data={[...appsSchema, breadcrumbSchema([{ name: "Download", path: "/download" }])]} />
 
       <PageHero
         title="Two apps, one"

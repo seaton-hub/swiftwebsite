@@ -76,7 +76,8 @@ export default function PrivacyPolicyPage() {
           <Section title="5. Data Retention">
             <p>We retain your account data for as long as your account is active. If you delete your account, we retain data required for legal, tax, or dispute resolution purposes for up to 7 years, after which it is permanently deleted.</p>
             <p>Delivery location data is retained for 90 days and then anonymised. Rider verification documents, including the identity photograph, are retained for the duration of the rider relationship plus 2 years.</p>
-            <p><strong className="text-ink">Removed accounts:</strong> If we remove a rider for fraud, theft, or serious misconduct, we keep a one-way cryptographic hash of their Ghana Card number so that the same person cannot simply register again. A hash cannot be reversed, so the number itself is not retained and cannot be recovered from it. Nothing is kept when a rider closes their own account, and the record is erased if the removal is later reversed.</p>
+            <p><strong className="text-ink">Removed accounts:</strong> If we remove a rider for fraud, theft, or serious misconduct, we keep a one-way cryptographic hash of their Ghana Card number so that the same person cannot simply register again. A hash cannot be reversed, so the number itself is not retained and cannot be recovered from it. The record is erased if the removal is later reversed.</p>
+            <p><strong className="text-ink">Closed accounts:</strong> When a rider closes their own account we keep one thing: a separate one-way cryptographic hash of the Ghana Card number, with a count of how many accounts that card has held. It cannot be reversed, and it holds no name, number, phone number or document. It exists only so that one-time joining rewards go to genuinely new riders rather than to the same person registering repeatedly. <strong className="text-ink">It never prevents anyone from registering.</strong> Closing an account and opening a new one is allowed, and the new account works normally in every respect; it simply is not treated as a first account for the purposes of a joining bonus. Deleting your account still deletes your account, your documents, your trip history and your personal data as described above.</p>
           </Section>
 
           <Section title="6. Data Protection">
@@ -89,7 +90,7 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc pl-5 space-y-2">
               <li><strong className="text-ink">Access:</strong> Request a copy of the personal data we hold about you</li>
               <li><strong className="text-ink">Correction:</strong> Request that we correct inaccurate data</li>
-              <li><strong className="text-ink">Deletion:</strong> Request deletion of your account and associated data, subject to legal retention requirements. You cannot delete an account while a delivery is in progress or while commission is outstanding, and deletion does not clear the hash described in section 5 for an account we removed for misconduct</li>
+              <li><strong className="text-ink">Deletion:</strong> Request deletion of your account and associated data, subject to legal retention requirements. You cannot delete an account while a delivery is in progress or while commission is outstanding. Deletion does not clear either of the one-way hashes described in section 5: the misconduct hash, or the joining-reward hash that applies to every closed account</li>
               <li><strong className="text-ink">Portability:</strong> Request your data in a structured, machine-readable format</li>
               <li><strong className="text-ink">Objection:</strong> Object to certain processing activities</li>
             </ul>

@@ -8,7 +8,9 @@ const BASE = "https://swift.seatonlogistics.com";
 // Bump when page content genuinely changes. Deliberately NOT `new Date()`:
 // stamping every route as "modified" on every deploy is a signal Google learns
 // to ignore, which costs you the one time it actually matters.
-const LAST_MODIFIED = new Date("2026-07-19");
+// Bumped 11 Sep 2026: the Terms gained the referral activity condition and the
+// Organization data gained the App Store listings, which changes every page.
+const LAST_MODIFIED = new Date("2026-09-11");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

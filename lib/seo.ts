@@ -1,4 +1,4 @@
-import { GENERAL_EMAIL, SERVICES } from "./site";
+import { GENERAL_EMAIL, SERVICES, APP_LIST } from "./site";
 
 /* Structured data (JSON-LD) — what Google reads to understand *what* this site
    is, as opposed to merely indexing its words. Feeds knowledge-panel entries,
@@ -11,8 +11,9 @@ import { GENERAL_EMAIL, SERVICES } from "./site";
        to publish. Inventing one is exactly the kind of thing that gets a site
        demoted. Add it (and claim a Google Business Profile) once there's a real
        registered address; that is the single biggest local-search unlock.
-     • No `MobileApplication` — the store URLs are still placeholders. Add it
-       when the real Play Store / App Store listings exist. */
+     • No `MobileApplication` sitewide. It describes the apps, so it sits on
+       /download, where the apps are actually on the page. Google demotes
+       structured data describing something the page does not show. */
 
 export const SITE_URL = "https://swift.seatonlogistics.com";
 
@@ -42,10 +43,18 @@ export const organizationSchema = {
     { "@type": "City", name: "Kumasi" },
     { "@type": "AdministrativeArea", name: "Ashanti Region" },
   ],
+  // sameAs is the entity claim: every profile listed is asserted to be the
+  // same organisation as this site. The App Store listings were missing, which
+  // left Google no corroboration of the brand name outside our own two domains,
+  // and a brand nothing else vouches for does not win its own name in search.
+  //
+  // Play listings stay out while both apps are in closed testing: those URLs
+  // 404 for anyone who is not an opted-in tester.
   sameAs: [
     "https://seatonlogistics.com",
     "https://www.facebook.com/share/1BHdFX9xVY/?mibextid=wwXIfr",
     "https://www.tiktok.com/@seatonlogistics",
+    ...APP_LIST.map((a) => a.ios),
   ],
 };
 
@@ -104,3 +113,28 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
     })),
   };
 }
+
+/** The two apps, for /download only.
+ *
+ *  Named app listings are a strong entity signal: they are an independent
+ *  publisher asserting the same brand name, which is exactly what "Seaton Swift"
+ *  has been short of. `offers` says free, which is true of both downloads.
+ *
+ *  No `aggregateRating`. We have no ratings to report, and inventing one is the
+ *  fastest way to lose every rich result on the site.
+ *
+ *  `operatingSystem` is iOS alone on purpose. Both Play listings are in closed
+ *  testing and their URLs 404 for the public, so claiming Android here would
+ *  describe something a visitor cannot get. */
+export const appsSchema = APP_LIST.map((a) => ({
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: a.name,
+  description: a.blurb,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "iOS",
+  url: a.ios,
+  installUrl: a.ios,
+  publisher: { "@id": ORG_ID },
+  offers: { "@type": "Offer", price: "0", priceCurrency: "GHS" },
+}));
