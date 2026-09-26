@@ -54,7 +54,7 @@ type Tracking = {
 
 const STEPS = [
   { key: "accepted", label: "Rider assigned" },
-  { key: "picked_up", label: "Collected from shop" },
+  { key: "picked_up", label: "Picked up" },
   { key: "delivering", label: "On the way to you" },
   { key: "delivered", label: "Delivered" },
 ];
@@ -400,7 +400,8 @@ function ReportForm({
         <div className="grid grid-cols-2 gap-2">
           {([
             ["rider", complaint.rider_name ? `The rider (${complaint.rider_name})` : "The rider"],
-            ["shop", `The shop (${complaint.shop_name})`],
+            // "sender", not "shop": plenty of deliveries come from a person.
+            ["shop", `The sender (${complaint.shop_name})`],
           ] as const).map(([value, label]) => (
             <button
               key={value}
