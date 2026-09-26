@@ -248,6 +248,16 @@ export default function TrackingView() {
               </a>
             )}
           </div>
+          {/* Google Maps gets one position and never hears about the next, so
+              without this a customer watches a pin that has stopped and thinks
+              the rider has too. This page keeps refreshing, so the next tap
+              opens the newer position. */}
+          {data.rider_location && data.is_live && (
+            <p className="text-muted text-xs leading-relaxed mt-3">
+              Opens Google Maps at your rider&apos;s current position. The pin won&apos;t move
+              with them, so come back and tap again for an update.
+            </p>
+          )}
         </div>
       )}
 
@@ -326,8 +336,10 @@ function ReportForm({
   const [done, setDone] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
+  // 16px on phones: iOS Safari zooms the whole page in when a field under 16px
+  // gets focus, and leaves the customer zoomed in after they finish typing.
   const field =
-    "w-full bg-canvas border border-line rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all";
+    "w-full bg-canvas border border-line rounded-xl px-4 py-3 text-base sm:text-sm text-ink placeholder:text-muted focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all";
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
