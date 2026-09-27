@@ -46,7 +46,7 @@ export default function Checklist({ items }: { items: string[] }) {
               strokeWidth="2.4"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-brand transition-colors duration-300 group-hover:text-brand-ink"
+              className="text-brand-text transition-colors duration-300 group-hover:text-brand-ink"
               aria-hidden
             >
               <path className="tick" d="M2.5 8l3 3 8-6" />

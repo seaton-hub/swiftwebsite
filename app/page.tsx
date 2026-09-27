@@ -5,6 +5,7 @@ import Gallery from "@/components/Gallery";
 import HeroBackdrop from "@/components/HeroBackdrop";
 import { APP_LIST } from "@/lib/site";
 import StoreButtons from "@/components/StoreButtons";
+import BusinessMarquee from "@/components/BusinessMarquee";
 
 export const metadata: Metadata = {
   title: "Seaton Swift | Ghana's Fastest Delivery Network",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 
 function IconCheck({ stroke = "var(--brand)" }: { stroke?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke={stroke} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <svg aria-hidden width="14" height="14" viewBox="0 0 14 14" fill="none" stroke={stroke} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
       <path d="M2.5 7l3 3 6-6" />
     </svg>
   );
@@ -46,7 +47,7 @@ function HeroArt() {
 
       {/* map card */}
       <div className="absolute inset-4 rounded-[28px] glass overflow-hidden">
-        <svg viewBox="0 0 400 400" className="w-full h-full" fill="none">
+        <svg aria-hidden viewBox="0 0 400 400" className="w-full h-full" fill="none">
           <defs>
             <radialGradient id="mapGlow" cx="50%" cy="48%" r="62%">
               <stop offset="0%" stopColor="var(--brand)" stopOpacity="0.10" />
@@ -153,7 +154,7 @@ function HeroArt() {
       <div className="absolute right-0 bottom-20 animate-float-slow">
         <div className="flex items-center gap-2.5 glass rounded-2xl px-3.5 py-2.5">
           <span className="w-7 h-7 rounded-lg bg-brand/12 flex items-center justify-center">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6" /></svg>
+            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6" /></svg>
           </span>
           <div>
             <p className="text-[11px] font-bold text-ink leading-none">2 mins away</p>
@@ -201,7 +202,7 @@ const features = [
   },
   {
     title: "Transparent Pricing",
-    desc: "The exact price is calculated up front and shown before you post. Whatever the conditions, what you see is what you pay.",
+    desc: "You see the price before you post. On Swift it never changes. On Carry and Move, a travel fee can be added if the nearest truck is far away, and the app shows the most it can be before you book.",
     icon: <><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></>,
   },
   {
@@ -246,9 +247,9 @@ export default function HomePage() {
               Seaton Swift connects your shop to verified riders across Ghana. Post a delivery, get matched in minutes, and track every step, from pickup to doorstep.
             </p>
             <div className="flex flex-col sm:flex-row gap-3.5">
-              <Link href="/for-shops" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
+              <Link href="/for-shops" className="inline-flex items-center justify-center gap-2 bg-brand-fill hover:bg-brand-fill-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
                 Get Started as a Shop
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
               <Link href="/for-riders" className="inline-flex items-center justify-center border border-white/30 bg-white/10 backdrop-blur hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
                 Become a Rider
@@ -266,7 +267,7 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS ── */}
-      <section className="bg-brand sheen">
+      <section className="bg-brand-fill sheen">
         <div className="max-w-6xl mx-auto px-5 py-10 grid grid-cols-3 divide-x divide-white/20 relative">
           {[
             { num: "500+", label: "Deliveries Completed" },
@@ -286,7 +287,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">One app, three ways to move</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">One app, three ways to move</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">From a hot meal to a whole house</h2>
               <p className="text-muted mt-3 max-w-xl mx-auto">Whatever the size of the job, there&apos;s a Seaton Swift service for it, all in the same app.</p>
             </div>
@@ -296,9 +297,9 @@ export default function HomePage() {
               <ScrollReveal key={s.tag}>
                 <div className="group relative bg-surface border border-line rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-(--shadow-md)">
                   <div className="w-14 h-14 rounded-2xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-105 transition-all">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="group-hover:!stroke-white transition-colors">{s.icon}</svg>
+                    <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="group-hover:!stroke-white transition-colors">{s.icon}</svg>
                   </div>
-                  <span className="text-brand text-[11px] font-bold tracking-widest">{s.tag}</span>
+                  <span className="text-brand-text text-[11px] font-bold tracking-widest">{s.tag}</span>
                   <h3 className="text-lg font-bold mt-1 mb-3">{s.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{s.desc}</p>
                 </div>
@@ -313,7 +314,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Simple Process</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Simple Process</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">How Seaton Swift works</h2>
               <p className="text-muted mt-3 max-w-lg mx-auto">Three steps between you and a completed delivery. No calls, no waiting, no guessing.</p>
             </div>
@@ -326,10 +327,10 @@ export default function HomePage() {
             ].map((item) => (
               <ScrollReveal key={item.step}>
                 <div className="flex flex-col items-center text-center bg-surface border border-line rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:shadow-(--shadow-md) h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center text-brand mb-5">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{item.icon}</svg>
+                  <div className="w-14 h-14 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center text-brand-text mb-5">
+                    <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{item.icon}</svg>
                   </div>
-                  <span className="text-brand text-[11px] font-bold tracking-widest mb-2">STEP {item.step}</span>
+                  <span className="text-brand-text text-[11px] font-bold tracking-widest mb-2">STEP {item.step}</span>
                   <h3 className="text-lg font-bold mb-3">{item.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
                 </div>
@@ -344,7 +345,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
           <ScrollReveal>
             <div>
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Seaton Swift in motion</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Seaton Swift in motion</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">A delivery network you can see</h2>
               <p className="text-muted leading-relaxed mb-6">
                 Real riders, real shops, real streets. From the busiest market to a quiet neighbourhood, Seaton Swift keeps your city moving, and you always know where your package is.
@@ -370,26 +371,13 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Built for Everyone</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Built for Everyone</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Built for every Ghanaian business</h2>
               <p className="text-muted mt-3 max-w-md mx-auto">If you sell it, we deliver it. Any product, any size, anywhere in the city.</p>
             </div>
           </ScrollReveal>
         </div>
-        <div className="marquee relative w-full">
-          {/* fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-canvas to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-canvas to-transparent pointer-events-none" />
-          <div className="marquee-track">
-            {/* two identical copies → a seamless, continuous, one-direction loop */}
-            {[...businessTypes, ...businessTypes].map((b, i) => (
-              <span key={i} className="mx-3 inline-flex items-center gap-2.5 bg-surface border border-line rounded-full px-6 py-3 whitespace-nowrap">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand" />
-                <span className="text-sm font-semibold text-ink">{b}</span>
-              </span>
-            ))}
-          </div>
-        </div>
+        <BusinessMarquee items={businessTypes} />
       </section>
 
       {/* ── FEATURES ── */}
@@ -397,7 +385,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Why Seaton Swift</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Why Seaton Swift</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">More than delivery. Peace of mind</h2>
               <p className="text-muted mt-3 max-w-xl mx-auto">Everything a growing Ghanaian business needs to move goods reliably, get paid, and keep customers coming back.</p>
             </div>
@@ -407,7 +395,7 @@ export default function HomePage() {
               <ScrollReveal key={f.title}>
                 <div className="bg-surface border border-line rounded-2xl p-7 hover:border-brand/30 hover:-translate-y-1 hover:shadow-(--shadow-md) transition-all h-full">
                   <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-4">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
+                    <svg aria-hidden width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
                   </div>
                   <h3 className="text-lg font-bold mb-2">{f.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{f.desc}</p>
@@ -424,7 +412,7 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="bg-surface border border-line rounded-3xl p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center shadow-(--shadow-md)">
               <div>
-                <span className="text-brand text-xs font-semibold uppercase tracking-widest">For Riders</span>
+                <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">For Riders</span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Turn your bike into a business</h2>
                 <p className="text-muted leading-relaxed mb-8">Join verified riders already earning on Seaton Swift. Work your own hours, set your own pace, and keep up to <span className="text-ink font-semibold">90% of every fare</span>. Our commission starts at just 10%, with no hidden cuts.</p>
                 <div className="flex flex-col gap-3 mb-8">
@@ -434,14 +422,14 @@ export default function HomePage() {
                     { stat: "Your hours", label: "Go online whenever you want" },
                   ].map((e) => (
                     <div key={e.stat} className="flex items-center gap-4 bg-canvas-deep rounded-xl p-4 border border-line">
-                      <span className="text-brand font-extrabold text-lg whitespace-nowrap">{e.stat}</span>
+                      <span className="text-brand-text font-extrabold text-lg whitespace-nowrap">{e.stat}</span>
                       <span className="text-muted text-sm">{e.label}</span>
                     </div>
                   ))}
                 </div>
-                <Link href="/for-riders" className="inline-flex items-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
+                <Link href="/for-riders" className="inline-flex items-center gap-2 bg-brand-fill hover:bg-brand-fill-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
                   Learn How to Join
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                  <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
               </div>
               <div className="flex justify-center">
@@ -455,13 +443,13 @@ export default function HomePage() {
                     <div className="w-52 bg-surface border border-line rounded-2xl p-4 shadow-(--shadow-md)">
                       <div className="flex items-center gap-2.5 mb-3">
                         <span className="w-9 h-9 rounded-full bg-brand flex items-center justify-center shrink-0">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8.5" r="3.3" /><path d="M5.5 19.5a6.5 6.5 0 0113 0" /></svg>
+                          <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8.5" r="3.3" /><path d="M5.5 19.5a6.5 6.5 0 0113 0" /></svg>
                         </span>
                         <div className="leading-tight min-w-0">
                           <p className="text-[12px] font-bold text-ink truncate">Kwame A.</p>
                           <p className="text-[10px] text-muted flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500" /> Online</p>
                         </div>
-                        <span className="ml-auto text-[10px] font-bold text-brand shrink-0">4.9★</span>
+                        <span className="ml-auto text-[10px] font-bold text-brand-text shrink-0">4.9★</span>
                       </div>
                       <p className="text-[10px] text-muted leading-none">This week</p>
                       <p className="text-2xl font-extrabold text-ink leading-tight mt-1">34 trips</p>
@@ -476,7 +464,7 @@ export default function HomePage() {
                   {/* earnings badge */}
                   <div className="absolute -bottom-3 -right-2 glass rounded-2xl px-3.5 py-2">
                     <p className="text-[10px] text-muted leading-none mb-1">You keep up to</p>
-                    <p className="text-xl font-extrabold text-brand leading-none">90%</p>
+                    <p className="text-xl font-extrabold text-brand-text leading-none">90%</p>
                   </div>
                 </div>
               </div>
@@ -489,9 +477,9 @@ export default function HomePage() {
       <section id="download" className="py-24">
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
-            <div className="bg-brand rounded-3xl p-8 md:p-14 relative overflow-hidden sheen">
+            <div className="bg-brand-fill rounded-3xl p-8 md:p-14 relative overflow-hidden sheen">
               <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden>
-                <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                <svg aria-hidden width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
                   <circle cx="50" cy="50" r="80" stroke="#fff" strokeWidth="1" fill="none" />
                   <circle cx="350" cy="250" r="100" stroke="#fff" strokeWidth="1" fill="none" />
                   <circle cx="350" cy="50" r="60" stroke="#fff" strokeWidth="0.8" fill="none" />
@@ -500,9 +488,9 @@ export default function HomePage() {
               <div className="relative grid md:grid-cols-[1fr_auto] gap-10 items-center">
                 {/* copy + store badges */}
                 <div className="text-center md:text-left">
-                  <span className="inline-block bg-white/20 text-brand-ink text-xs font-semibold px-3 py-1 rounded-full mb-4">Now on the App Store</span>
+                  <span className="inline-block bg-black/20 text-brand-ink text-xs font-semibold px-3 py-1 rounded-full mb-4">Now on the App Store</span>
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-ink mb-3">Download Seaton Swift</h2>
-                  <p className="text-brand-ink/85 text-lg mb-8 max-w-md mx-auto md:mx-0">Two apps: one for the shop sending the delivery, one for the rider making it.</p>
+                  <p className="text-brand-ink text-lg mb-8 max-w-md mx-auto md:mx-0">Two apps: one for the shop sending the delivery, one for the rider making it.</p>
 
                   {/* Two apps, two sets of buttons. This block used to offer a
                       single "download" for both audiences, which meant a shop
@@ -512,7 +500,7 @@ export default function HomePage() {
                     {APP_LIST.map((app) => (
                       <div key={app.key}>
                         <p className="text-brand-ink font-bold text-sm mb-0.5">{app.name}</p>
-                        <p className="text-brand-ink/75 text-[13px] mb-3.5">{app.audience}</p>
+                        <p className="text-brand-ink/90 text-[13px] mb-3.5">{app.audience}</p>
                         <StoreButtons app={app.key} tone="brand" className="justify-center md:justify-start" />
                       </div>
                     ))}

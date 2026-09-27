@@ -44,11 +44,11 @@ export default function LegalPage({
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">{title}</h1>
           <div className="flex flex-wrap items-center gap-2.5 text-xs">
             <span className="inline-flex items-center gap-1.5 bg-surface border border-line rounded-full px-3 py-1.5 text-muted">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+              <svg aria-hidden width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
               Last updated {updated}
             </span>
             <span className="inline-flex items-center gap-1.5 bg-surface border border-line rounded-full px-3 py-1.5 text-muted">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+              <svg aria-hidden width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
               Governed by the laws of Ghana
             </span>
           </div>
@@ -76,10 +76,10 @@ export default function LegalPage({
               </div>
               <Link
                 href="/contact"
-                className="shrink-0 inline-flex items-center gap-1.5 bg-brand hover:bg-brand-hover text-brand-ink text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
+                className="shrink-0 inline-flex items-center gap-1.5 bg-brand-fill hover:bg-brand-fill-hover text-brand-ink text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
               >
                 Contact us
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
             </div>
           </div>
@@ -105,7 +105,7 @@ export function LegalSection({ title, children }: { title: string; children: Rea
     >
       <h2 className="flex items-baseline gap-3 mb-4">
         {ordinal && (
-          <span className="shrink-0 text-brand text-sm font-extrabold tabular-nums">{ordinal}</span>
+          <span className="shrink-0 text-brand-text text-sm font-extrabold tabular-nums">{ordinal}</span>
         )}
         <span className="text-ink text-xl font-bold tracking-tight leading-snug">{label}</span>
       </h2>

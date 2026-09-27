@@ -20,19 +20,24 @@ const SECTIONS = [
   "4. Shop Responsibilities",
   "5. Rider Responsibilities",
   "6. Commission and Payment",
-  "7. Prohibited Items and Activities",
-  "8. Account Suspension and Termination",
-  "9. Ratings and Reviews",
-  "10. Dispute Resolution",
-  "11. Limitation of Liability",
-  "12. Intellectual Property",
-  "13. Changes to Terms",
-  "14. Governing Law",
-  "15. Contact",
+  "7. Rider Rewards",
+  "8. Prohibited Items and Activities",
+  "9. Account Suspension and Termination",
+  "10. Ratings and Reviews",
+  "11. Dispute Resolution",
+  "12. Limitation of Liability",
+  "13. Intellectual Property",
+  "14. Changes to Terms",
+  "15. Governing Law",
+  "16. Contact",
 ];
+// Every title here must match its <Section title> below exactly: the contents
+// links are anchors built from these strings. When "7. Rider Rewards" was added
+// to the body and not here, every link from section 7 on pointed at a heading
+// that no longer existed.
 
 export default function TermsPage() {
-  const updated = "26 May 2025";
+  const updated = "27 September 2026";
   return (
     <LegalPage title="Terms of Service" updated={updated} sections={SECTIONS}>
       <></>
@@ -76,9 +81,9 @@ export default function TermsPage() {
           </Section>
 
           <Section title="6. Commission and Payment">
-            <p><strong className="text-ink">Shop fees:</strong> Delivery fees are calculated dynamically from the distance travelled, the service selected, and prevailing conditions including demand, pricing zone, time of day and weather. Seaton Swift may vary these rates at any time. The full price for a delivery is always displayed and must be accepted before that delivery is confirmed, and the accepted price is fixed for that delivery. No charge is made if no rider accepts the delivery.</p>
+            <p><strong className="text-ink">Shop fees:</strong> Delivery fees are calculated dynamically from the distance travelled, the service selected, and prevailing conditions including demand, pricing zone, time of day and weather. Seaton Swift may vary these rates at any time. The price for a delivery is always displayed and must be accepted before that delivery is confirmed. For a Swift delivery the accepted price is fixed. For a Carry or Move delivery, a travel fee may be added when the nearest available driver has to travel a long way to reach the pickup; the most it can come to is shown before you confirm, and the final amount is set when a driver accepts. No charge is made if no rider accepts the delivery.</p>
             <p><strong className="text-ink">Rider commission:</strong> Seaton Swift deducts a platform commission of 10% on Swift deliveries and 12% on Carry and Move deliveries. Riders retain 88–90% of each completed delivery. There are no sign-up fees or subscription charges for riders.</p>
-            <p><strong className="text-ink">Payouts:</strong> Rider earnings are paid out daily to the Mobile Money wallet or bank account registered on the platform. Seaton Swift reserves the right to withhold payment pending investigation of any reported incident or dispute.</p>
+            <p><strong className="text-ink">How riders are paid:</strong> Riders collect the delivery fee at drop-off, in cash or Mobile Money, and keep it. Seaton Swift does not hold or pay out rider earnings. The commission on the week&apos;s deliveries is paid to Seaton Swift each Monday by Mobile Money from the app. A rider whose commission for a past week is still unpaid after the Monday deadline is suspended from taking deliveries until it is paid, and can still sign in to pay it.</p>
           </Section>
 
           <Section title="7. Rider Rewards">
@@ -143,7 +148,7 @@ export default function TermsPage() {
             <p>
               Seaton Swift, a product of Seaton Logistics<br />
               Kumasi, Ashanti Region, Ghana<br />
-              Email: <a href="mailto:support@seatonlogistics.com" className="text-brand hover:underline">support@seatonlogistics.com</a>
+              Email: <a href="mailto:support@seatonlogistics.com" className="text-brand-text hover:underline">support@seatonlogistics.com</a>
             </p>
           </Section>
     </LegalPage>

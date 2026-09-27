@@ -38,15 +38,19 @@ const slides: Slide[] = [
 
 export default function HeroBackdrop() {
   const [active, setActive] = useState(0);
+  // A slideshow that moves on its own for longer than five seconds needs a
+  // way to stop it (WCAG 2.2.2). The button sits with the dots.
+  const [stopped, setStopped] = useState(false);
 
   // A timeout keyed on `active` rather than a fixed interval: tapping a dot
   // restarts the countdown, so the slide you asked for gets its full turn
   // instead of being auto-advanced a moment later.
   useEffect(() => {
+    if (stopped) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setTimeout(() => setActive((v) => (v + 1) % slides.length), 5500);
     return () => clearTimeout(id);
-  }, [active]);
+  }, [active, stopped]);
 
   // Only the visible slide and the one queued next are worth downloading — but
   // once a slide has been mounted it stays mounted, so a fading-out photo is
@@ -87,7 +91,7 @@ export default function HeroBackdrop() {
               <div className="w-full h-full relative" style={{ background: s.scene }}>
                 <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "52px 52px" }} />
                 <span className="absolute top-24 right-6 inline-flex items-center gap-1.5 bg-black/25 backdrop-blur text-white/90 text-[10px] font-semibold px-2.5 py-1 rounded-full">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="11" r="2" /><path d="M21 15l-5-5-9 9" /></svg>
+                  <svg aria-hidden width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="11" r="2" /><path d="M21 15l-5-5-9 9" /></svg>
                   Photo {i + 1} / 5
                 </span>
               </div>
@@ -109,6 +113,18 @@ export default function HeroBackdrop() {
 
       {/* slide dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setStopped((v) => !v)}
+          aria-label={stopped ? "Play background photos" : "Pause background photos"}
+          className="mr-1 w-6 h-6 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center transition-colors"
+        >
+          {stopped ? (
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M7 4l14 8-14 8z" /></svg>
+          ) : (
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M6 4h4v16H6zM14 4h4v16h-4z" /></svg>
+          )}
+        </button>
         {slides.map((s, i) => (
           <button
             key={s.key}

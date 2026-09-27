@@ -56,7 +56,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-5">
           <ScrollReveal>
             <div className="bg-surface border border-line rounded-3xl p-8 sm:p-10 space-y-5 shadow-(--shadow-md)">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">How it started</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">How it started</span>
               <h2 className="text-2xl font-extrabold !mt-2">The problem we kept hearing</h2>
               <p className="text-muted leading-relaxed">
                 Seaton Logistics has spent years helping Ghanaian businesses import cars, machinery, parts, and equipment from around the world. During that time we heard the same challenge over and over: <em className="text-ink not-italic font-medium">&quot;I can get the product here, but getting it to my customer on time is the problem.&quot;</em>
@@ -93,9 +93,9 @@ export default function AboutPage() {
               <ScrollReveal key={item.tag}>
                 <div className="bg-surface border border-line rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)">
                   <div className="w-12 h-12 rounded-2xl bg-brand/10 flex items-center justify-center mb-5">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{item.icon}</svg>
+                    <svg aria-hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{item.icon}</svg>
                   </div>
-                  <span className="text-brand text-xs font-semibold uppercase tracking-widest">{item.tag}</span>
+                  <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">{item.tag}</span>
                   <h3 className="text-xl font-bold mt-2 mb-4 leading-snug">{item.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
                 </div>
@@ -110,7 +110,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">What We Stand For</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">What We Stand For</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Our values</h2>
             </div>
           </ScrollReveal>
@@ -119,7 +119,7 @@ export default function AboutPage() {
               <ScrollReveal key={v.title}>
                 <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)">
                   <div className="w-11 h-11 shrink-0 rounded-xl bg-brand/10 flex items-center justify-center">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{v.icon}</svg>
+                    <svg aria-hidden width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{v.icon}</svg>
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-2">{v.title}</h3>
@@ -138,21 +138,21 @@ export default function AboutPage() {
           <ScrollReveal>
             <div className="bg-surface border border-line rounded-3xl p-10 md:p-14 flex flex-col md:flex-row gap-10 items-center shadow-(--shadow-md)">
               <div className="shrink-0 w-20 h-20 rounded-2xl bg-brand/10 border border-brand/20 flex items-center justify-center">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg aria-hidden width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 10V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 001 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l2-1.14" />
                   <path d="M16.5 9.4L7.55 4.24M3.29 7L12 12l8.71-5M12 22V12" />
                   <path d="M18 21a3 3 0 100-6 3 3 0 000 6z" /><path d="M22 22l-1.5-1.5" />
                 </svg>
               </div>
               <div>
-                <span className="text-brand text-xs font-semibold uppercase tracking-widest">Part of Seaton Logistics</span>
+                <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Part of Seaton Logistics</span>
                 <h2 className="text-2xl font-extrabold mt-2 mb-3">Backed by years of logistics experience</h2>
                 <p className="text-muted leading-relaxed text-sm mb-5">
                   Seaton Swift is built on the foundation of Seaton Logistics, a company that has helped hundreds of Ghanaian businesses import vehicles, machinery, parts, and equipment from around the world. That deep understanding of how goods move, how trust is built, and how to serve Ghanaian businesses informs everything we do.
                 </p>
-                <a href="https://seatonlogistics.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-brand text-sm font-semibold hover:gap-2.5 transition-all">
+                <a href="https://seatonlogistics.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-brand-text text-sm font-semibold hover:gap-2.5 transition-all">
                   Visit Seaton Logistics
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10" /></svg>
+                  <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M7 7h10v10" /></svg>
                 </a>
               </div>
             </div>
@@ -164,15 +164,15 @@ export default function AboutPage() {
       <section className="py-24 px-5">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
-            <div className="bg-brand rounded-3xl p-10 md:p-14 text-center relative overflow-hidden sheen">
+            <div className="bg-brand-fill rounded-3xl p-10 md:p-14 text-center relative overflow-hidden sheen">
               <div className="relative">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-ink mb-3">Be part of the network</h2>
-                <p className="text-brand-ink/85 mb-8 max-w-md mx-auto">Whether you run a shop or ride a bike, there&apos;s a place for you on Seaton Swift.</p>
+                <p className="text-brand-ink mb-8 max-w-md mx-auto">Whether you run a shop or ride a bike, there&apos;s a place for you on Seaton Swift.</p>
                 <div className="flex flex-col sm:flex-row gap-3.5 justify-center">
                   <Link href="/for-shops" className="inline-flex items-center justify-center bg-[#14161C] hover:bg-[#23262E] text-white font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors border border-white/15">
                     Get Started as a Shop
                   </Link>
-                  <Link href="/for-riders" className="inline-flex items-center justify-center border border-white/40 bg-white/10 hover:bg-white/20 text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
+                  <Link href="/for-riders" className="inline-flex items-center justify-center border border-white/40 bg-white/10 hover:bg-black/20 text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
                     Become a Rider
                   </Link>
                 </div>

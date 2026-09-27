@@ -10,7 +10,7 @@ const BASE = "https://swift.seatonlogistics.com";
 // to ignore, which costs you the one time it actually matters.
 // Bumped 11 Sep 2026: the Terms gained the referral activity condition and the
 // Organization data gained the App Store listings, which changes every page.
-const LAST_MODIFIED = new Date("2026-09-11");
+const LAST_MODIFIED = new Date("2026-09-27");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.6 },
     { path: "/privacy-policy", priority: 0.3 },
     { path: "/terms-of-service", priority: 0.3 },
+    { path: "/cookie-policy", priority: 0.3 },
     { path: "/delete-account", priority: 0.3 },
   ];
   return routes.map((r) => ({

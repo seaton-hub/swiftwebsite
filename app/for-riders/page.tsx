@@ -92,11 +92,11 @@ export default function ForRidersPage() {
             {/* To /download rather than straight to the App Store: a rider on
                 an Android phone would otherwise land on a listing they cannot
                 install from. */}
-            <Link href="/download#rider" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
+            <Link href="/download#rider" className="inline-flex items-center justify-center gap-2 bg-brand-fill hover:bg-brand-fill-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
               Apply to Ride
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
-            <a href="#earnings" className="inline-flex items-center justify-center border border-line bg-surface hover:border-brand/50 hover:text-brand text-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
+            <a href="#earnings" className="inline-flex items-center justify-center border border-line bg-surface hover:border-brand/50 hover:text-brand-text text-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
               See What You Could Earn
             </a>
           </>
@@ -108,7 +108,7 @@ export default function ForRidersPage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Why ride with us</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Why ride with us</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Built to be worth your time</h2>
             </div>
           </ScrollReveal>
@@ -117,7 +117,7 @@ export default function ForRidersPage() {
               <ScrollReveal key={p.title}>
                 <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)">
                   <div className="w-11 h-11 shrink-0 rounded-xl bg-brand/10 flex items-center justify-center">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{p.icon}</svg>
+                    <svg aria-hidden width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{p.icon}</svg>
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-2">{p.title}</h3>
@@ -135,7 +135,7 @@ export default function ForRidersPage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Earnings</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Earnings</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">How your earnings work</h2>
               <p className="text-muted mt-3 max-w-xl mx-auto">We will not promise you a number, because anyone who does is guessing. Here is how a fare is built, and exactly what reaches your pocket.</p>
             </div>
@@ -154,7 +154,7 @@ export default function ForRidersPage() {
                   ].map((r) => (
                     <div key={r.t} className="flex gap-4">
                       <span className="w-8 h-8 shrink-0 rounded-lg bg-brand/10 flex items-center justify-center">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+                        <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
                       </span>
                       <div>
                         <p className="font-semibold text-ink text-sm">{r.t}</p>
@@ -167,11 +167,11 @@ export default function ForRidersPage() {
             </ScrollReveal>
 
             <ScrollReveal>
-              <div className="bg-brand rounded-3xl p-7 sm:p-9 h-full text-brand-ink relative overflow-hidden sheen">
+              <div className="bg-brand-fill rounded-3xl p-7 sm:p-9 h-full text-brand-ink relative overflow-hidden sheen">
                 <div className="relative flex flex-col h-full">
-                  <p className="text-xs uppercase tracking-widest font-semibold opacity-85 mb-2">What you keep</p>
+                  <p className="text-xs uppercase tracking-widest font-semibold opacity-95 mb-2">What you keep</p>
                   <p className="text-6xl font-extrabold leading-none mb-2">90%</p>
-                  <p className="text-sm opacity-85 mb-7">of every Swift fare, commission starts at just {SERVICES.swift.commission}%</p>
+                  <p className="text-sm opacity-95 mb-7">of every Swift fare, commission starts at just {SERVICES.swift.commission}%</p>
 
                   <div className="space-y-3 border-t border-white/25 pt-6 mt-auto">
                     {[
@@ -181,7 +181,7 @@ export default function ForRidersPage() {
                       `Commission is settled once a week, ${SERVICES.carry.commission}% on Carry and Move`,
                     ].map((t) => (
                       <div key={t} className="flex gap-3 text-sm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" /></svg>
+                        <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" /></svg>
                         <span className="opacity-90 leading-relaxed">{t}</span>
                       </div>
                     ))}
@@ -198,7 +198,7 @@ export default function ForRidersPage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Getting Started</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Getting Started</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">How to join Seaton Swift</h2>
               <p className="text-muted mt-3">Approved in about 24 hours.</p>
             </div>
@@ -212,7 +212,7 @@ export default function ForRidersPage() {
         <div className="max-w-3xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Checklist</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Checklist</span>
               <h2 className="text-3xl font-extrabold mt-2">What you need to ride</h2>
             </div>
           </ScrollReveal>
@@ -225,7 +225,7 @@ export default function ForRidersPage() {
         <div className="max-w-3xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">FAQ</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">FAQ</span>
               <h2 className="text-3xl font-extrabold mt-2">Rider questions</h2>
             </div>
           </ScrollReveal>
@@ -237,10 +237,10 @@ export default function ForRidersPage() {
       <section className="py-24 px-5">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
-            <div className="bg-brand rounded-3xl p-10 md:p-14 text-center relative overflow-hidden sheen">
+            <div className="bg-brand-fill rounded-3xl p-10 md:p-14 text-center relative overflow-hidden sheen">
               <div className="relative">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-ink mb-3">Ready to start earning?</h2>
-                <p className="text-brand-ink/85 mb-8 max-w-md mx-auto">Download the app and apply in under 5 minutes. Most riders are approved within 24 hours.</p>
+                <p className="text-brand-ink mb-8 max-w-md mx-auto">Download the app and apply in under 5 minutes. Most riders are approved within 24 hours.</p>
                 <StoreButtons app="rider" tone="brand" className="justify-center" />
               </div>
             </div>

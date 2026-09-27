@@ -146,7 +146,7 @@ export default function TrackingView() {
     return (
       <div className="bg-surface border border-line rounded-3xl p-8 text-center shadow-(--shadow-md)">
         <div className="w-14 h-14 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center mx-auto mb-4">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round">
+          <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round">
             <path d="M12 8v5M12 16.5v.5" /><circle cx="12" cy="12" r="9" />
           </svg>
         </div>
@@ -242,7 +242,7 @@ export default function TrackingView() {
                 href={`https://www.google.com/maps/search/?api=1&query=${data.rider_location.latitude},${data.rider_location.longitude}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-line hover:border-brand hover:text-brand rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 border border-line hover:border-brand hover:text-brand-text rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors"
               >
                 Open in Maps
               </a>
@@ -295,7 +295,7 @@ export default function TrackingView() {
             onClick={() => setShowReport(true)}
             className="bg-surface border border-line hover:border-brand rounded-3xl p-6 text-left transition-colors group"
           >
-            <p className="font-bold group-hover:text-brand transition-colors">
+            <p className="font-bold group-hover:text-brand-text transition-colors">
               Something not right?
             </p>
             <p className="text-muted text-sm mt-1">
@@ -373,7 +373,7 @@ function ReportForm({
     return (
       <div className="bg-surface border border-line rounded-3xl p-8 text-center shadow-(--shadow-md)">
         <div className="w-14 h-14 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center mx-auto mb-4">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <svg aria-hidden width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20 6L9 17l-5-5" />
           </svg>
         </div>
@@ -409,7 +409,7 @@ function ReportForm({
               onClick={() => setAbout(value)}
               aria-pressed={about === value}
               className={`rounded-xl px-4 py-3 text-sm font-semibold border transition-colors text-left ${
-                about === value ? "border-brand text-brand bg-brand/5" : "border-line text-muted hover:border-brand/40"
+                about === value ? "border-brand text-brand-text bg-brand/5" : "border-line text-muted hover:border-brand/40"
               }`}
             >
               {label}
@@ -443,17 +443,21 @@ function ReportForm({
         </div>
         <div>
           <label htmlFor="phone" className="text-xs text-muted font-semibold block mb-1.5">Phone to reach you (optional)</label>
-          <input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="024 000 0000" className={field} />
+          <input id="phone" type="tel" inputMode="tel" autoComplete="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="024 000 0000" className={field} />
         </div>
       </div>
+      <p className="text-muted text-xs -mt-2">
+        Both optional. We use them only to contact you about this report. See our{" "}
+        <a href="/privacy-policy" className="text-brand-text font-semibold hover:underline">Privacy Policy</a>.
+      </p>
 
-      {err && <p className="text-brand text-sm font-medium">{err}</p>}
+      {err && <p role="alert" className="text-danger-text text-sm font-medium">{err}</p>}
 
       <div className="flex gap-3">
         <button type="button" onClick={onCancel} className="flex-1 border border-line hover:border-brand rounded-xl py-3.5 text-sm font-semibold text-muted hover:text-ink transition-colors">
           Cancel
         </button>
-        <button type="submit" disabled={busy} className="flex-[2] bg-brand hover:bg-brand-hover disabled:opacity-60 text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-(--shadow-brand)">
+        <button type="submit" disabled={busy} className="flex-[2] bg-brand-fill hover:bg-brand-fill-hover disabled:opacity-60 text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-(--shadow-brand)">
           {busy ? "Sending…" : "Submit report"}
         </button>
       </div>

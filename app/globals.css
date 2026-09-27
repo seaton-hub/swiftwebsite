@@ -6,10 +6,29 @@
    same in both themes. `@theme inline` registers these as Tailwind colour
    utilities (bg-canvas, text-ink, border-line, …) that resolve to the live
    variable, so the .dark override cascades at runtime. */
+/* ── Contrast (WCAG AA, measured) ──────────────────────────────────────────
+   The brand red #E8402A is too light to carry small text: 3.4–3.8:1 on the
+   light grounds and 4.0:1 under white button text, against the 4.5:1 that
+   body-size text needs. So it has three jobs, split three ways:
+     --brand       the logo red. Icons, dots, borders, glows and large
+                   headings, which only need 3:1. Unchanged.
+     --brand-text  red TEXT. Deeper in light mode, lighter in dark mode,
+                   because the ground behind it flips. 4.5:1 or better on
+                   every canvas, surface and brand/10 tint in its theme.
+     --brand-fill  a red that white text sits on: buttons and the red
+                   panels. 5.4:1 with white, the same in both themes.
+   Use text-brand-text for words and bg-brand-fill behind words; bg-brand and
+   text-brand are for shapes and big type only. */
 :root {
   --brand:        #E8402A;
   --brand-hover:  #D13520;
-  --brand-ink:    #FFFFFF;      /* text that sits on the brand red */
+  --brand-ink:    #FFFFFF;      /* text that sits on the brand fill */
+  --brand-text:   #B53120;
+  --brand-fill:   #C43623;
+  --brand-fill-hover: #A82E1E;
+  --danger:       #C81E1E;      /* destructive button, white text: 5.7:1 */
+  --danger-hover: #B91C1C;
+  --danger-text:  #C81E1E;      /* error messages: 5.2:1 on the light grounds */
 
   --canvas:       #F3F3F3;      /* page background — soft grey, never pure white */
   --canvas-deep:  #EBEBEB;      /* alternating / footer sections (one step deeper) */
@@ -26,6 +45,8 @@
 }
 
 .dark {
+  --brand-text:   #EE5642;      /* 5.0:1 on the dark surface */
+  --danger-text:  #F87171;      /* 6.3:1 on the dark surface */
   --canvas:       #111111;
   --canvas-deep:  #0D0D0D;
   --surface:      #1A1A1A;
@@ -43,6 +64,12 @@
   --color-brand:        var(--brand);
   --color-brand-hover:  var(--brand-hover);
   --color-brand-ink:    var(--brand-ink);
+  --color-brand-text:   var(--brand-text);
+  --color-brand-fill:   var(--brand-fill);
+  --color-brand-fill-hover: var(--brand-fill-hover);
+  --color-danger:       var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  --color-danger-text:  var(--danger-text);
   --color-canvas:       var(--canvas);
   --color-canvas-deep:  var(--canvas-deep);
   --color-surface:      var(--surface);
@@ -54,6 +81,17 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* Keyboard focus, everywhere, in one visible style. Browsers' own rings are
+   thin and grey and all but disappear on the red buttons and the photo hero.
+   :focus-visible only, so a mouse click never draws it. Inputs keep the ring
+   they already style themselves. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--brand-text);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.dark :where(a, button, [tabindex]):focus-visible { outline-color: #FFFFFF; }
 
 body {
   background-color: var(--canvas);
@@ -114,6 +152,10 @@ body {
 /* One continuous direction, never pausing — two identical copies + a -50%
    translate make the loop seamless with no visible jump at the seam. */
 .marquee-track { display: inline-flex; width: max-content; will-change: transform; animation: marquee 32s linear infinite; }
+/* Moving text has to be stoppable. Hovering holds it still; the page's own
+   pause button (and reduced motion, below) stop it outright. */
+.marquee:hover .marquee-track,
+.marquee[data-paused="true"] .marquee-track { animation-play-state: paused; }
 
 /* Checklist ticks draw themselves in as each row reveals, so the list reads as
    something being ticked off rather than a static set of statements. */

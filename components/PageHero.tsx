@@ -62,7 +62,7 @@ export default function PageHero({
             {accent && (
               <>
                 {" "}
-                <span className="text-brand">{accent}</span>
+                <span className="text-brand-text">{accent}</span>
               </>
             )}
           </h1>
@@ -97,7 +97,7 @@ export default function PageHero({
             {chip && (
               <div className="absolute -left-4 bottom-8 glass rounded-2xl px-4 py-3 animate-float">
                 <p className="text-[10px] text-muted leading-none mb-1">{chip.label}</p>
-                <p className="text-lg font-extrabold text-brand leading-none">{chip.value}</p>
+                <p className="text-lg font-extrabold text-brand-text leading-none">{chip.value}</p>
               </div>
             )}
           </div>

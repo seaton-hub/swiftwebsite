@@ -69,8 +69,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           data-* attributes onto <body> before React hydrates. Harmless — this
           only silences the mismatch on body's own attributes, not its children. */}
       <body className="bg-canvas text-ink min-h-screen flex flex-col antialiased" suppressHydrationWarning>
+        {/* First stop for a keyboard: jump past the navigation. Hidden until
+            it has focus, then shown above the fixed navbar. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-brand-fill focus:text-brand-ink focus:font-semibold focus:text-sm focus:px-4 focus:py-2.5 focus:rounded-xl"
+        >
+          Skip to content
+        </a>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">{children}</main>
         <Footer />
       </body>
     </html>

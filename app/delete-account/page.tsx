@@ -5,7 +5,7 @@ import { GENERAL_EMAIL } from "@/lib/site";
 
 const title = "Delete Your Account | Seaton Swift";
 const description =
-  "Permanently delete your Seaton Swift rider or shop account and all associated personal data.";
+  "Delete your Seaton Swift rider or merchant account, and see exactly what is deleted and what is kept.";
 
 // Must stay publicly indexable: Google Play requires a reachable account-deletion
 // URL for any app that creates accounts.
@@ -41,7 +41,7 @@ export default function DeleteAccountPage() {
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">Delete Your Account</h1>
           <p className="text-muted text-lg leading-relaxed">
-            Permanently remove your Seaton Swift account and personal data. No app required.
+            Delete your Seaton Swift account from here. No app required.
           </p>
         </div>
       </section>
@@ -54,7 +54,7 @@ export default function DeleteAccountPage() {
           <div className="border-l-2 border-[#EF4444] pl-6 sm:pl-8 mb-10">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-9 h-9 rounded-full bg-[#EF4444]/10 flex items-center justify-center shrink-0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" /><path d="M12 9v4M12 17h.01" /></svg>
+                <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" /><path d="M12 9v4M12 17h.01" /></svg>
               </span>
               <div>
                 <h2 className="text-ink text-lg font-bold leading-tight">What gets deleted</h2>
@@ -62,12 +62,16 @@ export default function DeleteAccountPage() {
               </div>
             </div>
 
+            {/* Exactly what the server does (authController deleteMyAccount),
+                no more. This list used to say documents and delivery records
+                were deleted with the account; neither is. */}
             <ul className="divide-y divide-line border-y border-line">
               {[
-                "Your profile, photo and account details",
-                "Rider verification documents (Ghana Card, licence, vehicle photos)",
-                "Delivery history, earnings and payment records",
-                "Saved Mobile Money numbers, ratings, messages and notifications",
+                "Your account, your sign-in and your profile details",
+                "Your saved Mobile Money number, the messages you sent, and your notifications",
+                "The ratings you received",
+                "Your profile photo or logo, destroyed after 30 days",
+                "Rider verification documents (Ghana Card, licence, vehicle and identity photos), kept securely for 2 years and then destroyed",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3.5 py-3.5 text-sm text-muted">
                   {/* Was a bare "✕" character — screen readers announced it as
@@ -87,9 +91,16 @@ export default function DeleteAccountPage() {
                 commission balance.
               </p>
               <p>
+                <strong className="text-ink font-semibold">What stays:</strong> past deliveries,
+                commission and payment records, and the ratings you gave others. The shops,
+                riders and customers on the other side of those deliveries rely on them, so they
+                are detached from your account and keep only the name as it appeared at the
+                time.
+              </p>
+              <p>
                 Records we are legally required to keep (e.g. for tax or dispute resolution under
                 Ghanaian law) may be retained for a limited period as described in our{" "}
-                <Link href="/privacy-policy" className="text-brand hover:underline">
+                <Link href="/privacy-policy" className="text-brand-text hover:underline">
                   Privacy Policy
                 </Link>
                 .
@@ -107,7 +118,7 @@ export default function DeleteAccountPage() {
               If you no longer have access to your password or phone number, email{" "}
               <a
                 href={`mailto:${GENERAL_EMAIL}?subject=Account%20Deletion%20Request`}
-                className="text-brand hover:underline"
+                className="text-brand-text hover:underline"
               >
                 {GENERAL_EMAIL}
               </a>{" "}

@@ -41,7 +41,7 @@ export default function LegalToc({ sections }: { sections: string[] }) {
                 aria-current={isActive ? "true" : undefined}
                 className={`block py-1.5 pl-4 -ml-px border-l-2 transition-colors ${
                   isActive
-                    ? "border-brand text-brand font-semibold"
+                    ? "border-brand text-brand-text font-semibold"
                     : "border-transparent text-muted hover:text-ink hover:border-line"
                 }`}
               >

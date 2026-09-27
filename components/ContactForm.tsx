@@ -83,7 +83,7 @@ export default function ContactForm() {
     return (
       <div className="bg-surface border border-line rounded-3xl p-8 shadow-(--shadow-md) h-full flex flex-col items-center justify-center text-center py-16">
         <div className="w-16 h-16 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center mb-5">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+          <svg aria-hidden width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
         </div>
         <h3 className="text-xl font-bold mb-2">Message sent</h3>
         <p className="text-muted text-sm max-w-xs">
@@ -128,7 +128,7 @@ export default function ContactForm() {
             placeholder="kwame@example.com" className={emailError ? fieldBad : field} autoComplete="email"
           />
           {emailError && (
-            <p id="email-error" role="alert" className="text-red-500 text-xs mt-1.5 font-medium">{emailError}</p>
+            <p id="email-error" role="alert" className="text-danger-text text-xs mt-1.5 font-medium">{emailError}</p>
           )}
         </div>
 
@@ -154,7 +154,7 @@ export default function ContactForm() {
             <p className="text-sm text-ink font-semibold">{error}</p>
             <p className="text-muted text-xs mt-1.5">
               You can email us directly at{" "}
-              <a href={`mailto:${GENERAL_EMAIL}`} className="text-brand font-semibold hover:underline wrap-break-word">{GENERAL_EMAIL}</a>.
+              <a href={`mailto:${GENERAL_EMAIL}`} className="text-brand-text font-semibold hover:underline wrap-break-word">{GENERAL_EMAIL}</a>.
             </p>
             <button
               type="button" onClick={copyMessage}
@@ -167,13 +167,21 @@ export default function ContactForm() {
 
         <button
           type="submit" disabled={status === "sending"}
-          className="group inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-(--shadow-brand) hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+          className="group inline-flex items-center justify-center gap-2 bg-brand-fill hover:bg-brand-fill-hover text-brand-ink font-semibold py-3.5 rounded-xl text-sm transition-all shadow-(--shadow-brand) hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
         >
           {status === "sending" ? "Sending…" : status === "error" ? "Try again" : "Send message"}
           {status !== "sending" && (
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:translate-x-0.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           )}
         </button>
+
+        {/* What happens to what they typed, said before they send it. A notice
+            rather than a tick-box: replying to someone who wrote to us is the
+            whole point of the form, so there is nothing extra to consent to. */}
+        <p className="text-muted text-xs text-center -mt-1">
+          We use your name and email only to reply to you. See our{" "}
+          <a href="/privacy-policy" className="text-brand-text font-semibold hover:underline">Privacy Policy</a>.
+        </p>
       </form>
     </div>
   );

@@ -29,13 +29,13 @@ export default function FAQAccordion({ items }: { items: FAQItem[] }) {
                 aria-controls={`${uid}-a${i}`}
                 onClick={() => setOpen(isOpen ? null : i)}
                 className={`group w-full text-left flex items-start justify-between gap-5 py-5 transition-colors duration-200 ${
-                  isOpen ? "text-brand" : "text-ink hover:text-brand"
+                  isOpen ? "text-brand-text" : "text-ink hover:text-brand-text"
                 }`}
               >
                 <span className="font-semibold text-[15px] leading-snug">{item.q}</span>
                 <svg
                   className={`shrink-0 mt-0.5 transition-transform duration-300 ${
-                    isOpen ? "rotate-180 text-brand" : "text-muted group-hover:text-brand"
+                    isOpen ? "rotate-180 text-brand-text" : "text-muted group-hover:text-brand-text"
                   }`}
                   width="18"
                   height="18"

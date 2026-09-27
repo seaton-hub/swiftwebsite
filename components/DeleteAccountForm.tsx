@@ -23,9 +23,13 @@ export default function DeleteAccountForm() {
     e.preventDefault();
     setError("");
 
-    const digits = phone.replace(/[\s-]/g, "");
-    if (!/^0\d{9}$/.test(digits)) {
-      setError("Enter your phone number in the format 0XXXXXXXXX (10 digits).");
+    // Read the number the way the apps do (shop_app/utils/phone.js
+    // toGhanaLogin): typed with or without +233, with spaces or dashes. It used
+    // to demand exactly 0XXXXXXXXX and refuse "+233 24 412 3456".
+    const compact = phone.trim().replace(/[\s\-().]/g, "");
+    const national = compact.replace(/^(\+233|00233)/, "").replace(/^233(?=\d{9,10}$)/, "").replace(/^0/, "");
+    if (!/^[1-9]\d{8}$/.test(national)) {
+      setError("Check your phone number. Use the 10 digits starting with 0, like 024 123 4567.");
       return;
     }
     if (!password) {
@@ -35,7 +39,7 @@ export default function DeleteAccountForm() {
 
     setWorking(true);
     try {
-      const phone_number = `+233${digits.replace(/^0/, "")}`;
+      const phone_number = `+233${national}`;
 
       // 1. Verify credentials — same login the apps use
       const loginRes = await fetch(`${API_URL}/api/auth/login`, {
@@ -78,14 +82,15 @@ export default function DeleteAccountForm() {
     return (
       <div className="bg-surface border border-line rounded-2xl p-8 text-center">
         <div className="w-14 h-14 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center mx-auto mb-5">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg aria-hidden width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
         <h2 className="text-ink text-xl font-bold mb-2">Account Deleted</h2>
         <p className="text-muted text-sm leading-relaxed">
-          Your account and personal data have been permanently removed.
-          We&apos;re sorry to see you go. You&apos;re welcome back on Seaton Swift anytime.
+          Your account is deleted and you have been signed out everywhere. Verification
+          documents are destroyed on the schedule set out above. You&apos;re welcome back
+          on Seaton Swift anytime.
         </p>
       </div>
     );
@@ -93,26 +98,32 @@ export default function DeleteAccountForm() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-surface border border-line rounded-2xl p-6 sm:p-8">
-      {/* Account type */}
-      <label className="block text-muted text-xs font-semibold uppercase tracking-widest mb-3">
-        Account Type
-      </label>
-      <div className="grid grid-cols-2 gap-3 mb-6">
-        {(["rider", "shop"] as Role[]).map((r) => (
-          <button
-            key={r}
-            type="button"
-            onClick={() => setRole(r)}
-            className={`py-3 rounded-xl text-sm font-semibold border transition-colors ${
-              role === r
-                ? "border-brand bg-brand/10 text-ink"
-                : "border-line bg-canvas-deep text-muted hover:border-muted"
-            }`}
-          >
-            {r === "rider" ? "Rider" : "Shop"}
-          </button>
-        ))}
-      </div>
+      {/* Account type. A fieldset, so a screen reader announces the two
+          buttons as one choice, and aria-pressed says which one is chosen. */}
+      <fieldset className="mb-6">
+        <legend className="block text-muted text-xs font-semibold uppercase tracking-widest mb-3">
+          Account Type
+        </legend>
+        <div className="grid grid-cols-2 gap-3">
+          {(["rider", "shop"] as Role[]).map((r) => (
+            <button
+              key={r}
+              type="button"
+              onClick={() => setRole(r)}
+              aria-pressed={role === r}
+              className={`py-3 rounded-xl text-sm font-semibold border transition-colors ${
+                role === r
+                  ? "border-brand bg-brand/10 text-ink"
+                  : "border-line bg-canvas-deep text-muted hover:border-muted"
+              }`}
+            >
+              {/* The app is Swift Merchant, and plenty of its users have no
+                  shop. The value sent is still "shop", the account's role. */}
+              {r === "rider" ? "Rider (Seaton Swift)" : "Merchant (Swift Merchant)"}
+            </button>
+          ))}
+        </div>
+      </fieldset>
 
       {/* Phone */}
       <label htmlFor="phone" className="block text-muted text-xs font-semibold uppercase tracking-widest mb-3">
@@ -123,7 +134,7 @@ export default function DeleteAccountForm() {
         type="tel"
         inputMode="tel"
         autoComplete="tel"
-        placeholder="e.g. 0200000000"
+        placeholder="e.g. 024 123 4567"
         value={phone}
         onChange={(e) => { setPhone(e.target.value); setError(""); }}
         className="w-full bg-canvas-deep border border-line rounded-xl px-4 py-3 text-sm text-ink placeholder-muted focus:border-brand focus:outline-none mb-6"
@@ -146,18 +157,21 @@ export default function DeleteAccountForm() {
         <button
           type="button"
           onClick={() => setShowPass((v) => !v)}
+          aria-label={showPass ? "Hide password" : "Show password"}
           className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-ink text-xs font-semibold"
         >
           {showPass ? "Hide" : "Show"}
         </button>
       </div>
 
-      <p className={`text-xs mb-6 min-h-4 ${error ? "text-[#EF4444]" : "text-transparent"}`}>{error || "."}</p>
+      {/* role="alert" so the reason is read out the moment it appears; a
+          sighted user sees it, a screen reader user used to hear nothing. */}
+      <p role={error ? "alert" : undefined} className={`text-xs mb-6 min-h-4 ${error ? "text-danger-text" : "text-transparent"}`}>{error || " "}</p>
 
       <button
         type="submit"
         disabled={working}
-        className="w-full py-3.5 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] disabled:opacity-60 text-white text-sm font-bold transition-colors"
+        className="w-full py-3.5 rounded-xl bg-danger hover:bg-danger-hover disabled:opacity-60 text-white text-sm font-bold transition-colors"
       >
         {working ? "Deleting…" : "Permanently Delete My Account"}
       </button>

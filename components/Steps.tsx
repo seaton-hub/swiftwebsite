@@ -58,13 +58,13 @@ export default function Steps({ items }: { items: { title: string; desc: string 
               className="absolute inset-0 rounded-full bg-brand/10 scale-50 opacity-0 transition-all duration-300 group-hover:scale-[1.45] group-hover:opacity-100"
               aria-hidden
             />
-            <span className="relative text-sm font-bold tabular-nums text-muted transition-colors duration-300 group-hover:text-brand">
+            <span className="relative text-sm font-bold tabular-nums text-muted transition-colors duration-300 group-hover:text-brand-text">
               {i + 1}
             </span>
           </span>
 
           <div className="pt-2.5 transition-transform duration-300 group-hover:translate-x-1">
-            <h3 className="font-bold text-ink mb-1.5 transition-colors duration-300 group-hover:text-brand">
+            <h3 className="font-bold text-ink mb-1.5 transition-colors duration-300 group-hover:text-brand-text">
               {s.title}
             </h3>
             <p className="text-muted text-sm leading-relaxed max-w-md">{s.desc}</p>

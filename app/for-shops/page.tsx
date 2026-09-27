@@ -58,7 +58,7 @@ const faq: { q: string; a: string }[] = [
   { q: "What types of items can I send?", a: "Food, medicine, clothing, parcels, documents, and most everyday goods. Items that are illegal, hazardous, or require special handling are not permitted." },
   { q: "What if the delivery fails or the item is damaged?", a: "We take responsibility seriously. If a delivery fails due to a rider error, you are not charged. Rider accounts are suspended for verified damage or misconduct." },
   { q: "Is there a minimum number of deliveries per month?", a: "No. Seaton Swift is pay-per-delivery with no subscriptions, no minimums, and no hidden fees. Use it as often or as seldom as you need." },
-  { q: "Why does the price change between deliveries?", a: "The same trip can cost differently at different times. Prices respond to live demand, the zone you are in, the time of day, and the weather, the same reasons a taxi costs more in a downpour or at rush hour. Whatever the conditions, the amount you see before confirming is the amount you pay." },
+  { q: "Why does the price change between deliveries?", a: "The same trip can cost differently at different times. Prices respond to live demand, the zone you are in, the time of day, and the weather, the same reasons a taxi costs more in a downpour or at rush hour. Whatever the conditions, you see the amount before you confirm. On Swift that is the amount you pay. On Carry and Move a travel fee can be added, never more than the maximum the app shows before you book." },
   { q: "Could I be charged more than I was quoted?", a: "For a Swift delivery, no. The price shown before you confirm is fixed and does not move afterwards, even if conditions change while the rider is on the way. Carry and Move work slightly differently: trucks are fewer and further apart, so if the nearest one has to travel a long way to reach you, a travel fee is added. The app tells you the most it can come to before you book, and the final price is settled the moment a driver accepts. If no rider accepts, you are not charged at all." },
   { q: "What is the travel fee on Carry and Move?", a: "Trucks are spread much further apart than bikes, so a driver may have to cover real distance just to reach your pickup. Rather than let those jobs go unaccepted, we pay the driver for that leg and show you the ceiling before you book. Nothing is added when a truck is already close by." },
 ];
@@ -82,11 +82,11 @@ export default function ForShopsPage() {
             {/* To /download rather than straight to the App Store: a shop owner
                 on an Android phone would otherwise land on a listing they
                 cannot install from. */}
-            <Link href="/download#shop" className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
+            <Link href="/download#shop" className="inline-flex items-center justify-center gap-2 bg-brand-fill hover:bg-brand-fill-hover text-brand-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors shadow-(--shadow-brand)">
               Download the App
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
-            <Link href="/contact" className="inline-flex items-center justify-center border border-line bg-surface hover:border-brand/50 hover:text-brand text-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
+            <Link href="/contact" className="inline-flex items-center justify-center border border-line bg-surface hover:border-brand/50 hover:text-brand-text text-ink font-semibold px-7 py-3.5 rounded-xl text-sm transition-colors">
               Talk to Us First
             </Link>
           </>
@@ -98,7 +98,7 @@ export default function ForShopsPage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Why shops switch</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Why shops switch</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Delivery, without the headache</h2>
             </div>
           </ScrollReveal>
@@ -107,7 +107,7 @@ export default function ForShopsPage() {
               <ScrollReveal key={b.title}>
                 <div className="flex gap-5 bg-surface border border-line rounded-2xl p-7 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)">
                   <div className="w-11 h-11 shrink-0 rounded-xl bg-brand/10 flex items-center justify-center">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{b.icon}</svg>
+                    <svg aria-hidden width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{b.icon}</svg>
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-2">{b.title}</h3>
@@ -125,7 +125,7 @@ export default function ForShopsPage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Transparent Pricing</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Transparent Pricing</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">Know the price before you post</h2>
               <p className="text-muted mt-3 max-w-xl mx-auto">There is no fixed price list, because no two deliveries are the same. Here is exactly what shapes what you pay, and the promise that comes with it.</p>
             </div>
@@ -139,7 +139,7 @@ export default function ForShopsPage() {
         <div className="max-w-6xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">Getting Started</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Getting Started</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">From sign-up to first delivery</h2>
               <p className="text-muted mt-3">Five simple steps. Most shops are live the same day.</p>
             </div>
@@ -153,7 +153,7 @@ export default function ForShopsPage() {
         <div className="max-w-3xl mx-auto px-5">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="text-brand text-xs font-semibold uppercase tracking-widest">FAQ</span>
+              <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">FAQ</span>
               <h2 className="text-3xl font-extrabold mt-2">Shop owner questions</h2>
             </div>
           </ScrollReveal>
@@ -165,10 +165,10 @@ export default function ForShopsPage() {
       <section className="py-24 px-5">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
-            <div className="bg-brand rounded-3xl p-10 md:p-14 text-center relative overflow-hidden sheen">
+            <div className="bg-brand-fill rounded-3xl p-10 md:p-14 text-center relative overflow-hidden sheen">
               <div className="relative">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-ink mb-3">Ready to start delivering?</h2>
-                <p className="text-brand-ink/85 mb-8 max-w-md mx-auto">Download Seaton Swift and post your first delivery in under 5 minutes.</p>
+                <p className="text-brand-ink mb-8 max-w-md mx-auto">Download Seaton Swift and post your first delivery in under 5 minutes.</p>
                 <StoreButtons app="shop" tone="brand" className="justify-center" />
               </div>
             </div>

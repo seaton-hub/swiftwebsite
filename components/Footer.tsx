@@ -25,6 +25,7 @@ const cols = [
     links: [
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
       { label: "Delete Account", href: "/delete-account" },
     ],
   },
@@ -62,9 +63,9 @@ export default function Footer() {
                   href={s.href}
                   {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-lg bg-surface border border-line flex items-center justify-center text-muted hover:text-brand hover:border-brand/40 transition-colors"
+                  className="w-9 h-9 rounded-lg bg-surface border border-line flex items-center justify-center text-muted hover:text-brand-text hover:border-brand/40 transition-colors"
                 >
-                  <svg
+                  <svg aria-hidden
                     width="16" height="16" viewBox="0 0 24 24"
                     fill={s.stroke ? "none" : "currentColor"}
                     stroke={s.stroke ? "currentColor" : "none"}
@@ -85,11 +86,11 @@ export default function Footer() {
                 {col.links.map((l) => (
                   <li key={l.label}>
                     {"external" in l && l.external ? (
-                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-brand text-sm transition-colors">
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-brand-text text-sm transition-colors">
                         {l.label} ↗
                       </a>
                     ) : (
-                      <Link href={l.href} className="text-muted hover:text-brand text-sm transition-colors">
+                      <Link href={l.href} className="text-muted hover:text-brand-text text-sm transition-colors">
                         {l.label}
                       </Link>
                     )}

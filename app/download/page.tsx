@@ -70,7 +70,7 @@ export default function DownloadPage() {
                   id={app.key}
                   className="scroll-mt-28 h-full flex flex-col bg-surface border border-line rounded-2xl p-7 shadow-(--shadow-md)"
                 >
-                  <span className="text-brand text-xs font-semibold uppercase tracking-widest">
+                  <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">
                     {app.audience}
                   </span>
                   <h2 className="text-2xl font-extrabold mt-2 mb-2.5">{app.name}</h2>

@@ -58,8 +58,8 @@ export default function ContactPage() {
               {channels.map((c) => {
                 const inner = (
                   <div className="flex items-start gap-4 bg-surface border border-line rounded-2xl px-6 py-5 h-full transition-all duration-300 group-hover:-translate-y-1 group-hover:border-brand/30 group-hover:shadow-(--shadow-md)">
-                    <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center text-brand shrink-0">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{c.icon}</svg>
+                    <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center text-brand-text shrink-0">
+                      <svg aria-hidden width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{c.icon}</svg>
                     </div>
                     <div className="min-w-0">
                       <p className="text-muted text-xs mb-0.5">{c.label}</p>

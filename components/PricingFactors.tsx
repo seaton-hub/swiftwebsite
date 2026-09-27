@@ -3,7 +3,8 @@ import { SERVICES } from "@/lib/site";
 /* Explains HOW a delivery price is formed, without publishing figures.
    Fares move with demand, zone, time and weather, so any number printed here
    would go stale and contradict the app. The promise we can always make is:
-   you see the exact price before you confirm, and it does not change after. */
+   you see the price before you confirm. On Swift it never changes; on Carry and
+   Move a travel fee can be added, capped at a maximum shown before booking. */
 
 const factors = [
   {
@@ -48,7 +49,7 @@ export default function PricingFactors() {
             className="bg-surface border border-line rounded-2xl p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-(--shadow-md)"
           >
             <div className="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-4">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
+              <svg aria-hidden width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
             </div>
             <h3 className="font-bold mb-1.5">{f.title}</h3>
             <p className="text-muted text-sm leading-relaxed">{f.desc}</p>
@@ -57,16 +58,18 @@ export default function PricingFactors() {
       </div>
 
       {/* the promise that replaces a price list */}
-      <div className="mt-8 bg-brand rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden sheen">
+      <div className="mt-8 bg-brand-fill rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden sheen">
         <div className="relative">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-brand-ink mx-auto mb-4 opacity-90">
+          <svg aria-hidden width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-brand-ink mx-auto mb-4 opacity-90">
             <path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="9" />
           </svg>
           <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-ink mb-3">You always see the price first</h3>
-          <p className="text-brand-ink/85 max-w-lg mx-auto leading-relaxed">
-            Enter your pickup and drop-off, and the app shows the exact amount before you confirm
-            anything. Accept it or walk away. The price never changes after you have agreed to it,
-            and you are never charged if no rider accepts.
+          <p className="text-brand-ink max-w-lg mx-auto leading-relaxed">
+            Enter your pickup and drop-off, and the app shows the price before you confirm
+            anything. Accept it or walk away. A Swift price never changes after you agree to it.
+            On Carry and Move, a travel fee can be added when the nearest truck is far away, and
+            the app shows the most it can be before you book. You are never charged if no rider
+            accepts.
           </p>
         </div>
       </div>
@@ -76,7 +79,7 @@ export default function PricingFactors() {
         {(Object.keys(SERVICES) as (keyof typeof SERVICES)[]).map((k, i) => (
           <div key={k} className="bg-surface border border-line rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-brand text-[11px] font-bold tracking-widest uppercase">{SERVICES[k].label}</span>
+              <span className="text-brand-text text-[11px] font-bold tracking-widest uppercase">{SERVICES[k].label}</span>
               <span className="flex gap-0.5" aria-hidden>
                 {[0, 1, 2].map((d) => (
                   <span key={d} className={`w-1.5 h-1.5 rounded-full ${d <= i ? "bg-brand" : "bg-line"}`} />

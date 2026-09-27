@@ -7,7 +7,9 @@ export default function Logo({ height = 34 }: { height?: number }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo-mark.png"
-        alt="Seaton Swift"
+        // Empty: the words "Seaton Swift" sit right beside it, so an alt here
+        // made screen readers say the name twice.
+        alt=""
         width={148}
         height={160}
         style={{ height, width: "auto" }}
@@ -15,7 +17,7 @@ export default function Logo({ height = 34 }: { height?: number }) {
       />
       <span className="font-extrabold text-[17px] tracking-tight leading-none">
         <span className="text-ink">Seaton</span>
-        <span className="text-brand"> Swift</span>
+        <span className="text-brand-text"> Swift</span>
       </span>
     </Link>
   );

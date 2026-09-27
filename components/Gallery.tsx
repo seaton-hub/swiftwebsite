@@ -48,7 +48,14 @@ const srcSetFor = (image: string) =>
 
 export default function Gallery() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  // Three reasons to hold still: the pointer is over it, keyboard focus is in
+  // it, or the visitor pressed pause. Anything that moves on its own for more
+  // than five seconds has to be stoppable (WCAG 2.2.2), and hover alone gave a
+  // keyboard or screen reader no way to do it.
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [stopped, setStopped] = useState(false);
+  const paused = hovered || focused || stopped;
   const touchX = useRef<number | null>(null);
 
   useEffect(() => {
@@ -65,8 +72,10 @@ export default function Gallery() {
   return (
     <div
       className="relative w-full"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setFocused(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocused(false); }}
       onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
       onTouchEnd={(e) => {
         if (touchX.current == null) return;
@@ -89,7 +98,10 @@ export default function Gallery() {
                   src={s.image}
                   srcSet={srcSetFor(s.image)}
                   sizes="(min-width: 1024px) 550px, 100vw"
-                  alt={s.title}
+                  // Empty: the slide's own heading and caption, just below,
+                  // already say what the photo shows. The alt used to be the
+                  // heading, so a screen reader read every title twice.
+                  alt=""
                   loading="lazy"
                   decoding="async"
                   className="absolute inset-0 w-full h-full object-cover"
@@ -98,9 +110,9 @@ export default function Gallery() {
             ) : (
               <div className="absolute inset-0" style={{ background: s.scene ?? "linear-gradient(135deg,#E8402A,#B4291A)" }}>
                 <div className="absolute inset-0 opacity-[0.12]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
-                <svg className="absolute -right-6 -bottom-6 w-56 h-56 opacity-20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">{s.icon}</svg>
+                <svg aria-hidden className="absolute -right-6 -bottom-6 w-56 h-56 opacity-20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">{s.icon}</svg>
                 <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/15 backdrop-blur text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="11" r="2" /><path d="M21 15l-5-5-9 9" /></svg>
+                  <svg aria-hidden width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="11" r="2" /><path d="M21 15l-5-5-9 9" /></svg>
                   Photo slot
                 </span>
               </div>
@@ -120,21 +132,34 @@ export default function Gallery() {
         ))}
 
         {/* Arrows */}
-        <button onClick={() => go(active - 1)} aria-label="Previous" className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur text-white flex items-center justify-center transition-colors">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+        <button onClick={() => go(active - 1)} aria-label="Previous photo" className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur text-white flex items-center justify-center transition-colors">
+          <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
         </button>
-        <button onClick={() => go(active + 1)} aria-label="Next" className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur text-white flex items-center justify-center transition-colors">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+        <button onClick={() => go(active + 1)} aria-label="Next photo" className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur text-white flex items-center justify-center transition-colors">
+          <svg aria-hidden width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
         </button>
       </div>
 
-      {/* Dots */}
+      {/* Dots, and the pause */}
       <div className="flex items-center justify-center gap-2 mt-5">
+        <button
+          type="button"
+          onClick={() => setStopped((v) => !v)}
+          aria-label={stopped ? "Play slideshow" : "Pause slideshow"}
+          className="mr-1.5 w-7 h-7 rounded-full border border-line text-muted hover:text-ink hover:border-muted flex items-center justify-center transition-colors"
+        >
+          {stopped ? (
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M7 4l14 8-14 8z" /></svg>
+          ) : (
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M6 4h4v16H6zM14 4h4v16h-4z" /></svg>
+          )}
+        </button>
         {slides.map((s, idx) => (
           <button
             key={s.key}
             onClick={() => go(idx)}
             aria-label={`Show ${s.title}`}
+            aria-current={idx === active ? "true" : undefined}
             className={`h-2 rounded-full transition-all duration-300 ${idx === active ? "w-7 bg-brand" : "w-2 bg-line hover:bg-muted"}`}
           />
         ))}
