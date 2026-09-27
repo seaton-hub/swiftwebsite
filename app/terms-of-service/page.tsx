@@ -117,6 +117,7 @@ export default function TermsPage() {
           <Section title="9. Account Suspension and Termination">
             <p>Seaton Swift may suspend or permanently ban any account that violates these Terms, receives a pattern of negative ratings or complaints, engages in fraudulent activity, or is involved in criminal conduct. Suspended users may appeal by contacting support@seatonlogistics.com within 7 days of suspension.</p>
             <p>You may delete your account at any time from within the app settings. Outstanding balances or pending deliveries must be resolved before deletion is finalised.</p>
+            <p>A rider account with no verification documents uploaded within 4 days of registration is closed automatically. If you allow notifications, we remind you on day 1 and day 3. You can register again at any time.</p>
           </Section>
 
           <Section title="10. Ratings and Reviews">
