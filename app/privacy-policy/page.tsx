@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage, { LegalSection as Section } from "@/components/LegalPage";
+import { ADDRESS } from "@/lib/site";
 
 const title = "Privacy Policy | Seaton Swift";
 const description = "Seaton Swift Privacy Policy: how we collect, use, and protect your data.";
@@ -119,7 +120,9 @@ export default function PrivacyPolicyPage() {
             <p>For privacy-related enquiries, contact:</p>
             <p>
               Seaton Swift (a product of Seaton Logistics)<br />
-              Kumasi, Ashanti Region, Ghana<br />
+              {ADDRESS.area}, {ADDRESS.city}, {ADDRESS.region}, {ADDRESS.country}<br />
+              {ADDRESS.landmark}<br />
+              Digital address: {ADDRESS.digital}<br />
               Email: <a href="mailto:privacy@seatonlogistics.com" className="text-brand-text hover:underline">privacy@seatonlogistics.com</a>
             </p>
           </Section>

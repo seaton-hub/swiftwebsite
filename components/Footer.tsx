@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { GENERAL_EMAIL } from "@/lib/site";
+import { ADDRESS, GENERAL_EMAIL } from "@/lib/site";
 
 const cols = [
   {
@@ -102,9 +102,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-line pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted">
-          <span>© {year} Seaton Swift. A product of Seaton Logistics™. All rights reserved.</span>
-          <span>Kumasi, Ashanti Region, Ghana</span>
+        {/* One row only from lg: copyright and address side by side need about
+            800px, and squeezed any narrower both wrap into ragged halves. On a
+            phone the address takes two lines, and the digital address never
+            breaks at its own hyphens. */}
+        <div className="border-t border-line pt-6 flex flex-col lg:flex-row items-center justify-between gap-3 text-xs text-muted">
+          <span className="text-center lg:text-left">© {year} Seaton Swift. A product of Seaton Logistics™. All rights reserved.</span>
+          <address className="not-italic flex flex-col items-center sm:flex-row sm:gap-1.5">
+            <span>{ADDRESS.area}, {ADDRESS.city}, {ADDRESS.country}</span>
+            <span aria-hidden className="hidden sm:inline">·</span>
+            <span className="whitespace-nowrap">Digital address {ADDRESS.digital}</span>
+          </address>
         </div>
       </div>
     </footer>

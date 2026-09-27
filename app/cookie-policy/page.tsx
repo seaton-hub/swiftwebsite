@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage, { LegalSection as Section } from "@/components/LegalPage";
-import { GENERAL_EMAIL } from "@/lib/site";
+import { ADDRESS, GENERAL_EMAIL } from "@/lib/site";
 
 const title = "Cookie Policy | Seaton Swift";
 const description =
@@ -67,6 +67,12 @@ export default function CookiePolicyPage() {
         <p>
           Questions about this policy:{" "}
           <a href={`mailto:${GENERAL_EMAIL}`} className="text-brand-text hover:underline">{GENERAL_EMAIL}</a>
+        </p>
+        <p>
+          Seaton Swift, a product of Seaton Logistics<br />
+          {ADDRESS.area}, {ADDRESS.city}, {ADDRESS.region}, {ADDRESS.country}<br />
+          {ADDRESS.landmark}<br />
+          Digital address: {ADDRESS.digital}
         </p>
       </Section>
     </LegalPage>

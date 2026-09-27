@@ -25,6 +25,20 @@
 export const GENERAL_EMAIL = "hello@seatonlogistics.com";
 export const SUPPORT_EMAIL = "support@seatonlogistics.com";
 
+/* Where the business is. Shown in the footer on every page, on /contact, in the
+   contact section of each policy, and in the Organization structured data
+   (lib/seo.ts), so all of them read from here and cannot drift apart. The
+   digital address is the GhanaPost GPS code. No company registration number,
+   on purpose. */
+export const ADDRESS = {
+  area: "Dichemso",
+  landmark: "Next to Land and Homes Consult",
+  city: "Kumasi",
+  region: "Ashanti Region",
+  country: "Ghana",
+  digital: "AK-009-6731",
+};
+
 /* ── The two apps ──────────────────────────────────────────────────────────
    There are TWO products, not one, and the site used to have a single
    "Download the app" button for both. A shop owner and a rider need different

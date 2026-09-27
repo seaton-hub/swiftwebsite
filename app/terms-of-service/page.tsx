@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage, { LegalSection as Section } from "@/components/LegalPage";
+import { ADDRESS } from "@/lib/site";
 
 const title = "Terms of Service | Seaton Swift";
 const description =
@@ -147,7 +148,9 @@ export default function TermsPage() {
           <Section title="16. Contact">
             <p>
               Seaton Swift, a product of Seaton Logistics<br />
-              Kumasi, Ashanti Region, Ghana<br />
+              {ADDRESS.area}, {ADDRESS.city}, {ADDRESS.region}, {ADDRESS.country}<br />
+              {ADDRESS.landmark}<br />
+              Digital address: {ADDRESS.digital}<br />
               Email: <a href="mailto:support@seatonlogistics.com" className="text-brand-text hover:underline">support@seatonlogistics.com</a>
             </p>
           </Section>

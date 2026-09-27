@@ -1,16 +1,17 @@
-import { GENERAL_EMAIL, SERVICES, APP_LIST } from "./site";
+import { ADDRESS, GENERAL_EMAIL, SERVICES, APP_LIST } from "./site";
 
 /* Structured data (JSON-LD) — what Google reads to understand *what* this site
    is, as opposed to merely indexing its words. Feeds knowledge-panel entries,
    FAQ rich results and breadcrumb trails in search listings.
 
    ⚠️ Everything here must be true and verifiable on the page itself. Google
-   penalises structured data that contradicts visible content. Two deliberate
-   omissions:
-     • No `LocalBusiness` / `PostalAddress` — we have no verified street address
-       to publish. Inventing one is exactly the kind of thing that gets a site
-       demoted. Add it (and claim a Google Business Profile) once there's a real
-       registered address; that is the single biggest local-search unlock.
+   penalises structured data that contradicts visible content. The address
+   below is the one the footer shows on every page (lib/site.ts ADDRESS), so the
+   two always agree. Two deliberate omissions:
+     • No `LocalBusiness`. That type tells Google customers visit the premises;
+       ours never need to, the rider goes to them. `Organization` with an
+       address is the true description. No company registration number either,
+       on purpose.
      • No `MobileApplication` sitewide. It describes the apps, so it sits on
        /download, where the apps are actually on the page. Google demotes
        structured data describing something the page does not show. */
@@ -33,6 +34,16 @@ export const organizationSchema = {
   // No `telephone` — email is the only published contact channel, and
   // structured data must not advertise a route the site itself does not offer.
   email: GENERAL_EMAIL,
+  // The GhanaPost GPS digital address goes in postalCode: its first part
+  // (AK-009) is the postcode, the last four digits pick out the building.
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${ADDRESS.area}, ${ADDRESS.landmark.replace(/^N/, "n")}`,
+    addressLocality: ADDRESS.city,
+    addressRegion: ADDRESS.region,
+    postalCode: ADDRESS.digital,
+    addressCountry: "GH",
+  },
   parentOrganization: {
     "@type": "Organization",
     name: "Seaton Logistics",

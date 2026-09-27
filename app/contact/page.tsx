@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
-import { GENERAL_EMAIL, SUPPORT_EMAIL } from "@/lib/site";
+import { ADDRESS, GENERAL_EMAIL, SUPPORT_EMAIL } from "@/lib/site";
 
 const title = "Contact Seaton Swift | Kumasi, Ghana";
 const description =
@@ -33,9 +33,9 @@ const channels: { label: string; value: string; note: string; href?: string; ico
     icon: <><circle cx="12" cy="12" r="9" /><path d="M9.1 9a3 3 0 015.8 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></>,
   },
   {
-    label: "Location",
-    value: "Kumasi, Ashanti Region",
-    note: "Ghana",
+    label: "Address",
+    value: `${ADDRESS.area}, ${ADDRESS.city}, ${ADDRESS.region}`,
+    note: `${ADDRESS.landmark}. Digital address ${ADDRESS.digital}`,
     icon: <><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></>,
   },
 ];
