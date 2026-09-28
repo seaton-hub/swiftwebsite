@@ -28,7 +28,7 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicyPage() {
-  const updated = "27 September 2026";
+  const updated = "28 September 2026";
   return (
     <LegalPage title="Privacy Policy" updated={updated} sections={SECTIONS}>
       <></>
@@ -79,7 +79,7 @@ export default function PrivacyPolicyPage() {
 
           <Section title="5. Data Retention">
             <p>We retain your account data for as long as your account is active. If you delete your account, we retain data required for legal, tax, or dispute resolution purposes for up to 7 years, after which it is permanently deleted.</p>
-            <p><strong className="text-ink">After you delete your account:</strong> the deliveries, commission and payment records, and ratings you gave others stay, because the people on the other side of those deliveries and our own accounts depend on them. They are detached from your account and carry only the name as it appeared at the time. Your profile photo or logo is destroyed after 30 days.</p>
+            <p><strong className="text-ink">After you delete your account:</strong> the deliveries, commission and payment records, referral and reward records, and ratings you gave others stay, because the people on the other side of those deliveries and our own accounts depend on them. They are detached from your account and carry only the name as it appeared at the time. Your profile photo or logo is destroyed after 30 days.</p>
             <p><strong className="text-ink">Location:</strong> a rider&apos;s location trail for a delivery is deleted after 90 days. The four points that record the delivery itself (accepted, arrived, collected, delivered) are kept with the delivery record, because they are what a dispute is settled from.</p>
             <p><strong className="text-ink">Messages:</strong> messages between riders and shops about a delivery are deleted after 12 months, unless they are part of a dispute.</p>
             <p>Rider verification documents, including the identity photograph, are retained for the duration of the rider relationship plus 2 years.</p>

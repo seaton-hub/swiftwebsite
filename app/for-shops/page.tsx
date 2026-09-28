@@ -8,6 +8,7 @@ import PricingFactors from "@/components/PricingFactors";
 import Steps from "@/components/Steps";
 import StoreButtons from "@/components/StoreButtons";
 import { faqSchema, breadcrumbSchema } from "@/lib/seo";
+import { SUPPORT_EMAIL } from "@/lib/site";
 
 const title = "Delivery for Shops in Ghana | Seaton Swift";
 const description =
@@ -52,7 +53,10 @@ const steps = [
   { title: "Track and Confirm", desc: "Watch the delivery live on the map. Your customer gets an SMS at pickup, and you're notified the moment it's delivered." },
 ];
 
+// The whole shop FAQ lives here. The merchant app's own FAQ screen is frozen
+// and links to this page, so a new question is added here and nowhere else.
 const faq: { q: string; a: string }[] = [
+  { q: "How do I post a delivery?", a: "From the New Delivery tab, enter the pickup and drop-off addresses, describe the package, and confirm the fee shown. The nearest available rider is offered your delivery automatically." },
   { q: "How much does a delivery cost?", a: "It depends on the distance, the service you choose, and conditions at the time: how busy your area is, the time of day, and the weather. Rather than quote a figure that would be wrong half the time, the app calculates the exact price the moment you enter your pickup and drop-off, and shows it before you confirm anything." },
   { q: "How quickly will a rider arrive?", a: "In most parts of Kumasi a rider is matched within about 2 minutes and arrives at your pickup within 10–15 minutes, depending on traffic." },
   { q: "What types of items can I send?", a: "Food, medicine, clothing, parcels, documents, and most everyday goods. Items that are illegal, hazardous, or require special handling are not permitted." },
@@ -61,6 +65,11 @@ const faq: { q: string; a: string }[] = [
   { q: "Why does the price change between deliveries?", a: "The same trip can cost differently at different times. Prices respond to live demand, the zone you are in, the time of day, and the weather, the same reasons a taxi costs more in a downpour or at rush hour. Whatever the conditions, you see the amount before you confirm. On Swift that is the amount you pay. On Carry and Move a travel fee can be added, never more than the maximum the app shows before you book." },
   { q: "Could I be charged more than I was quoted?", a: "For a Swift delivery, no. The price shown before you confirm is fixed and does not move afterwards, even if conditions change while the rider is on the way. Carry and Move work slightly differently: trucks are fewer and further apart, so if the nearest one has to travel a long way to reach you, a travel fee is added. The app tells you the most it can come to before you book, and the final price is settled the moment a driver accepts. If no rider accepts, you are not charged at all." },
   { q: "What is the travel fee on Carry and Move?", a: "Trucks are spread much further apart than bikes, so a driver may have to cover real distance just to reach your pickup. Rather than let those jobs go unaccepted, we pay the driver for that leg and show you the ceiling before you book. Nothing is added when a truck is already close by." },
+  { q: "What is the pickup code?", a: "Every delivery gets its own code. When the rider arrives, they tell you the code. Check it matches the one in your app before handing over the package. That way the right rider always takes your delivery." },
+  { q: "Can I track my delivery?", a: "Yes. Once a rider accepts, open the delivery from the Deliveries tab to see the rider's live location on the map until drop-off." },
+  { q: "What is a bundle?", a: "If you have several drop-offs from one pickup, post them together as a bundle. One rider takes every stop in a single route, so you hand over once instead of waiting for several riders." },
+  { q: "What if no rider accepts my delivery?", a: "The offer widens to riders further away automatically. If no rider is found in time, the delivery is cancelled and you can post it again. You are never charged for a delivery no rider accepted." },
+  { q: "How do I contact support?", a: `Open Support from your Profile tab and start a ticket. Our team replies right in the app. You can also email us at ${SUPPORT_EMAIL}.` },
 ];
 
 export default function ForShopsPage() {
