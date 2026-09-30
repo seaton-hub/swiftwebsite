@@ -232,13 +232,6 @@ export default function HomePage() {
 
         <div className="max-w-6xl mx-auto px-5 py-20 w-full grid lg:grid-cols-2 gap-12 items-center relative">
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur border border-white/25 rounded-full px-4 py-1.5 text-xs font-medium text-white mb-6">
-              <span className="relative flex w-2 h-2">
-                <span className="absolute inline-flex w-full h-full rounded-full bg-green-500 opacity-70 animate-ping" />
-                <span className="relative inline-flex w-2 h-2 rounded-full bg-green-500" />
-              </span>
-              Now live in the Ashanti Region 🇬🇭
-            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[3.7rem] font-extrabold leading-[1.05] tracking-tight mb-5 text-white drop-shadow-sm">
               Anything, anywhere,<br />
               <span className="text-brand">delivered swiftly.</span>
@@ -348,7 +341,7 @@ export default function HomePage() {
               <span className="text-brand-text text-xs font-semibold uppercase tracking-widest">Seaton Swift in motion</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">A delivery network you can see</h2>
               <p className="text-muted leading-relaxed mb-6">
-                Real riders, real shops, real streets. From the busiest market to a quiet neighbourhood, Seaton Swift keeps your city moving, and you always know where your package is.
+                From the busiest market to a quiet neighbourhood, Seaton Swift keeps your city moving, and you always know where your package is.
               </p>
               <ul className="space-y-3">
                 {["Trusted riders across the Ashanti Region", "Businesses of every size, one platform", "Every parcel tracked to the doorstep"].map((t) => (

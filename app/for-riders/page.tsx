@@ -100,8 +100,8 @@ export default function ForRidersPage() {
         title="Turn your bike into a"
         accent="business."
         subtitle="Earn on your own schedule. No boss, no fixed hours. Just you, your bike, and steady work from shops across Ghana."
-        image="/gallery/swift2.webp"
-        imageAlt="Seaton Swift riders online and waiting for deliveries"
+        image="/gallery/page-riders.webp"
+        imageAlt="A smiling Seaton Swift rider on his red motorbike on a Kumasi street, checking his phone"
         chip={{ label: "You keep up to", value: "90%" }}
         actions={
           <>

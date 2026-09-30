@@ -46,8 +46,8 @@ export default function AboutPage() {
         title="Built in Ghana."
         accent="Built for Ghana."
         subtitle="Seaton Swift was born from a simple observation: Ghanaian businesses needed a fast, reliable, affordable way to reach their customers, and no existing platform was built with them in mind."
-        image="/gallery/carry1.webp"
-        imageAlt="A Seaton Swift tricycle carrying bulk goods through a Ghanaian market street"
+        image="/gallery/page-about.webp"
+        imageAlt="A Seaton Swift aboboyaa loaded with sacks and crates at a Kumasi market while the rider ties the load down"
         chip={{ label: "Serving", value: "Ashanti" }}
       />
 

@@ -52,7 +52,7 @@ def cover(img, w, h):
 card = Image.new("RGB", (W, H), INK)
 
 # ── right side: photo ────────────────────────────────────────────────────────
-photo = cover(Image.open(ROOT / "public/hero/swift1.webp").convert("RGB"), W - PANEL + FADE, H)
+photo = cover(Image.open(ROOT / "assets-src/photos/doorstep.jpg").convert("RGB"), W - PANEL + FADE, H)
 # Fade the photo's left edge into the panel.
 mask = Image.new("L", photo.size, 255)
 mdraw = ImageDraw.Draw(mask)

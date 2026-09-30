@@ -7,10 +7,12 @@ import { useEffect, useRef, useState } from "react";
    SWAPPING THE PHOTOS
    -------------------
    Photos live in `website/public/gallery/` and are wired to the `image` values
-   below (e.g. image: "/gallery/swift4.webp"). To change one, drop the new file
-   in that folder and update its `image` — the path starts at /gallery/, NOT
-   /public/gallery/. A slide with no `image` falls back to a branded gradient
-   `scene`, so the section never breaks. Add or remove slides freely.
+   below (e.g. image: "/gallery/food.webp"). They are built from the originals
+   in assets-src/photos/ by assets-src/make-web-images.py, which also sets each
+   crop; to change one, edit that script and re-run it. The path starts at
+   /gallery/, NOT /public/gallery/. A slide with no `image` falls back to a
+   branded gradient `scene`, so the section never breaks. Add or remove slides
+   freely.
 
    PERFORMANCE: this section sits below the fold, so images are lazy-loaded and
    only the current + next slide are mounted. A first visit downloads none of
@@ -29,17 +31,17 @@ type Slide = {
 };
 
 // Walks the full journey and all three services: pickup → doorstep → the rider
-// fleet → Carry (tricycle/small truck) → Move (full relocations).
+// fleet → Carry (aboboyaa/Macho) → Move (full relocations).
 const slides: Slide[] = [
-  { key: "shop-pickup", image: "/gallery/swift4.webp", title: "Picked up from your shop", caption: "Your rider arrives, collects the order, and is on the road in minutes." },
-  { key: "food", image: "/gallery/swift1.webp", title: "Hot food, still hot", caption: "Meals and everyday parcels delivered straight to the customer's door." },
-  { key: "doorstep", image: "/gallery/swift5.webp", title: "Right to the doorstep", caption: "Fast, safe hand-offs your customers can count on, every time." },
-  { key: "riders", image: "/gallery/swift2.webp", title: "Riders on every street", caption: "Verified riders online and ready across the Ashanti Region, all day." },
-  { key: "bulky-bike", image: "/gallery/swift3.webp", title: "More than a small parcel", caption: "Awkward, bulky orders strapped down and moved safely on two wheels." },
-  { key: "market", image: "/gallery/carry1.webp", title: "Market runs, sorted", caption: "Aboboyaa tricycles hauling sacks and bulk stock across town." },
-  { key: "small-truck", image: "/gallery/carry2.webp", title: "Small trucks for bigger loads", caption: "When it's too big for a bike, Carry brings a truck to your door." },
-  { key: "home-move", image: "/gallery/move1.webp", title: "Full moves with helpers", caption: "Trained helpers load, move, and unload your home or office." },
-  { key: "moving-day", image: "/gallery/move3.webp", title: "Moving day made easy", caption: "Hostel, home, or office. Move handles all the heavy lifting." },
+  { key: "shop-pickup", image: "/gallery/shop-counter.webp", title: "Picked up from your shop", caption: "Your rider arrives, collects the order, and is on the road in minutes." },
+  { key: "food", image: "/gallery/food.webp", title: "Hot food, still hot", caption: "Meals and everyday parcels delivered straight to the customer's door." },
+  { key: "doorstep", image: "/gallery/doorstep.webp", title: "Right to the doorstep", caption: "Fast, safe hand-offs your customers can count on, every time." },
+  { key: "riders", image: "/gallery/on-the-road.webp", title: "Riders on every street", caption: "Verified riders online and ready across the Ashanti Region, all day." },
+  { key: "market", image: "/gallery/market.webp", title: "Market runs, sorted", caption: "Aboboyaa tricycles hauling sacks and bulk stock across town." },
+  { key: "students", image: "/gallery/students.webp", title: "Student loads, carried", caption: "Chop box, trunk and mattress on one aboboyaa. Ask for help loading when you book." },
+  { key: "small-truck", image: "/gallery/macho.webp", title: "Small trucks for bigger loads", caption: "When it's too big for a bike, Carry brings a Macho to your door." },
+  { key: "home-move", image: "/gallery/home-move.webp", title: "Full moves with helpers", caption: "Trained helpers load, move, and unload, from the truck to your door." },
+  { key: "office-move", image: "/gallery/office-move.webp", title: "Office moves, handled", caption: "Desks, filing cabinets and screens, moved in a truck sized to the job." },
 ];
 
 /** "/gallery/x.webp" → "/gallery/x-800.webp 800w, /gallery/x.webp 1280w" */

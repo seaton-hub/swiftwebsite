@@ -83,8 +83,8 @@ export default function ForShopsPage() {
         title="Stop worrying about"
         accent="delivery."
         subtitle="Your customers expect fast delivery. Seaton Swift gives you a fleet of verified riders on demand, with no contracts, no monthly fees and no phone calls."
-        image="/gallery/swift4.webp"
-        imageAlt="A shop owner handing a packed order to a Seaton Swift rider"
+        image="/gallery/page-shops.webp"
+        imageAlt="A pharmacist handing a sealed pharmacy bag and an envelope to a Seaton Swift rider"
         chip={{ label: "Matched in", value: "~2 min" }}
         actions={
           <>

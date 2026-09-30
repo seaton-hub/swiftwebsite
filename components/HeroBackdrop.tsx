@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
    SWAPPING THE PHOTOS
    -------------------
    Photos live in  website/public/hero/  and are wired to the `src` values below
-   (e.g. src: "/hero/swift1.webp"). To change one, drop the new file in that
-   folder and update its `src` — the path starts at /hero/, NOT /public/hero/.
-   Prefer .webp (see scripts note in the README of public/) and keep five slides.
+   (e.g. src: "/hero/road.webp"). They are built from the originals in
+   assets-src/photos/ by assets-src/make-web-images.py, which also sets each
+   crop; to change one, edit that script and re-run it. The path starts at
+   /hero/, NOT /public/hero/. Keep five slides.
    If a `src` is left empty the slide falls back to its branded gradient `scene`.
 
    PERFORMANCE: every slide sits stacked in the viewport, so `loading="lazy"`
@@ -29,11 +30,11 @@ type Slide = { key: string; src?: string; scene: string };
 
 // Ordered to tell the three-service story: Swift → Swift → riders → Carry → Move.
 const slides: Slide[] = [
-  { key: "s1", src: "/hero/swift1.webp", scene: "linear-gradient(135deg,#E8402A 0%,#B4291A 100%)" },
-  { key: "s2", src: "/hero/swift5.webp", scene: "linear-gradient(135deg,#23262E 0%,#111318 100%)" },
-  { key: "s3", src: "/hero/swift2.webp", scene: "linear-gradient(135deg,#E8402A 0%,#8F1F13 100%)" },
-  { key: "s4", src: "/hero/carry1.webp", scene: "linear-gradient(135deg,#2A2D36 0%,#14161C 100%)" },
-  { key: "s5", src: "/hero/move3.webp", scene: "linear-gradient(135deg,#C9331F 0%,#7E1B10 100%)" },
+  { key: "s1", src: "/hero/road.webp", scene: "linear-gradient(135deg,#E8402A 0%,#B4291A 100%)" },
+  { key: "s2", src: "/hero/food.webp", scene: "linear-gradient(135deg,#23262E 0%,#111318 100%)" },
+  { key: "s3", src: "/hero/rider.webp", scene: "linear-gradient(135deg,#E8402A 0%,#8F1F13 100%)" },
+  { key: "s4", src: "/hero/carry.webp", scene: "linear-gradient(135deg,#2A2D36 0%,#14161C 100%)" },
+  { key: "s5", src: "/hero/move.webp", scene: "linear-gradient(135deg,#C9331F 0%,#7E1B10 100%)" },
 ];
 
 export default function HeroBackdrop() {
