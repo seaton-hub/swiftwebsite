@@ -28,7 +28,7 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicyPage() {
-  const updated = "28 September 2026";
+  const updated = "30 September 2026";
   return (
     <LegalPage title="Privacy Policy" updated={updated} sections={SECTIONS}>
       <></>
@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
             <p><strong className="text-ink">After you delete your account:</strong> the deliveries, commission and payment records, referral and reward records, and ratings you gave others stay, because the people on the other side of those deliveries and our own accounts depend on them. They are detached from your account and carry only the name as it appeared at the time. Your profile photo or logo is destroyed after 30 days.</p>
             <p><strong className="text-ink">Location:</strong> a rider&apos;s location trail for a delivery is deleted after 90 days. The four points that record the delivery itself (accepted, arrived, collected, delivered) are kept with the delivery record, because they are what a dispute is settled from.</p>
             <p><strong className="text-ink">Messages:</strong> messages between riders and shops about a delivery are deleted after 12 months, unless they are part of a dispute.</p>
-            <p>Rider verification documents, including the identity photograph, are retained for the duration of the rider relationship plus 2 years.</p>
+            <p>Rider verification documents, including the identity photograph, are retained for the duration of the rider relationship plus 2 years. With them, and with a closed account&apos;s photo or logo, we keep the name and phone number that were on the account, so we know whose they are and can contact you about them. The name and phone number are deleted at the same moment as the files.</p>
             <p><strong className="text-ink">Unfinished sign-ups:</strong> if you start signing up but never enter the code we text you, no account is created, and the details you typed are deleted 24 hours after the last code we sent.</p>
             <p><strong className="text-ink">Rider accounts with no documents:</strong> a rider account with no verification documents uploaded is closed and deleted after 4 days, in the same way as closing it yourself, described under closed accounts below. You can sign up again at any time.</p>
             <p><strong className="text-ink">Removed accounts:</strong> If we remove a rider for fraud, theft, or serious misconduct, we keep a one-way cryptographic hash of their Ghana Card number so that the same person cannot simply register again. A hash cannot be reversed, so the number itself is not retained and cannot be recovered from it. The record is erased if the removal is later reversed.</p>
