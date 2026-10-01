@@ -69,7 +69,7 @@ const faq: { q: string; a: string }[] = [
   { q: "Can I track my delivery?", a: "Yes. Once a rider accepts, open the delivery from the Deliveries tab to see the rider's live location on the map until drop-off." },
   { q: "What is a bundle?", a: "If you have several drop-offs from one pickup, post them together as a bundle. One rider takes every stop in a single route, so you hand over once instead of waiting for several riders." },
   { q: "What if no rider accepts my delivery?", a: "The offer widens to riders further away automatically. If no rider is found in time, the delivery is cancelled and you can post it again. You are never charged for a delivery no rider accepted." },
-  { q: "How do I contact support?", a: `Open Support from your Profile tab and start a ticket. Our team replies right in the app. You can also email us at ${SUPPORT_EMAIL}.` },
+  { q: "How do I contact support?", a: `Open Profile, then Help & Support, and tap Message support to start a ticket. Our team replies right in the app. You can also email us at ${SUPPORT_EMAIL}.` },
 ];
 
 export default function ForShopsPage() {
