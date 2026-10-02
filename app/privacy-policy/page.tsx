@@ -28,7 +28,7 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicyPage() {
-  const updated = "30 September 2026";
+  const updated = "2 October 2026";
   return (
     <LegalPage title="Privacy Policy" updated={updated} sections={SECTIONS}>
       <></>
@@ -44,12 +44,14 @@ export default function PrivacyPolicyPage() {
             <p><strong className="text-ink">Identity photograph:</strong> Riders are asked to take a photograph of themselves holding their Ghana Card. We use it once, to confirm that the person registering is the person named on the card. It is reviewed by our team, stored with your other verification documents, and is never shown to shops, to customers, or to other riders.</p>
             <p><strong className="text-ink">Location data:</strong> We collect real-time GPS location from riders while they are online. <strong className="text-ink">This collection continues in the background</strong> while the app is minimised, while you are using a navigation app, and while your phone is locked, so that shops can follow a delivery in progress and so we can settle disputes about what happened on a trip. Location is sampled roughly every 30 seconds while you are online, and every 5 seconds during an active delivery. Background collection runs only while you are online: it stops the moment you go offline, and you can end it at any time by going offline or by withdrawing the location permission in your device settings. From shops we collect the pickup and drop-off addresses entered when a delivery is posted and, with your permission, your device location while the Merchant app is open, in order to fill in a pickup address. The Merchant app does not collect location in the background.</p>
             <p><strong className="text-ink">Transaction data:</strong> We record delivery details including price, distance, time, and completion status.</p>
+            <p><strong className="text-ink">Rider activity:</strong> We record the delivery offers each rider receives and how they respond, and when riders go online and offline, to improve how deliveries are offered.</p>
             <p><strong className="text-ink">Payment data:</strong> Riders save the Mobile Money number, and its network, that they pay their weekly commission from. The payment itself is taken by our payment processor, Paystack. We keep the amount and the payment reference, never a PIN or a card number. We do not pay money out to riders, so we do not collect bank account details.</p>
             <p><strong className="text-ink">People who receive deliveries:</strong> When a sender posts a delivery, they give us the recipient&apos;s name, phone number and delivery address. We use these only for that delivery. The rider sees them in order to complete it, and the recipient gets a text message when the rider collects the package, with a link to follow it. That tracking link shows the recipient&apos;s first name, the delivery address and, only while the delivery is in progress, the rider&apos;s position. If a recipient reports a problem through the link, we keep what they write and, if they choose to give them, their name and phone number.</p>
             <p><strong className="text-ink">Our website:</strong> The website sets no cookies and runs no analytics or advertising software. If you choose light or dark mode, that choice is kept in your own browser and never sent to us. If you write to us through the contact form, your name, email address and message are sent to our team&apos;s inbox so we can reply. They are not stored in our database. See our <a href="/cookie-policy" className="text-brand-text hover:underline">Cookie Policy</a>.</p>
             <p><strong className="text-ink">Usage data:</strong> Our apps contain no analytics, advertising, or crash-reporting software. We do not track how you move around inside the app, and we do not build a profile of your behaviour.</p>
             <p><strong className="text-ink">Messages:</strong> Riders and shops can send each other short messages about a delivery in progress. We store these messages so that both sides keep a record, and so that we can investigate disputes or reported misconduct.</p>
             <p><strong className="text-ink">Communications:</strong> If you contact our support team, we retain records of those communications.</p>
+            <p><strong className="text-ink">Help search:</strong> We keep the questions typed into our help search for 90 days, with phone numbers, email addresses and codes removed, to improve our answers. They are not linked to your account.</p>
           </Section>
 
           <Section title="3. How We Use Your Data">

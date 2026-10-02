@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import HelpSearch from "@/components/HelpSearch";
 import { ADDRESS, GENERAL_EMAIL, SUPPORT_EMAIL } from "@/lib/site";
 
 const title = "Contact Seaton Swift | Kumasi, Ghana";
@@ -49,6 +50,9 @@ export default function ContactPage() {
         accent="hear from you."
         subtitle="Questions about the platform, partnership enquiries, or just want to say hello. We're here and we reply fast."
       />
+
+      {/* Renders nothing until help search is switched on. */}
+      <HelpSearch />
 
       <section className="pb-24 px-5">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6 items-start">
