@@ -46,7 +46,7 @@ const benefits = [
 ];
 
 const steps = [
-  { title: "Download the App", desc: "Install Seaton Swift on Android or iPhone and create your shop account in under 2 minutes." },
+  { title: "Download the App", desc: "Install Swift Merchant on Android or iPhone and create your shop account in under 2 minutes." },
   { title: "Add Your Shop", desc: "Enter your shop name, address, and the types of items you typically deliver." },
   { title: "Post a Delivery", desc: "Enter the pickup location, drop-off address, package description, and recipient contact." },
   { title: "Get Matched to a Rider", desc: "Within about 2 minutes a verified nearby rider accepts and heads to your pickup point." },

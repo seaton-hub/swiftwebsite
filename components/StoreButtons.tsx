@@ -9,11 +9,11 @@ import { APPS, type AppKey } from "@/lib/site";
    draw its own pill with a hand-copied Apple logo and Play logo, which neither
    store permits.
 
-   The Android badge is not a link while that app is still in closed testing.
-   A closed-testing Play URL 404s for anybody who is not an opted-in tester, and
-   Google's rules only allow its badge for an app that is actually on Google
-   Play. So until the flag in lib/site.ts flips, a plain note stands in its
-   place, with no Google logo on it. */
+   Both apps are public on Google Play (confirmed 7 Oct 2026). If a listing ever stops
+   being public, turn its flag off in lib/site.ts: Google's rules only allow its
+   badge for an app that is actually on Google Play, and a non-public Play URL
+   404s. With the flag off, a plain note stands in the badge's place, with no
+   Google logo on it. */
 
 const BADGE_HEIGHT = "h-12";   // 48px: Apple's minimum on screen is 40px
 

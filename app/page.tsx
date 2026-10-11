@@ -481,7 +481,7 @@ export default function HomePage() {
               <div className="relative grid md:grid-cols-[1fr_auto] gap-10 items-center">
                 {/* copy + store badges */}
                 <div className="text-center md:text-left">
-                  <span className="inline-block bg-black/20 text-brand-ink text-xs font-semibold px-3 py-1 rounded-full mb-4">Now on the App Store</span>
+                  <span className="inline-block bg-black/20 text-brand-ink text-xs font-semibold px-3 py-1 rounded-full mb-4">Now on the App Store and Google Play</span>
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-ink mb-3">Download Seaton Swift</h2>
                   <p className="text-brand-ink text-lg mb-8 max-w-md mx-auto md:mx-0">Two apps: one for the shop sending the delivery, one for the rider making it.</p>
 

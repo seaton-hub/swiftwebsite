@@ -59,13 +59,14 @@ export const organizationSchema = {
   // left Google no corroboration of the brand name outside our own two domains,
   // and a brand nothing else vouches for does not win its own name in search.
   //
-  // Play listings stay out while both apps are in closed testing: those URLs
-  // 404 for anyone who is not an opted-in tester.
+  // The Play listings are in too, now that both are public. A listing whose
+  // flag is off in lib/site.ts has no URL and drops out by itself.
   sameAs: [
     "https://seatonlogistics.com",
     "https://www.facebook.com/share/1BHdFX9xVY/?mibextid=wwXIfr",
     "https://www.tiktok.com/@seatonlogistics",
     ...APP_LIST.map((a) => a.ios),
+    ...APP_LIST.flatMap((a) => (a.android ? [a.android] : [])),
   ],
 };
 
@@ -134,18 +135,20 @@ export function breadcrumbSchema(trail: { name: string; path: string }[]) {
  *  No `aggregateRating`. We have no ratings to report, and inventing one is the
  *  fastest way to lose every rich result on the site.
  *
- *  `operatingSystem` is iOS alone on purpose. Both Play listings are in closed
- *  testing and their URLs 404 for the public, so claiming Android here would
- *  describe something a visitor cannot get. */
+ *  `operatingSystem` follows the store links: Android is claimed only while
+ *  the app's Play listing is public (its flag in lib/site.ts), so this never
+ *  describes something a visitor cannot get. `url` is the app's card on
+ *  /download, the one page that offers both stores. */
 export const appsSchema = APP_LIST.map((a) => ({
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   name: a.name,
   description: a.blurb,
   applicationCategory: "BusinessApplication",
-  operatingSystem: "iOS",
-  url: a.ios,
-  installUrl: a.ios,
+  operatingSystem: a.android ? "iOS, Android" : "iOS",
+  url: `${SITE_URL}/download#${a.key}`,
+  downloadUrl: a.android ? [a.ios, a.android] : [a.ios],
+  sameAs: a.android ? [a.ios, a.android] : [a.ios],
   publisher: { "@id": ORG_ID },
   offers: { "@type": "Offer", price: "0", priceCurrency: "GHS" },
 }));

@@ -46,7 +46,7 @@ const perks = [
 ];
 
 const joinSteps = [
-  { title: "Download the App", desc: "Install Seaton Swift on Android or iPhone and tap 'Sign up as a Rider'." },
+  { title: "Download the App", desc: "Install Seaton Swift on Android or iPhone and tap 'Sign up'." },
   { title: "Submit Your Documents", desc: "Upload your Ghana Card, valid riding licence, and a photo of your bike with its registration plate." },
   { title: "Get Verified", desc: "Our team reviews your documents within 24 hours. You'll get a notification once approved." },
   { title: "Attend a Brief Orientation", desc: "A short online or in-person session (under 1 hour) covering platform rules, safety, and handling deliveries." },

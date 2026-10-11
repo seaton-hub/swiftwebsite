@@ -44,17 +44,18 @@ export const ADDRESS = {
    "Download the app" button for both. A shop owner and a rider need different
    downloads, so every store link on this site now names which app it is.
 
-   Play links are withheld rather than guessed. Both apps are in closed testing,
-   and a closed-testing listing URL returns a 404 to anyone who is not an
-   opted-in tester — worse than an honest "coming soon". Flip the flag below on
-   the day each listing goes public and the buttons light up everywhere.
+   Both apps are public on Google Play (confirmed 7 Oct 2026), so both flags
+   are on.
+   They stay as flags because a listing can be pulled or suspended: switching
+   one off brings back the "coming soon" note everywhere at once, which beats a
+   badge that leads to a 404.
 
    The QR codes in public/ deliberately do NOT encode these URLs. They point at
    /download on our own domain, so a printed sticker keeps working when a store
    link changes, and one code serves iPhone and Android alike. */
 
-const RIDER_ON_PLAY = false;
-const SHOP_ON_PLAY = false;
+const RIDER_ON_PLAY = true;
+const SHOP_ON_PLAY = true;
 
 const playUrl = (pkg: string) => `https://play.google.com/store/apps/details?id=${pkg}`;
 
@@ -67,7 +68,7 @@ export interface StoreApp {
   audience: string;
   blurb: string;
   ios: string;
-  /** null until the Play listing is public. */
+  /** null while the Play listing is not public. */
   android: string | null;
   androidPackage: string;
   /** Printable code that lands on /download anchored at this app. */

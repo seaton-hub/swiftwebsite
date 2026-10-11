@@ -8,7 +8,7 @@ import { APP_LIST } from "@/lib/site";
 
 const title = "Download Seaton Swift | Ghana delivery app for shops and riders";
 const description =
-  "Get the Seaton Swift apps on iPhone. Swift Merchant for shops sending deliveries, Seaton Swift for riders earning on their own schedule.";
+  "Get the Seaton Swift apps on iPhone and Android. Swift Merchant for shops sending deliveries, Seaton Swift for riders earning on their own schedule.";
 
 export const metadata: Metadata = {
   title,
