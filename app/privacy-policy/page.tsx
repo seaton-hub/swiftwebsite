@@ -28,7 +28,7 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicyPage() {
-  const updated = "2 October 2026";
+  const updated = "11 October 2026";
   return (
     <LegalPage title="Privacy Policy" updated={updated} sections={SECTIONS}>
       <></>
@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
 
           <Section title="4. Data Sharing">
             <p>We do not sell your personal data to third parties. We share data only in the following circumstances:</p>
-            <p><strong className="text-ink">Between users:</strong> Shops see a rider&apos;s first name, rating, and live location during an active delivery. Riders see the pickup and drop-off address, the shop&apos;s contact number, and the recipient&apos;s name and phone number.</p>
+            <p><strong className="text-ink">Between users:</strong> Shops see a rider&apos;s first name, rating, and live location during an active delivery. Riders see the pickup and drop-off address, the shop&apos;s contact number, and the recipient&apos;s name and phone number. If you signed up with another rider&apos;s referral code, that rider sees your first name and how the referral is going: how many qualifying deliveries you have completed, whether it is waiting on a commission payment from you, and how many days are left. They never see an amount.</p>
             <p><strong className="text-ink">Payment processor:</strong> Riders&apos; commission payments are taken through Paystack, which receives the Mobile Money number and the amount needed to complete each payment.</p>
             <p><strong className="text-ink">Legal compliance:</strong> We may disclose data to Ghanaian law enforcement or regulatory authorities when required by law or court order.</p>
             <p><strong className="text-ink">Mapping and routing:</strong> We send pickup, drop-off and rider coordinates to Google Maps Platform to draw maps, suggest addresses, and measure road distances and travel times. This is how we work out what a delivery costs and how far a rider must travel to reach a pickup. Google receives coordinates only, never your name, phone number or documents.</p>

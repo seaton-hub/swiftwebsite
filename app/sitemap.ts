@@ -9,7 +9,9 @@ const BASE = "https://swift.seatonlogistics.com";
 // stamping every route as "modified" on every deploy is a signal Google learns
 // to ignore, which costs you the one time it actually matters.
 // Bumped 11 Oct 2026: the Google Play badges went live for both apps, and the
-// Organization data gained the Play listings, which changes every page.
+// Organization data gained the Play listings, which changes every page. The
+// same day the referral rule changed in the Terms, the Privacy Policy and the
+// rider FAQ.
 const LAST_MODIFIED = new Date("2026-10-11");
 
 export default function sitemap(): MetadataRoute.Sitemap {
