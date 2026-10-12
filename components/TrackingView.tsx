@@ -43,6 +43,9 @@ type Tracking = {
   product_value: string | number | null;
   is_prepaid: boolean;
   eta_mins: number | null;
+  // A bundle on the road: how many stops the rider does before this one.
+  // Null for a single delivery, before pickup, or from an older backend.
+  deliveries_before?: number | null;
   picked_up_at: string | null;
   delivered_at: string | null;
   destination: LatLng;
@@ -200,6 +203,13 @@ export default function TrackingView() {
               ))}
             </div>
             <p className="text-sm font-semibold mt-3">{STEPS[stepIdx]?.label}</p>
+            {data.deliveries_before != null && !delivered && (
+              <p className="text-sm mt-1">
+                {data.deliveries_before === 0
+                  ? "Your delivery is next."
+                  : `${data.deliveries_before} ${data.deliveries_before === 1 ? "delivery" : "deliveries"} before yours.`}
+              </p>
+            )}
 
             {data.is_live && distanceKm !== null && (
               <p className="text-muted text-sm mt-1">
