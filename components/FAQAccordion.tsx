@@ -1,9 +1,64 @@
 "use client";
 import { useId, useState } from "react";
 
-interface FAQItem {
+/* A picture of one step: only the part of the phone's screen that matters,
+   drawn at 3x (public/faq). w and h are its size in CSS pixels, so the page
+   keeps its place while it loads. */
+export interface FAQShot {
+  text: string;
+  img: string;
+  alt: string;
+  w: number;
+  h: number;
+}
+
+/* Steps under an answer that tells someone how to set something on their
+   phone (Richmond, 25 Oct 2026: "give screenshots on the steps"). The answer
+   itself stays complete in words: search engines and the in-app help search
+   read only the text (lib/seo faqSchema). */
+export interface FAQSteps {
+  title: string;
+  numbered?: boolean;
+  items: FAQShot[];
+}
+
+export interface FAQItem {
   q: string;
   a: string;
+  steps?: FAQSteps[];
+}
+
+function StepGroup({ group }: { group: FAQSteps }) {
+  const List = group.numbered ? "ol" : "ul";
+  return (
+    <div className="mt-5">
+      <p className="text-ink text-sm font-semibold">{group.title}</p>
+      <List className="mt-3 grid gap-5 sm:grid-cols-2 items-start">
+        {group.items.map((step, i) => (
+          <li key={step.img} className="flex flex-col gap-2.5">
+            <p className="flex gap-2 text-muted text-sm leading-relaxed">
+              {group.numbered && (
+                <span className="shrink-0 grid place-items-center w-5 h-5 mt-px rounded-full bg-brand-fill text-brand-ink text-[11px] font-bold tabular-nums">
+                  {i + 1}
+                </span>
+              )}
+              <span>{step.text}</span>
+            </p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={step.img}
+              alt={step.alt}
+              width={step.w}
+              height={step.h}
+              loading="lazy"
+              decoding="async"
+              className="w-full max-w-90 h-auto rounded-xl border border-line"
+            />
+          </li>
+        ))}
+      </List>
+    </div>
+  );
 }
 
 /* Card-less accordion: one hairline-divided column instead of a stack of boxed
@@ -65,9 +120,10 @@ export default function FAQAccordion({ items }: { items: FAQItem[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="border-l-2 border-brand/40 pl-4 pb-6 text-muted text-sm leading-relaxed">
-                  {item.a}
-                </p>
+                <div className="border-l-2 border-brand/40 pl-4 pb-6">
+                  <p className="text-muted text-sm leading-relaxed">{item.a}</p>
+                  {item.steps?.map((group) => <StepGroup key={group.title} group={group} />)}
+                </div>
               </div>
             </div>
           </div>

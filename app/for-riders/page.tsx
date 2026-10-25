@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Checklist from "@/components/Checklist";
-import FAQAccordion from "@/components/FAQAccordion";
+import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
@@ -63,8 +63,11 @@ const requirements = [
 ];
 
 // The whole rider FAQ lives here. The app's own FAQ screen is frozen and links
-// to this page, so a new question is added here and nowhere else.
-const faq: { q: string; a: string }[] = [
+// to this page, so a new question is added here and nowhere else. An answer
+// that tells a rider how to set something on their phone gets a picture of
+// each step (Richmond, 25 Oct 2026), drawn in public/faq; the answer still says
+// it all in words.
+const faq: FAQItem[] = [
   { q: "How and when do I get paid?", a: "You are paid on every trip. You collect the delivery fee directly at drop-off and keep it. Your only cost is the platform commission, which you settle each Monday via Mobile Money from the app's Earnings tab." },
   { q: "How much can I earn per delivery?", a: "It varies by trip, and that works in your favour. A fare grows with distance, Carry and Move jobs pay more than a bike delivery, and busy periods add a surge bonus. Rather than promise a figure we cannot guarantee, the app shows you the exact fee for every job before you accept it, so you decide whether it is worth your time." },
   { q: "Do I have to work set hours?", a: "No. You go online and offline whenever you choose. There are no minimum hours or shift requirements." },
@@ -76,6 +79,46 @@ const faq: { q: string; a: string }[] = [
   { q: "Is there a weekly commission or subscription fee?", a: `There are no upfront fees or subscriptions. Riders pay a commission of ${SERVICES.swift.commission}% of each delivery fee on Swift deliveries (${SERVICES.carry.commission}% on Carry and Move). It adds up during the week and is due every Monday by 8:00 AM. You pay it via Mobile Money from the Earnings tab, and you can pay at any time during the week.` },
   { q: "What happens if I don't pay commission on time?", a: "You get a reminder on Friday, Saturday and Sunday, and a final warning, including an SMS, early on Monday morning. If your commission is still unpaid at 8:00 AM on Monday, your account is suspended: you cannot go online or accept trips. You can still sign in. Open the Earnings tab and pay via Mobile Money, and your account is reactivated as soon as the full balance is cleared." },
   { q: "How do I go online and start receiving trips?", a: "On the Home tab, tap the large round button to go online. Your account must be approved and all your documents uploaded first." },
+  { q: "Can I accept or decline an offer without opening the app?", a: "Yes. On iPhone, a new offer shows on your lock screen with Accept and Decline. You can also press and hold the offer's notification, then tap Accept or Decline. On Android, tap Accept or Decline on the floating offer card, or on the offer's notification. Accept opens the app on the delivery, and your phone may ask you to unlock it first. Decline passes the offer on without opening the app." },
+  {
+    q: "What is the Seaton Swift card on my iPhone's lock screen?",
+    a: "While you are online, Seaton Swift keeps a card on your lock screen, and in the Dynamic Island on iPhones that have one. It shows each new offer with Accept and Decline, then the steps of your delivery. The first time, your iPhone asks whether to allow it: tap Allow (or Always Allow). If you tapped Don't Allow, open Settings, then Apps, then Seaton Swift, tap Live Activities and turn it on. On iOS 17, Seaton Swift is in the main Settings list. Accept and Decline on the card need iOS 17 or later. If the card turns grey, open the app to keep getting offers.",
+    steps: [
+      {
+        title: "What the card looks like",
+        items: [
+          { text: "While you are online, the card shows on your lock screen.", img: "/faq/la-card-online.png", alt: "The Seaton Swift card on an iPhone lock screen, saying Online, waiting for offers", w: 360, h: 94 },
+          { text: "A new offer shows on it with Decline and Accept.", img: "/faq/la-card-offer.png", alt: "A new offer on the Seaton Swift card, with Decline and Accept buttons", w: 360, h: 181 },
+        ],
+      },
+      {
+        title: "Turn the card back on",
+        numbered: true,
+        items: [
+          { text: "Open Settings and tap Apps.", img: "/faq/la-step1-apps.png", alt: "iPhone Settings, with Apps ringed", w: 360, h: 112 },
+          { text: "Tap Seaton Swift.", img: "/faq/la-step2-seaton.png", alt: "The Apps list in Settings, with Seaton Swift ringed", w: 360, h: 135 },
+          { text: "Tap Live Activities.", img: "/faq/la-step3-row.png", alt: "Seaton Swift in Settings, with Live Activities ringed", w: 360, h: 112 },
+          { text: "Turn on Live Activities.", img: "/faq/la-step4-on.png", alt: "The Live Activities switch, turned on", w: 360, h: 112 },
+        ],
+      },
+    ],
+  },
+  {
+    q: "I use Do Not Disturb on my iPhone. Will I still get offers?",
+    a: "Yes, once you let Seaton Swift through. Open Settings, then Focus, then Do Not Disturb. Tap Apps, then Allow Notifications From, tap +, and choose Seaton Swift. Do the same for any other Focus you use while you are online, such as Driving. Offers then show and ring as usual.",
+    steps: [
+      {
+        title: "Let Seaton Swift through Do Not Disturb",
+        numbered: true,
+        items: [
+          { text: "Open Settings and tap Focus.", img: "/faq/dnd-step1-focus.png", alt: "iPhone Settings, with Focus ringed", w: 360, h: 112 },
+          { text: "Tap Do Not Disturb.", img: "/faq/dnd-step2-dnd.png", alt: "The Focus list, with Do Not Disturb ringed", w: 360, h: 112 },
+          { text: "Under Allow Notifications, tap Apps.", img: "/faq/dnd-step3-apps.png", alt: "Do Not Disturb settings, with Apps ringed under Allow Notifications", w: 360, h: 159 },
+          { text: "Tap Allow Notifications From, tap +, and choose Seaton Swift.", img: "/faq/dnd-step4-allow.png", alt: "Allow Notifications From chosen, with Seaton Swift added after tapping the plus button", w: 360, h: 290 },
+        ],
+      },
+    ],
+  },
   { q: "What is the pickup code?", a: "Every trip you accept comes with its own code, shown on your trip screen. When you arrive at the shop, tell them the code. They check it matches the one on their screen before handing over the package. Then tap Confirm Package Collected in your app and head to the delivery address." },
   { q: "How much do I collect from the customer?", a: "After you tap Confirm Delivered, the app shows a collection summary: the delivery fee, plus the price of the item if it was not paid for in advance. Collect exactly that amount from the recipient and nothing more." },
   { q: "How are bundle trips different?", a: "A bundle is several deliveries grouped into one route, usually from the same shop or from shops close together. You earn the fee for every stop, and your trip screen lists all the stops. After pickup the app puts the closest stop next. If a customer is not there, tap \"Not here? Do it later\" and that stop moves to the end, or tap Do next on any stop to go there first. You have one chat with the shop for the whole bundle." },
