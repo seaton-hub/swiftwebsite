@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { GENERAL_EMAIL } from "@/lib/site";
 
 /* The form posts to the API and we send the email server-side.
@@ -24,16 +24,66 @@ const API =
    applies the same rule; this copy just catches it before a round trip. */
 const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
 
+/* A rider app's "contact us", shown when a vehicle number is already on another
+   rider's account, opens this page as /contact?vehicle=GR432126 (the server's
+   plateSupportUrl). The message is written for them and the page opens at the
+   form, so all that is left is their name and email. Letters and digits only:
+   whatever is in the link only ever becomes part of the message. */
+const readVehicle = () =>
+  (new URLSearchParams(window.location.search).get("vehicle") || "")
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "")
+    .slice(0, 15);
+const vehicleMessage = (plate: string) =>
+  `My vehicle number ${plate} is registered to another rider. I bought this vehicle and have the registration document in my name. Please transfer it to me.`;
+// The address never changes while the page is open: nothing to subscribe to.
+const subscribeNever = () => () => {};
+
+// The navbar is fixed: a floating island 12px from the top and 64px tall. The
+// form starts 16px below it.
+const NAV_CLEARANCE = 92;
+
 type Status = "idle" | "sending" | "sent" | "error";
+type Form = { name: string; email: string; message: string | null; company: string };
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "", company: "" });
+  const vehicle = useSyncExternalStore(subscribeNever, readVehicle, () => "");
+  // message stays null until the visitor types, and shows the vehicle message meanwhile.
+  const [form, setForm] = useState<Form>({ name: "", email: "", message: null, company: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [copied, setCopied] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  const bodyText = () => `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`;
+  const message = form.message ?? (vehicle ? vehicleMessage(vehicle) : "");
+  const bodyText = () => `Name: ${form.name}\nEmail: ${form.email}\n\n${message}`;
+
+  // Opened for a vehicle: start at the form, not the top of the page.
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!vehicle || !card) return;
+    const align = () => {
+      // offsetTop is the laid-out position, so the reveal's slide-in doesn't count.
+      let top = 0;
+      for (let n: HTMLElement | null = card; n; n = n.offsetParent as HTMLElement | null) top += n.offsetTop;
+      window.scrollTo({ top: Math.max(0, top - NAV_CLEARANCE), behavior: "instant" });
+    };
+    align();
+    // Anything above the form that arrives late (help search, the web font)
+    // pushes it down. Follow it until the visitor moves the page, or 2.5 s pass.
+    const follow = new ResizeObserver(align);
+    follow.observe(document.body);
+    const moves = ["wheel", "touchstart", "pointerdown", "keydown"] as const;
+    const timer = window.setTimeout(() => stop(), 2500);
+    function stop() {
+      follow.disconnect();
+      window.clearTimeout(timer);
+      moves.forEach((t) => window.removeEventListener(t, stop));
+    }
+    moves.forEach((t) => window.addEventListener(t, stop, { passive: true }));
+    return stop;
+  }, [vehicle]);
 
   function validateEmail(value: string) {
     if (!value) return "";
@@ -53,7 +103,7 @@ export default function ContactForm() {
       const res = await fetch(`${API}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, message }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.message || "We could not send your message.");
@@ -91,6 +141,7 @@ export default function ContactForm() {
           <span className="text-ink font-semibold wrap-break-word">{form.email}</span> within one business day.
         </p>
         <button
+          // message "" (not null): the vehicle message has been sent, so it doesn't come back.
           onClick={() => { setForm({ name: "", email: "", message: "", company: "" }); setStatus("idle"); }}
           className="mt-5 text-sm font-semibold text-muted hover:text-ink transition-colors"
         >
@@ -101,7 +152,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-surface border border-line rounded-3xl p-8 shadow-(--shadow-md)">
+    <div ref={cardRef} className="bg-surface border border-line rounded-3xl p-8 shadow-(--shadow-md)">
       <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
         <div>
           <h2 className="text-xl font-bold">Send us a message</h2>
@@ -135,7 +186,7 @@ export default function ContactForm() {
         <div>
           <label htmlFor="message" className="text-xs text-muted font-semibold block mb-1.5">Message</label>
           <textarea
-            id="message" required rows={5} maxLength={5000} value={form.message}
+            id="message" required rows={5} maxLength={5000} value={message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
             placeholder="Tell us how we can help…" className={`${field} resize-none`}
           />
